@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "template_active_inference"
-version = "0.3.1"
+version = "0.3.2"
 description = "Multi-track Active Inference exemplar: analytical + pymdp + sheaf manuscript + Lean/GNN/ontology. Track/fragment counts are registry-backed (manuscript/sheaf/tracks.yaml); not hard-coded here."
 authors = [{ name = "Daniel Ari Friedman", email = "daniel@activeinference.institute" }]
 requires-python = ">=3.10"
@@ -30,6 +30,7 @@ python_files = ["test_*.py"]
 addopts = "-v --tb=short --strict-markers"
 markers = [
     "requires_pymdp: tests that import inferactively-pymdp",
+    "long_running: end-to-end or heavy test families that take minutes",
     "timeout(seconds): per-test timeout for artifact write/validate isolation checks",
 ]
 

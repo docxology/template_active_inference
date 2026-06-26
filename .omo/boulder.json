@@ -1,0 +1,16 @@
+{
+  "schema_version": 2,
+  "active_work_id": "template-active-inference-comprehensive-ulw",
+  "works": {
+    "template-active-inference-comprehensive-ulw": {
+      "work_id": "template-active-inference-comprehensive-ulw",
+      "active_plan": ".omo/plans/template-active-inference-comprehensive-ulw.md",
+      "plan_name": "template-active-inference-comprehensive-ulw",
+      "session_ids": [
+        "codex:019ee7bd-f450-7202-b80a-1504b4f19234"
+      ],
+      "status": "active",
+      "worktree_path": null
+    }
+  }
+}
