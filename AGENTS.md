@@ -87,8 +87,16 @@ uv run python scripts/compute_statistics.py
   nearby `WHY:` comments only for surprising local choices, generated counts for
   volatile facts, and negative controls for verifier-like gates.
 
+
+## Agent skill
+
+A Hermes/agentskills.io-compatible skill for this exemplar lives at
+[`.agents/skills/template-active-inference/SKILL.md`](.agents/skills/template-active-inference/SKILL.md).
+Load it when working inside this template to get when-to-use guidance,
+quick reference commands, and pitfalls.
+
 ## Parent Docs
 
 - Template root: [`../../../AGENTS.md`](../../../AGENTS.md)
-- Publishing guide: [`../../../docs/guides/publishing-guide.md`](../../../docs/guides/publishing-guide.md)
+- Publishing guide: [`../../../docs/guides/publishing-guide.md`](../../../docs/guides/publishing-guide.md) · Publishing module reference: [`../../../infrastructure/publishing/README.md`](../../../infrastructure/publishing/README.md) · Archival targets: [`../../../docs/maintenance/archival-targets.md`](../../../docs/maintenance/archival-targets.md)
 - Zenodo DOI strategy: [`../../../docs/guides/zenodo-doi-strategy.md`](../../../docs/guides/zenodo-doi-strategy.md)
