@@ -125,8 +125,8 @@
     "reports": {
       "exists": true,
       "file_count": 35,
-      "size_mb": "0.46",
-      "total_size_bytes": 477863,
+      "size_mb": "0.50",
+      "total_size_bytes": 520680,
       "largest_files": [
         {
           "name": "evidence_registry.json",
@@ -180,7 +180,7 @@
     }
   },
   "total_files": 139,
-  "total_size_mb": 12.031079292297363,
+  "total_size_mb": 12.07191276550293,
   "largest_files": [
     {
       "name": "template_active_inference_combined.pdf",
@@ -253,7 +253,7 @@
     "web": 0.5577907562255859,
     "figures": 3.785637855529785,
     "data": 2.789571762084961,
-    "reports": 0.45572566986083984,
+    "reports": 0.49655914306640625,
     "logs": 0.00067901611328125
   },
   "file_counts_by_type": {

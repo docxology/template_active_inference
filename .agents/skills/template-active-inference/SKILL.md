@@ -23,12 +23,14 @@ Project-scoped skill for the in-repo exemplar at
 ## Quick Reference
 
 ```bash
+# From this project root
+uv run pytest tests --cov=src --cov-fail-under=90
+
 # From the repository root
-uv run pytest projects/templates/template_active_inference/tests --cov=projects/templates/template_active_inference/src --cov-fail-under=90
-uv run python scripts/02_run_analysis.py --project templates/template_active_inference
-uv run python scripts/03_render_pdf.py --project templates/template_active_inference
-uv run python scripts/04_validate_output.py --project templates/template_active_inference
-uv run python scripts/05_copy_outputs.py --project templates/template_active_inference
+uv run python scripts/pipeline/stage_02_analysis.py --project templates/template_active_inference
+uv run python scripts/pipeline/stage_03_render.py --project templates/template_active_inference
+uv run python scripts/pipeline/stage_04_validate.py --project templates/template_active_inference
+uv run python scripts/pipeline/stage_05_copy.py --project templates/template_active_inference
 ```
 
 ## Pitfalls
@@ -47,4 +49,4 @@ uv run python scripts/05_copy_outputs.py --project templates/template_active_inf
 - Project contract: [`AGENTS.md`](../../../AGENTS.md)
 - README: [`README.md`](../../../README.md)
 - TODO: [`TODO.md`](../../../TODO.md)
-- Exemplar roster: [`projects/AGENTS.md`](../../../../AGENTS.md)
+- Exemplar roster: [`projects/AGENTS.md`](../../../../../AGENTS.md)

@@ -2,11 +2,23 @@
 
 from __future__ import annotations
 
+import importlib.util
 import os
 from pathlib import Path
+from types import SimpleNamespace
 
 import gate_support
 import pytest
+
+
+def _load_tests_conftest():
+    conftest_path = Path(__file__).with_name("conftest.py")
+    spec = importlib.util.spec_from_file_location("active_inference_tests_conftest", conftest_path)
+    assert spec is not None
+    assert spec.loader is not None
+    project_conftest = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(project_conftest)
+    return project_conftest
 
 
 def test_required_gate_artifact_signature_uses_content_hash(
@@ -30,6 +42,31 @@ def test_required_gate_artifact_signature_uses_content_hash(
     assert first is not None
     assert second is not None
     assert second != first
+
+
+def test_session_prewarm_skips_collect_only(monkeypatch) -> None:
+    project_conftest = _load_tests_conftest()
+
+    def fail_if_called() -> None:
+        raise AssertionError("collect-only discovery must not prewarm gate artifacts")
+
+    monkeypatch.setattr(project_conftest, "_iter_mutable_project_sources", fail_if_called)
+    session = SimpleNamespace(config=SimpleNamespace(option=SimpleNamespace(collectonly=True)))
+
+    project_conftest.pytest_sessionstart(session)
+
+
+def test_mutable_output_snapshot_includes_gate_contract_artifacts() -> None:
+    project_conftest = _load_tests_conftest()
+
+    rels = {
+        path.relative_to(project_conftest.PROJECT_ROOT).as_posix()
+        for path in project_conftest._iter_mutable_project_outputs()
+    }
+
+    assert "output/data/artifact_provenance.json" in rels
+    assert "output/data/sheaf_gluing_certificate.json" in rels
+    assert "output/reports/artifact_diffoscope.json" in rels
 
 
 def test_ensure_gate_artifacts_reuses_matching_session_signature(
@@ -82,6 +119,7 @@ def test_ensure_gate_artifacts_rejects_invalid_bootstrapped_changed_signature(
     tmp_path: Path,
 ) -> None:
     root = tmp_path.resolve()
+    monkeypatch.setenv(gate_support._ALLOW_GATE_REBUILD_ENV, "1")
     monkeypatch.setattr(gate_support, "_BOOTSTRAPPED_ROOTS", {root})
     monkeypatch.setattr(gate_support, "_BOOTSTRAPPED_SIGNATURES", {root: "old"})
     monkeypatch.setattr(gate_support, "_required_gate_artifacts_signature", lambda project_root: "changed")
@@ -97,6 +135,22 @@ def test_ensure_gate_artifacts_rejects_invalid_bootstrapped_changed_signature(
         gate_support.ensure_gate_artifacts(root)
 
     assert gate_support._BOOTSTRAPPED_SIGNATURES[root] == "old"
+
+
+def test_ensure_gate_artifacts_fails_fast_without_rebuild_opt_in(monkeypatch, tmp_path: Path) -> None:
+    root = tmp_path.resolve()
+    monkeypatch.delenv(gate_support._ALLOW_GATE_REBUILD_ENV, raising=False)
+    monkeypatch.setattr(gate_support, "_required_gate_artifacts_signature", lambda project_root: "stale")
+    monkeypatch.setattr(gate_support, "_gate_artifacts_present", lambda project_root: False)
+    monkeypatch.setattr(gate_support, "gate_artifact_readiness_issues", lambda project_root: ("semantic drift",))
+
+    def fail_if_called(*args, **kwargs) -> None:
+        raise AssertionError("standard pytest must not rebuild active-inference artifacts")
+
+    monkeypatch.setattr(gate_support, "run_analysis", fail_if_called)
+
+    with pytest.raises(AssertionError, match="Standard pytest runs do not rebuild"):
+        gate_support.ensure_gate_artifacts(root)
 
 
 def test_refresh_generated_gate_artifacts_accepts_valid_changed_signature(
@@ -124,7 +178,9 @@ def test_refresh_generated_gate_artifacts_rejects_invalid_post_rebuild_signature
     tmp_path: Path,
 ) -> None:
     root = tmp_path.resolve()
-    monkeypatch.setattr(gate_support, "_required_gate_artifacts_signature", lambda project_root: "invalid-after-rebuild")
+    monkeypatch.setattr(
+        gate_support, "_required_gate_artifacts_signature", lambda project_root: "invalid-after-rebuild"
+    )
     monkeypatch.setattr(gate_support, "_settle_generated_contracts", lambda project_root, out: None)
     monkeypatch.setattr(gate_support, "_gate_artifacts_present", lambda project_root: False)
 
@@ -288,7 +344,10 @@ def test_ensure_gate_artifacts_rejects_invalid_post_rebuild_signature(
     tmp_path: Path,
 ) -> None:
     root = tmp_path.resolve()
-    monkeypatch.setattr(gate_support, "_required_gate_artifacts_signature", lambda project_root: "invalid-after-rebuild")
+    monkeypatch.setenv(gate_support._ALLOW_GATE_REBUILD_ENV, "1")
+    monkeypatch.setattr(
+        gate_support, "_required_gate_artifacts_signature", lambda project_root: "invalid-after-rebuild"
+    )
     monkeypatch.setattr(gate_support, "_gate_artifacts_present", lambda project_root: False)
     monkeypatch.setattr(gate_support, "pymdp_available", lambda: True)
 

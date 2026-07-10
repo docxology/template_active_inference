@@ -9,13 +9,14 @@ imports continue to resolve unchanged.
 from __future__ import annotations
 
 import hashlib
-import json
 import re
 from pathlib import Path
 from typing import Any
 
 import yaml
 
+from json_io import load_json as _load_json
+from json_io import write_json as _write_json  # noqa: F401  (re-exported for integration_audit)
 from roadmap_tracks.row_aggregates import all_rows
 
 TOKEN_RE = re.compile(r"\{\{([a-z][a-z0-9_]*)(?::\.[0-9]+f)?\}\}")
@@ -23,19 +24,6 @@ TOKEN_MATCH_RE = re.compile(r"\{\{([a-z][a-z0-9_]*)(?::\.(\d+)f)?\}\}")
 SELF_PRODUCER = "generate_integration_audit.py"
 LATE_HYDRATION_PRODUCER = "z_generate_manuscript_variables.py"
 SHEAF_TRACK_PRODUCER = "generate_sheaf_tracks.py"
-
-
-def _load_json(path: Path) -> dict[str, Any]:
-    if not path.is_file():
-        return {}
-    data: dict[str, Any] = json.loads(path.read_text(encoding="utf-8"))
-    return data
-
-
-def _write_json(path: Path, payload: dict[str, Any]) -> Path:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    return path
 
 
 def _sha256(path: Path) -> str:
@@ -52,6 +40,7 @@ def _analysis_scripts(root: Path) -> list[str]:
 
 
 def build_integration_dependency_graph(project_root: Path) -> dict[str, Any]:
+    """Build integration dependency graph."""
     root = project_root.resolve()
     from manuscript.sheaf.semantic import build_validation_dependency_graph
 
@@ -87,6 +76,7 @@ def build_integration_dependency_graph(project_root: Path) -> dict[str, Any]:
 
 
 def build_producer_completeness(project_root: Path) -> dict[str, Any]:
+    """Build producer completeness."""
     root = project_root.resolve()
     from manuscript.sheaf.semantic import ARTIFACT_PRODUCERS
 
@@ -108,6 +98,7 @@ def build_producer_completeness(project_root: Path) -> dict[str, Any]:
 
 
 def build_stale_artifact_report(project_root: Path) -> dict[str, Any]:
+    """Build stale artifact report."""
     root = project_root.resolve()
     graph = build_integration_dependency_graph(root)
     rows = []
@@ -134,6 +125,7 @@ def build_stale_artifact_report(project_root: Path) -> dict[str, Any]:
 
 
 def build_cross_track_symbol_table(project_root: Path) -> dict[str, Any]:
+    """Build cross track symbol table."""
     root = project_root.resolve()
     from gnn.parser import parse_gnn_file
     from manuscript.variables import generate_variables
@@ -273,6 +265,7 @@ def build_cross_track_symbol_table(project_root: Path) -> dict[str, Any]:
 
 
 def build_manuscript_token_provenance(project_root: Path) -> dict[str, Any]:
+    """Build manuscript token provenance."""
     root = project_root.resolve()
     source = "output/data/manuscript_variables.json"
     variables = _load_json(root / source)
@@ -418,6 +411,7 @@ def build_manuscript_staleness_report(project_root: Path) -> dict[str, Any]:
 
 
 def build_claim_evidence_audit(project_root: Path) -> dict[str, Any]:
+    """Build claim evidence audit."""
     root = project_root.resolve()
     from gates.claim_ledger import claim_evidence_status_rows
 
@@ -444,6 +438,7 @@ def build_claim_evidence_audit(project_root: Path) -> dict[str, Any]:
 
 
 def build_validation_gate_index(project_root: Path) -> dict[str, Any]:
+    """Build validation gate index."""
     _ = project_root
 
     def gate(
@@ -453,6 +448,7 @@ def build_validation_gate_index(project_root: Path) -> dict[str, Any]:
         negative_control: str,
         command: str = "uv run python scripts/validate_outputs.py",
     ) -> dict[str, Any]:
+        """Process gate."""
         return {
             "id": gate_id,
             "command": command,

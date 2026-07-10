@@ -14,7 +14,25 @@ from gates.validation import validate_manuscript
 from gate_support import ensure_gate_artifacts, refresh_generated_gate_artifacts
 from visualizations.figure_registry import write_figure_registry_json
 
-pytestmark = [pytest.mark.long_running, pytest.mark.timeout(300)]
+pytestmark = [pytest.mark.timeout(300)]
+
+
+@pytest.fixture(scope="module")
+def composed_methods_sheaf() -> Path:
+    """Compose every manuscript section once for the module's methods-sheaf checks.
+
+    The methods-sheaf marker negatives only mutate the *composed*
+    ``08_methods_sheaf.md`` output (which the autouse
+    ``_restore_mutable_project_state`` fixture in ``conftest`` restores after
+    each test), so composing once at module scope removes the repeated
+    ``compose_all_sections`` cost from every parametrized case. Module-scoped
+    fixtures cannot depend on the function-scoped ``project_root`` fixture, so
+    the project root is read from ``conftest.PROJECT_ROOT`` directly.
+    """
+    from conftest import PROJECT_ROOT
+
+    compose_all_sections(PROJECT_ROOT)
+    return PROJECT_ROOT
 
 
 def _prepare_minimal_manuscript_gate_artifacts(project_root: Path) -> None:
@@ -51,9 +69,11 @@ def test_validate_manuscript_contract(project_root: Path) -> None:
     assert checks["resolved_manuscript_hydrated"]
 
 
-def test_validate_manuscript_methods_sheaf_layers_negative(project_root: Path) -> None:
+def test_validate_manuscript_methods_sheaf_layers_negative(
+    project_root: Path,
+    composed_methods_sheaf: Path,
+) -> None:
     path = project_root / "manuscript" / "08_methods_sheaf.md"
-    compose_all_sections(project_root)
     original = path.read_text(encoding="utf-8")
     try:
         path.write_text(original.replace("<!-- sheaf-layers:registry -->", ""), encoding="utf-8")
@@ -74,11 +94,11 @@ def test_validate_manuscript_methods_sheaf_layers_negative(project_root: Path) -
 )
 def test_validate_manuscript_methods_sheaf_layers_negative_markers(
     project_root: Path,
+    composed_methods_sheaf: Path,
     needle: str,
     replacement: str,
 ) -> None:
     path = project_root / "manuscript" / "08_methods_sheaf.md"
-    compose_all_sections(project_root)
     original = path.read_text(encoding="utf-8")
     try:
         path.write_text(original.replace(needle, replacement), encoding="utf-8")
@@ -105,18 +125,10 @@ def test_validate_manuscript_resolved_hydrated_negative(project_root: Path) -> N
     from manuscript.variables import generate_variables
 
     resolved_dir = project_root / "output" / "manuscript"
-    candidates = [
-        path
-        for path in sorted(resolved_dir.glob("*.md"))
-        if path.name not in EXCLUDED_DOC_FILENAMES
-    ]
+    candidates = [path for path in sorted(resolved_dir.glob("*.md")) if path.name not in EXCLUDED_DOC_FILENAMES]
     if not candidates:
         write_resolved_manuscript(project_root, generate_variables(project_root, require_analysis_outputs=False))
-        candidates = [
-            path
-            for path in sorted(resolved_dir.glob("*.md"))
-            if path.name not in EXCLUDED_DOC_FILENAMES
-        ]
+        candidates = [path for path in sorted(resolved_dir.glob("*.md")) if path.name not in EXCLUDED_DOC_FILENAMES]
     assert candidates, "expected hydrated manuscript pages for negative control"
     originals = {path: path.read_text(encoding="utf-8") for path in candidates}
     try:

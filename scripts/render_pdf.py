@@ -12,7 +12,7 @@ Typography is read from this project's own sources: page margins from
 ``manuscript/config.yaml`` (``metadata.geometry``), the dense body font from
 ``manuscript/preamble.md`` (the ``fontsize`` package), and red hyperlinks via
 pandoc's ``colorlinks`` variables. The richer monorepo pipeline
-(``scripts/03_render_pdf.py`` in the template repo) adds transmission bookends,
+(``scripts/pipeline/stage_03_render.py`` in the template repo) adds transmission bookends,
 QR strips, and LaTeX post-processing; this renderer is the portable subset.
 """
 
@@ -34,6 +34,7 @@ from manuscript.render_helpers import extract_preamble, geometry_string  # noqa:
 
 
 def main() -> int:
+    """CLI entry point."""
     for tool in ("pandoc", "xelatex"):
         if shutil.which(tool) is None:
             print(f"error: `{tool}` not found on PATH (required for standalone render)", file=sys.stderr)

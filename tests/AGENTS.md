@@ -27,3 +27,23 @@ separate pytest processes and appends coverage into one final 90% gate. Use
 focused `-q` commands only for package-local development loops. The legacy
 single-process coverage run is available as `--monolithic-coverage` for
 diagnostics only.
+
+The root project-test stage skips `long_running` tests by default, even when
+`--include-slow` is set, so template CI and local smoke loops do not rerun every
+deep negative-control regeneration. Use
+`uv run python scripts/pipeline/stage_01_test.py --project templates/template_active_inference --project-only --include-slow --include-long-running`
+for an intentional deep gate refresh.
+
+Standard pytest expects the committed gate-artifact snapshot under `output/` to
+be present and semantically current. It fails fast when the snapshot is stale
+instead of rebuilding the full research pipeline inside test collection. Set
+`TEMPLATE_ACTIVE_INFERENCE_ALLOW_GATE_REBUILD=1` only for an intentional local
+refresh run that will regenerate and review the tracked outputs.
+
+`--collect-only` discovery must remain read-only and skip gate prewarming. The
+real test process performs the readiness check; discovery timeouts must not
+leave partially refreshed artifacts behind for the run that follows.
+
+Long in-process runs restore tracked `output/` snapshots after each test. Tests
+may exercise real writers against the project tree, but they must not leave
+canonical gate artifacts stale for later `ensure_gate_artifacts()` calls.

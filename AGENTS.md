@@ -31,7 +31,8 @@ hand-authored prose.
 | Simulation/SI harness | [`src/simulation/AGENTS.md`](src/simulation/AGENTS.md) | pymdp config/runtime, SI T-maze, graph-world traces, deterministic run logs. |
 | GNN parsing/concordance | [`src/gnn/AGENTS.md`](src/gnn/AGENTS.md) | Parser/model/concordance for `gnn/*.gnn.md`. |
 | Ontology bindings | [`src/ontology/AGENTS.md`](src/ontology/AGENTS.md) | Nested `terms:` flattening and cross-track naming contract. |
-| Output gates | [`src/gates/AGENTS.md`](src/gates/AGENTS.md) | Validation facade, manuscript/output checks, claim ledger, Lean gate. |
+| Output gates | [`src/gates/AGENTS.md`](src/gates/AGENTS.md) | Validation facade, output/manuscript checks, claim ledger, Lean gate. |
+| Artifact paths (SSOT) | [`src/contracts/AGENTS.md`](src/contracts/AGENTS.md) | Promoted/variable/gate artifact path registry. |
 | Promoted roadmap artifacts | [`src/roadmap_tracks/AGENTS.md`](src/roadmap_tracks/AGENTS.md) | Toy sweep, formal interop, integration audit, canonical sheaf tracks. |
 | Visual outputs | [`src/visualizations/AGENTS.md`](src/visualizations/AGENTS.md) | Figure registry/style/generator contracts. |
 | Thin orchestration scripts | [`scripts/AGENTS.md`](scripts/AGENTS.md) | Scripts delegate business logic to `src/`. |
@@ -49,7 +50,7 @@ uv run python scripts/generate_sheaf_tracks.py
 uv run python scripts/z_generate_manuscript_variables.py
 ```
 
-Then compose/render or validate as needed. `scripts/05_copy_outputs.py --project
+Then compose/render or validate as needed. `scripts/pipeline/stage_05_copy.py --project
 templates/template_active_inference` is the root-copy step from the parent
 template checkout when copied-root output parity matters.
 
