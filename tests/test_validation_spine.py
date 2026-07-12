@@ -36,9 +36,7 @@ def test_artifact_provenance_looks_up_source_commit_once(project_root: Path, mon
     provenance = artifacts.build_artifact_provenance(project_root)
 
     assert calls == [["git", "-C", str(project_root.resolve()), "rev-parse", "HEAD"]]
-    assert {
-        record["source_commit"] for record in (provenance.get("artifacts") or {}).values()
-    } == {"abc123"}
+    assert {record["source_commit"] for record in (provenance.get("artifacts") or {}).values()} == {"abc123"}
 
 
 def test_validation_spine_source_commit_times_out_to_unknown(
