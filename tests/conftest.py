@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import os
 import sys
-from collections.abc import Iterator
+from collections.abc import Callable, Iterator
 from pathlib import Path
 
 import pytest
@@ -20,8 +20,12 @@ if str(TESTS) not in sys.path:
 os.environ.setdefault("MPLBACKEND", "Agg")
 
 
-def pytest_sessionstart(session: pytest.Session) -> None:
-    """Pre-warm the gate-artifact bootstrap before any per-test timeout starts.
+def pytest_collection_modifyitems(
+    session: pytest.Session,
+    config: pytest.Config,
+    items: list[pytest.Item],
+) -> None:
+    """Pre-warm gate artifacts only when the collected selection can use them.
 
     ``ensure_gate_artifacts`` (see ``gate_support.py``) memoizes its expensive
     full rebuild (pymdp policy sampling, figure generation, sheaf
@@ -37,8 +41,8 @@ def pytest_sessionstart(session: pytest.Session) -> None:
     ``test_aggregate_forgery_controls.py`` fail wholesale rather than just its
     first test).
 
-    ``pytest_sessionstart`` runs once, before pytest-timeout's per-item timer
-    starts, so the cold bootstrap can run to completion here. If pymdp is
+    Collection hooks run before pytest-timeout's per-item timer starts, so the
+    cold bootstrap can run to completion here. If pymdp is
     unavailable, ``ensure_gate_artifacts`` calls ``pytest.skip(...)``, which
     is only meaningful inside a test's execution -- swallow it here and let
     each test's own ``ensure_gate_artifacts()`` call skip normally.
@@ -55,15 +59,41 @@ def pytest_sessionstart(session: pytest.Session) -> None:
     signature cache this pre-warm populates is keyed on ``output/`` artifacts
     only (see ``_REQUIRED_GATE_ARTIFACTS``), not manuscript source, so
     restoring the manuscript files does not invalidate it.
+    Focused ``test_*_direct.py`` runs operate exclusively on isolated project
+    copies and never consume the real-tree gate cache.  Skipping the unrelated
+    research-pipeline prewarm for those selections keeps their setup bounded;
+    mixed and full-suite selections retain the one-time prewarm.
     """
 
+    # The repo wrapper performs a separate ``pytest --collect-only`` probe
+    # before the real run. Guard at the hook boundary so discovery can never
+    # pay the expensive artifact-prewarm cost, even if pytest changes how the
+    # session option object is exposed to the helper.
+    if getattr(config.option, "collectonly", False):
+        return
+    if _selection_needs_gate_prewarm(items):
+        _prewarm_gate_artifacts(session)
+
+
+def _selection_needs_gate_prewarm(items: list[pytest.Item]) -> bool:
+    """Return whether a selection contains any real-tree contract test."""
+    return any(not item.path.name.endswith("_direct.py") for item in items)
+
+
+def _prewarm_gate_artifacts(
+    session: pytest.Session,
+    *,
+    source_iterator: Callable[[], Iterator[Path]] | None = None,
+) -> None:
+    """Prewarm helper with an injectable source iterator for contract tests."""
     if getattr(session.config.option, "collectonly", False):
         return
 
     try:
         from gate_support import ensure_gate_artifacts
 
-        snapshots = {path: path.read_bytes() for path in _iter_mutable_project_sources()}
+        iterator = _iter_mutable_project_sources if source_iterator is None else source_iterator
+        snapshots = {path: path.read_bytes() for path in iterator()}
         try:
             ensure_gate_artifacts(PROJECT_ROOT)
         finally:

@@ -59,7 +59,7 @@ def test_ontology_helpers() -> None:
     assert not validate_gnn_ontology(gnn)
 
 
-def test_full_verification_run_sets_defaults(monkeypatch, tmp_path: Path, capsys) -> None:
+def test_full_verification_run_sets_defaults(tmp_path: Path, capsys) -> None:
     calls: list[dict] = []
 
     class Result:
@@ -70,10 +70,14 @@ def test_full_verification_run_sets_defaults(monkeypatch, tmp_path: Path, capsys
         return Result()
 
     ticks = iter((10.0, 12.5))
-    monkeypatch.setattr(full_verification.subprocess, "run", fake_run)
-    monkeypatch.setattr(full_verification.time, "perf_counter", lambda: next(ticks))
-
-    full_verification._run(tmp_path, ["uv", "run", "pytest", "-q"], "Smoke", env={"EXTRA_FLAG": "1"})
+    full_verification._run(
+        tmp_path,
+        ["uv", "run", "pytest", "-q"],
+        "Smoke",
+        env={"EXTRA_FLAG": "1"},
+        process_runner=fake_run,
+        clock=lambda: next(ticks),
+    )
 
     assert calls[0]["cmd"] == ["uv", "run", "pytest", "-q"]
     assert calls[0]["cwd"] == tmp_path
@@ -84,29 +88,55 @@ def test_full_verification_run_sets_defaults(monkeypatch, tmp_path: Path, capsys
     assert "Smoke" in capsys.readouterr().out
 
 
-def test_full_verification_run_raises_on_failure(monkeypatch, tmp_path: Path) -> None:
+def test_full_verification_run_raises_on_failure(tmp_path: Path) -> None:
     class Result:
         returncode = 7
 
-    monkeypatch.setattr(full_verification.subprocess, "run", lambda *args, **kwargs: Result())
-    monkeypatch.setattr(full_verification.time, "perf_counter", lambda: 1.0)
-
     with pytest.raises(RuntimeError, match="Explode failed"):
-        full_verification._run(tmp_path, ["false"], "Explode")
+        full_verification._run(
+            tmp_path,
+            ["false"],
+            "Explode",
+            process_runner=lambda *args, **kwargs: Result(),
+            clock=lambda: 1.0,
+        )
 
 
-def test_run_verification_skip_chunks_orders_preflight_and_postflight(monkeypatch, tmp_path: Path) -> None:
+def test_coverage_command_defers_threshold_until_final_chunk() -> None:
+    partial = full_verification._coverage_command(["tests/test_one.py"], append=False, final=False)
+    final = full_verification._coverage_command(["tests/test_two.py"], append=True, final=True)
+
+    assert "--cov-fail-under=0" in partial
+    assert "--cov-fail-under=90" not in partial
+    assert "--cov-fail-under=90" in final
+
+
+def test_profile_args_are_additive_and_keep_live_services_opt_in() -> None:
+    quick = full_verification._profile_marker_args("quick")
+    release = full_verification._profile_marker_args("release")
+    exhaustive = full_verification._profile_marker_args("exhaustive")
+
+    assert quick[0] == release[0] == exhaustive[0] == "-m"
+    assert "not slow" in quick[1]
+    assert "not slow" not in release[1]
+    assert "not long_running" in release[1]
+    assert "not long_running" not in exhaustive[1]
+    assert all("not requires_ollama" in expression[1] for expression in (quick, release, exhaustive))
+
+
+def test_run_verification_skip_chunks_orders_preflight_and_postflight(tmp_path: Path) -> None:
     calls: list[tuple[str, list[str]]] = []
-    monkeypatch.setattr(
-        full_verification,
-        "_run",
-        lambda project_root, cmd, label, env=None: calls.append((label, cmd)),
+    full_verification.run_verification(
+        tmp_path,
+        skip_chunks=True,
+        command_runner=lambda project_root, cmd, label, env=None: calls.append((label, cmd)),
     )
 
-    full_verification.run_verification(tmp_path, skip_chunks=True)
-
     labels = [label for label, _ in calls]
-    assert labels[0] == "Run analytical sweep"
+    assert labels[0] == "Compose manuscript sections"
+    assert "Simulate SI T-maze" in labels
+    assert "Generate validation spine" in labels
+    assert "Generate canonical sheaf tracks" in labels
     assert "Focused contract and infrastructure checks" not in labels
     assert "Full suite coverage pass" not in labels
     assert "Coverage pass: Focused contract and infrastructure checks" in labels
@@ -117,15 +147,14 @@ def test_run_verification_skip_chunks_orders_preflight_and_postflight(monkeypatc
     assert "--cov-append" in second_coverage_cmd
 
 
-def test_run_verification_can_use_legacy_monolithic_coverage(monkeypatch, tmp_path: Path) -> None:
+def test_run_verification_can_use_legacy_monolithic_coverage(tmp_path: Path) -> None:
     calls: list[tuple[str, list[str]]] = []
-    monkeypatch.setattr(
-        full_verification,
-        "_run",
-        lambda project_root, cmd, label, env=None: calls.append((label, cmd)),
+    full_verification.run_verification(
+        tmp_path,
+        skip_chunks=True,
+        monolithic_coverage=True,
+        command_runner=lambda project_root, cmd, label, env=None: calls.append((label, cmd)),
     )
-
-    full_verification.run_verification(tmp_path, skip_chunks=True, monolithic_coverage=True)
 
     labels = [label for label, _ in calls]
     assert "Coverage pass: Focused contract and infrastructure checks" not in labels
@@ -134,22 +163,53 @@ def test_run_verification_can_use_legacy_monolithic_coverage(monkeypatch, tmp_pa
     assert coverage_cmd[-1] == "--maxfail=1"
 
 
-def test_run_verification_includes_chunked_sheaf_modules(monkeypatch, tmp_path: Path) -> None:
+def test_run_verification_includes_chunked_sheaf_modules(tmp_path: Path) -> None:
     tests_dir = tmp_path / "tests"
     tests_dir.mkdir()
     sheaf_path = tests_dir / "test_sheaf_alpha.py"
     sheaf_path.write_text("", encoding="utf-8")
     calls: list[tuple[str, list[str]]] = []
-    monkeypatch.setattr(
-        full_verification,
-        "_run",
-        lambda project_root, cmd, label, env=None: calls.append((label, cmd)),
+    full_verification.run_verification(
+        tmp_path,
+        skip_chunks=False,
+        command_runner=lambda project_root, cmd, label, env=None: calls.append((label, cmd)),
     )
-
-    full_verification.run_verification(tmp_path, skip_chunks=False)
 
     chunks = dict(calls)
     assert "Focused contract and infrastructure checks" in chunks
     assert "Gate and manuscript-focused checks" in chunks
     roadmap_cmd = chunks["Roadmap and sheaf consolidation checks"]
     assert str(sheaf_path.relative_to(tmp_path)) in roadmap_cmd
+
+
+def test_refresh_cache_skips_an_unchanged_generator_fixed_point(tmp_path: Path) -> None:
+    calls: list[str] = []
+    cache = full_verification._RefreshCache()
+    command = ["uv", "run", "python", "scripts", "compose_manuscript.py"]
+
+    def run(_root: Path, _cmd: list[str], label: str) -> None:
+        calls.append(label)
+
+    cache.run(tmp_path, command, "first", run)
+    cache.run(tmp_path, command, "second", run)
+
+    assert calls == ["first"]
+
+
+def test_refresh_cache_invalidates_after_a_generator_input_or_output_changes(tmp_path: Path) -> None:
+    calls: list[str] = []
+    cache = full_verification._RefreshCache()
+    command = ["uv", "run", "python", "scripts", "z_generate_manuscript_variables.py"]
+
+    def run(root: Path, _cmd: list[str], label: str) -> None:
+        calls.append(label)
+        target = root / "output" / "data" / "variables.json"
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(str(len(calls)), encoding="utf-8")
+
+    cache.run(tmp_path, command, "first", run)
+    (tmp_path / "input.txt").write_text("changed", encoding="utf-8")
+    cache.run(tmp_path, command, "second", run)
+    cache.run(tmp_path, command, "third", run)
+
+    assert calls == ["first", "second"]

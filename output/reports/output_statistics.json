@@ -102,7 +102,7 @@
       "exists": true,
       "file_count": 48,
       "size_mb": "2.79",
-      "total_size_bytes": 2925078,
+      "total_size_bytes": 2924682,
       "largest_files": [
         {
           "name": "sheaf_section_status_matrix.json",
@@ -129,7 +129,7 @@
       "exists": true,
       "file_count": 35,
       "size_mb": "0.50",
-      "total_size_bytes": 528925,
+      "total_size_bytes": 528958,
       "largest_files": [
         {
           "name": "evidence_registry.json",
@@ -173,7 +173,7 @@
       "exists": true,
       "file_count": 1,
       "size_mb": "0.00",
-      "total_size_bytes": 711,
+      "total_size_bytes": 712,
       "largest_files": [
         {
           "name": "pymdp_runs.jsonl",
@@ -187,7 +187,7 @@
     }
   },
   "total_files": 141,
-  "total_size_mb": 12.167880058288574,
+  "total_size_mb": 12.167534828186035,
   "largest_files": [
     {
       "name": "template_active_inference_combined.pdf",
@@ -256,11 +256,11 @@
     "web": 0.5660028457641602,
     "slides": 0.0,
     "figures": 3.785637855529785,
-    "data": 2.789571762084961,
-    "reports": 0.5044221878051758,
+    "data": 2.789194107055664,
+    "reports": 0.5044536590576172,
     "simulations": 0.0,
     "llm": 0.0,
-    "logs": 0.0006780624389648438
+    "logs": 0.00067901611328125
   },
   "file_counts_by_type": {
     ".pdf": 1,

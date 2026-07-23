@@ -76,7 +76,7 @@
       "artifact": "output/data/pymdp_policy_posterior_grid.json",
       "exists": true,
       "fresh": true,
-      "sha256": "9513f33271013f594069aa97d5cfc7b4e6b6b37476a6a49f107aa12c82fcce61"
+      "sha256": "028d5c1f73348612a004e3256d4b00fefa3a04b1c453977b905523e49d9249c8"
     },
     {
       "artifact": "output/data/sheaf_coverage_matrix.json",
@@ -88,7 +88,7 @@
       "artifact": "output/data/si_efe_terms.json",
       "exists": true,
       "fresh": true,
-      "sha256": "2b389ab27228f2f44a43d56733941e43e47463c6e2ebb97715aef7dfc51af936"
+      "sha256": "96f864f030a3e6ce95987296dced5887df3d3c347d911618a3c79a91ecd4e105"
     },
     {
       "artifact": "output/data/si_graph_world_summary.json",
@@ -118,13 +118,13 @@
       "artifact": "output/data/si_policy_comparison.json",
       "exists": true,
       "fresh": true,
-      "sha256": "2ff44eadc0db5f57abdc579b8a1d9f2e13f6e17370fe7d79d9be1c67c92783ed"
+      "sha256": "616188c134ccbbad4affdffb091377ff2d4940e681183ff617f8324d806d1f21"
     },
     {
       "artifact": "output/data/si_policy_grid.json",
       "exists": true,
       "fresh": true,
-      "sha256": "f49abb96cc04bcfa207c30205a38bdd344147fe52dcab95f586313e2da286490"
+      "sha256": "077724d21ba8f862f2a714b5f35109459e8e5493126125a5c94bef628cffb24c"
     },
     {
       "artifact": "output/data/si_tmaze_summary.json",
@@ -244,13 +244,13 @@
       "artifact": "output/reports/pymdp_runtime_diagnostics.json",
       "exists": true,
       "fresh": true,
-      "sha256": "35caed4ed4032ce46e5e8f6d00ecfcd0bdf0bd4dc0e633059484df307bb01b75"
+      "sha256": "04238557fa15b65fe42c07d24a5aed424911b064ad3811ddaae7a10deb0fdb10"
     },
     {
       "artifact": "output/reports/reproducibility_replay.json",
       "exists": true,
       "fresh": true,
-      "sha256": "c14c0419111bd07e66c8cb83bf98d87ee006fbb6f6d4ae6e810f3cad9f94bcc4"
+      "sha256": "8775039aa7485cb28c2cef36b212acf879c10a7c2d65a77ce5795e652c50bc69"
     },
     {
       "artifact": "output/reports/si_invariants.json",
