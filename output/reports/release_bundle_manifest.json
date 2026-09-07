@@ -2,7 +2,7 @@
   "all_copied_outputs_match_or_deferred": true,
   "all_required_sources_present": true,
   "artifact_count": 38,
-  "bundle_hash": "c31efa04db7b8c4a4ef9b4c61c2df20f367f32d7a049a43ce2ee20f62a201315",
+  "bundle_hash": "c3266bab33208d3533a8b8254214e7b9ef30aa5bca7f51cd9ea5de62d45709d8",
   "copied_output_parity": {
     "all_copied_outputs_match": true,
     "all_copied_outputs_match_or_deferred": true,
@@ -57,7 +57,7 @@
         "hash_matches": false,
         "matches_when_copied": true,
         "source_exists": true,
-        "source_sha256": "35c5859e859b405d6338cccb17aec51d95035f4cf333b68fa1662d1b54b16e7e",
+        "source_sha256": "d5add82cbb05fadaf460649fc92dbd12d8910fd9185d0fa64be983be62cfc18f",
         "status": "deferred"
       },
       {
@@ -213,7 +213,7 @@
         "hash_matches": false,
         "matches_when_copied": true,
         "source_exists": true,
-        "source_sha256": "d6461aa22a234962101395aac1c670283eeab4d3c4c7543925ffe1705bf9de76",
+        "source_sha256": "bfe38dd60908db832a0d8b1e13b4500fe9574a5b974938e14460442eb5ded3da",
         "status": "deferred"
       },
       {
@@ -465,7 +465,7 @@
         "hash_matches": false,
         "matches_when_copied": true,
         "source_exists": true,
-        "source_sha256": "9e3a215507bd2de755f4bcd9b2bba668076ce2d53cc0ae07eab93bac43cb6218",
+        "source_sha256": "9aacc04ab73c29292763a2ce82f82da902e68206b0aa80512889a341c9e44488",
         "status": "deferred"
       }
     ]
@@ -497,7 +497,7 @@
       "deferred_until_render": false,
       "required_deliverable": true,
       "source_exists": true,
-      "source_sha256": "35c5859e859b405d6338cccb17aec51d95035f4cf333b68fa1662d1b54b16e7e"
+      "source_sha256": "d5add82cbb05fadaf460649fc92dbd12d8910fd9185d0fa64be983be62cfc18f"
     },
     {
       "artifact": "output/data/sensitivity_sweep.json",
@@ -588,7 +588,7 @@
       "deferred_until_render": false,
       "required_deliverable": true,
       "source_exists": true,
-      "source_sha256": "d6461aa22a234962101395aac1c670283eeab4d3c4c7543925ffe1705bf9de76"
+      "source_sha256": "bfe38dd60908db832a0d8b1e13b4500fe9574a5b974938e14460442eb5ded3da"
     },
     {
       "artifact": "output/figures/si_belief_trajectory.gif",
@@ -735,7 +735,7 @@
       "deferred_until_render": false,
       "required_deliverable": true,
       "source_exists": true,
-      "source_sha256": "9e3a215507bd2de755f4bcd9b2bba668076ce2d53cc0ae07eab93bac43cb6218"
+      "source_sha256": "9aacc04ab73c29292763a2ce82f82da902e68206b0aa80512889a341c9e44488"
     }
   ],
   "schema": "template_active_inference.release_bundle_manifest.v1",
