@@ -170,7 +170,7 @@ def test_validate_manuscript_tokens_registered_negative(project_root: Path, tmp_
     from manuscript.variables import generate_variables
 
     manuscript = tmp_path / "docs" / "manuscript"
-    manuscript.mkdir()
+    manuscript.mkdir(parents=True)
     (manuscript / "00_abstract.md").write_text("{{not_a_registered_token}}\n", encoding="utf-8")
 
     unknown = validate_manuscript_tokens(

@@ -95,7 +95,7 @@ def test_documentation_contract_rejects_hydrated_output_path_shape(tmp_path: Pat
     figures.mkdir(parents=True)
     (figures / "ok.png").write_bytes(b"png")
     path = manuscript / "00_abstract.md"
-    path.write_text("![bad](../output/figures/ok.png)\n", encoding="utf-8")
+    path.write_text("![bad](../../output/figures/ok.png)\n", encoding="utf-8")
 
     issues = check_hydrated_output_links(tmp_path)
 
