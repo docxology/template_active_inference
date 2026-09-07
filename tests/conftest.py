@@ -136,8 +136,8 @@ def _prewarm_gate_artifacts(
 # so long full-suite runs do not let one mutation or compose pass leak into the
 # next test.
 _MUTABLE_PROJECT_SOURCE_GLOBS = (
-    "manuscript/**/*.md",
-    "manuscript/**/*.yaml",
+    "docs/manuscript/**/*.md",
+    "docs/manuscript/**/*.yaml",
     "gnn/**/*.md",
     "lean/**/*.lean",
 )

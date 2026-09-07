@@ -76,15 +76,15 @@ def test_live_track_surface_uses_canonical_ids(project_root: Path) -> None:
     from gates.artifact_manifest import REQUIRED_OUTPUTS
     from roadmap_tracks.sheaf_tracks import CANONICAL_TRACKS, LEGACY_ARTIFACTS
 
-    registry = yaml.safe_load((project_root / "manuscript" / "sheaf" / "tracks.yaml").read_text())["tracks"]
-    manifest = yaml.safe_load((project_root / "manuscript" / "sheaf" / "manifest.yaml").read_text())
+    registry = yaml.safe_load((project_root / "docs" / "manuscript" / "sheaf" / "tracks.yaml").read_text())["tracks"]
+    manifest = yaml.safe_load((project_root / "docs" / "manuscript" / "sheaf" / "manifest.yaml").read_text())
     public_tracks = {
         str(row["id"])
         for row in yaml.safe_load((project_root / "tracks.yaml").read_text())["tracks"]
         if isinstance(row, dict) and row.get("id")
     }
     claims = yaml.safe_load((project_root / "data" / "claim_ledger.yaml").read_text()).get("claims") or []
-    configured = yaml.safe_load((project_root / "manuscript" / "config.yaml").read_text())["analysis"]["scripts"]
+    configured = yaml.safe_load((project_root / "docs" / "manuscript" / "config.yaml").read_text())["analysis"]["scripts"]
 
     bound_tracks = {
         str(track_id) for section in manifest["sections"] for track_id in ((section.get("tracks") or {}).keys())

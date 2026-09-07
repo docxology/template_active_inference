@@ -33,7 +33,7 @@ pytestmark = [pytest.mark.timeout(180)]
 
 
 def _live() -> tuple[SheafManifest, TrackRegistry]:
-    manifest = load_manifest(ROOT / "manuscript" / "sheaf" / "manifest.yaml", project_root=ROOT)
+    manifest = load_manifest(ROOT / "docs" / "manuscript" / "sheaf" / "manifest.yaml", project_root=ROOT)
     registry = load_track_registry(ROOT / manifest.registry_path)
     return manifest, registry
 
@@ -91,7 +91,7 @@ def test_negative_control_separation_output_name_collision() -> None:
 def test_negative_control_typing_suffix_error() -> None:
     manifest, registry = _live()
     section = next(s for s in manifest.sections if s.id == "methods_analytical")
-    bad_tracks = {**section.tracks, "prose": "manuscript/sections/imrad/methods_analytical/prose.txt"}
+    bad_tracks = {**section.tracks, "prose": "docs/manuscript/sections/imrad/methods_analytical/prose.txt"}
     broken = _replace_section(manifest, "methods_analytical", tracks=bad_tracks)
     codes = _codes(sheaf_law_violations(broken, registry), SheafLaw.TYPING)
     assert "suffix_type_error" in codes
@@ -102,7 +102,7 @@ def test_negative_control_typing_exempts_generated_renderers() -> None:
     # contract: binding it to an arbitrary suffix must NOT raise a typing error.
     manifest, registry = _live()
     section = next(s for s in manifest.sections if s.id == "methods_analytical")
-    viz_tracks = {**section.tracks, "visualization": "manuscript/sections/imrad/methods_analytical/figs.bin"}
+    viz_tracks = {**section.tracks, "visualization": "docs/manuscript/sections/imrad/methods_analytical/figs.bin"}
     mutated = _replace_section(manifest, "methods_analytical", tracks=viz_tracks)
     codes = _codes(sheaf_law_violations(mutated, registry), SheafLaw.TYPING)
     assert "suffix_type_error" not in codes
@@ -123,7 +123,7 @@ def test_negative_control_gluing_or_poset_non_linear_extension() -> None:
 def test_negative_control_presheaf_unknown_track() -> None:
     manifest, registry = _live()
     section = next(s for s in manifest.sections if s.id == "results_free_energy")
-    bad_tracks = {**section.tracks, "bogus_track": "manuscript/sections/x.md"}
+    bad_tracks = {**section.tracks, "bogus_track": "docs/manuscript/sections/x.md"}
     broken = _replace_section(manifest, "results_free_energy", tracks=bad_tracks)
     codes = _codes(sheaf_law_violations(broken, registry), SheafLaw.PRESHEAF)
     assert "unbound_track" in codes

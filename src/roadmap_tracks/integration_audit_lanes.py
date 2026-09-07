@@ -125,7 +125,7 @@ def _lane_from_source(source: str) -> str:
 
 def manifest_tracks_by_section(root: Path) -> dict[str, list[str]]:
     """Return sheaf track ids keyed by manuscript section id."""
-    path = root / "manuscript" / "sheaf" / "manifest.yaml"
+    path = root / "docs" / "manuscript" / "sheaf" / "manifest.yaml"
     payload = load_yaml(path)
     sections = payload.get("sections") if isinstance(payload, dict) else []
     return {

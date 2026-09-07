@@ -17,7 +17,7 @@ pytestmark = [pytest.mark.timeout(120)]
 
 def test_registry_defines_track_order() -> None:
     root = Path(__file__).resolve().parents[1]
-    registry = load_track_registry(root / "manuscript" / "sheaf" / "tracks.yaml")
+    registry = load_track_registry(root / "docs" / "manuscript" / "sheaf" / "tracks.yaml")
     assert registry.tracks["prose"].order < registry.tracks["ontology"].order
     assert registry.tracks["animation"].optional is True
     assert registry.tracks["layers"].optional is True
@@ -26,7 +26,7 @@ def test_registry_defines_track_order() -> None:
 
 def test_registry_declares_paper_roles() -> None:
     root = Path(__file__).resolve().parents[1]
-    registry = load_track_registry(root / "manuscript" / "sheaf" / "tracks.yaml")
+    registry = load_track_registry(root / "docs" / "manuscript" / "sheaf" / "tracks.yaml")
     assert registry.tracks
     for track_id, spec in registry.tracks.items():
         assert spec.paper_role, f"{track_id} missing general paper role"
@@ -37,7 +37,7 @@ def test_registry_declares_paper_roles() -> None:
 
 def test_layers_report_exposes_track_roles() -> None:
     root = Path(__file__).resolve().parents[1]
-    registry = load_track_registry(root / "manuscript" / "sheaf" / "tracks.yaml")
+    registry = load_track_registry(root / "docs" / "manuscript" / "sheaf" / "tracks.yaml")
     from manuscript.sheaf.layers_report import render_track_registry_table
 
     table = render_track_registry_table(registry)
@@ -64,8 +64,8 @@ def test_list_registered_tracks() -> None:
 
 def test_track_order_respects_section_include_exclude() -> None:
     root = Path(__file__).resolve().parents[1]
-    manifest = load_manifest(root / "manuscript" / "sheaf" / "manifest.yaml")
-    registry = load_track_registry(root / "manuscript" / "sheaf" / "tracks.yaml")
+    manifest = load_manifest(root / "docs" / "manuscript" / "sheaf" / "manifest.yaml")
+    registry = load_track_registry(root / "docs" / "manuscript" / "sheaf" / "tracks.yaml")
     section = next(s for s in manifest.sections if s.id == "methods_pymdp")
     ordered = track_order_for_section(section, registry)
     assert ordered.index("prose") < ordered.index("pymdp")
@@ -74,7 +74,7 @@ def test_track_order_respects_section_include_exclude() -> None:
 
 def test_section_custom_track_order() -> None:
     root = Path(__file__).resolve().parents[1]
-    registry = load_track_registry(root / "manuscript" / "sheaf" / "tracks.yaml")
+    registry = load_track_registry(root / "docs" / "manuscript" / "sheaf" / "tracks.yaml")
     section = SheafSection(
         id="demo",
         title="Demo",
@@ -89,8 +89,8 @@ def test_section_custom_track_order() -> None:
 
 def test_full_section_binds_all_registry_tracks() -> None:
     root = Path(__file__).resolve().parents[1]
-    manifest = load_manifest(root / "manuscript" / "sheaf" / "manifest.yaml")
-    registry = load_track_registry(root / "manuscript" / "sheaf" / "tracks.yaml")
+    manifest = load_manifest(root / "docs" / "manuscript" / "sheaf" / "manifest.yaml")
+    registry = load_track_registry(root / "docs" / "manuscript" / "sheaf" / "tracks.yaml")
     full = next(s for s in manifest.sections if s.id == "appendix_full_sheaf")
     assert "layers" not in full.tracks
     assert set(full.tracks) == set(registry.tracks) - {"layers"}
@@ -98,7 +98,7 @@ def test_full_section_binds_all_registry_tracks() -> None:
 
 def test_methods_sheaf_binds_layers_tracks() -> None:
     root = Path(__file__).resolve().parents[1]
-    manifest = load_manifest(root / "manuscript" / "sheaf" / "manifest.yaml")
+    manifest = load_manifest(root / "docs" / "manuscript" / "sheaf" / "manifest.yaml")
     section = next(s for s in manifest.sections if s.id == "methods_sheaf")
     assert section.track_order == (
         "prose",
@@ -137,7 +137,7 @@ def test_methods_sheaf_binds_layers_tracks() -> None:
 
 def test_discussion_outlook_binds_simulation_and_ontology() -> None:
     root = Path(__file__).resolve().parents[1]
-    manifest = load_manifest(root / "manuscript" / "sheaf" / "manifest.yaml")
+    manifest = load_manifest(root / "docs" / "manuscript" / "sheaf" / "manifest.yaml")
     section = next(s for s in manifest.sections if s.id == "discussion_outlook")
     assert "simulation" in section.tracks
     assert "ontology" in section.tracks

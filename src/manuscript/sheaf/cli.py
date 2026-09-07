@@ -124,7 +124,7 @@ def run_compose_cli(
         return 0
 
     manifest = load_manifest(
-        project_root / "manuscript" / "sheaf" / "manifest.yaml",
+        project_root / "docs" / "manuscript" / "sheaf" / "manifest.yaml",
         project_root=project_root,
     )
     if args.validate_only:

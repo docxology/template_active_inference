@@ -35,9 +35,9 @@ def build_figure_source_map(project_root: Path) -> dict[str, Any]:
             "output/reports/pymdp_runtime_diagnostics.json",
             "output/data/pymdp_policy_posterior_grid.json",
         ],
-        "multi_track_architecture": ["tracks.yaml", "manuscript/sheaf/tracks.yaml"],
+        "multi_track_architecture": ["tracks.yaml", "docs/manuscript/sheaf/tracks.yaml"],
         "lean_boundary_status": ["lean/TemplateActiveInference"],
-        "gnn_ontology_concordance": ["gnn", "manuscript/sections/imrad"],
+        "gnn_ontology_concordance": ["gnn", "docs/manuscript/sections/imrad"],
         "semantic_gluing_graph": [
             "output/data/validation_dependency_graph.json",
             "output/data/sheaf_gluing_certificate.json",
@@ -61,7 +61,7 @@ def build_figure_source_map(project_root: Path) -> dict[str, Any]:
             "output/data/causal_ablation_matrix.json",
             "output/reports/ablation_sensitivity_report.json",
         ],
-        "scholarship_source_map": ["output/data/scholarship_source_matrix.json", "manuscript/references.bib"],
+        "scholarship_source_map": ["output/data/scholarship_source_matrix.json", "docs/manuscript/references.bib"],
         "security_posture_map": [
             "output/reports/security_posture_audit.json",
             "output/reports/blocked_scope_manifest.json",

@@ -7,8 +7,8 @@ from pathlib import Path
 
 def write_cli_fixture_project(tmp_path: Path) -> Path:
     root = tmp_path / "project"
-    sheaf_dir = root / "manuscript" / "sheaf"
-    section_dir = root / "manuscript" / "sections" / "demo"
+    sheaf_dir = root / "docs" / "manuscript" / "sheaf"
+    section_dir = root / "docs" / "manuscript" / "sections" / "demo"
     sheaf_dir.mkdir(parents=True)
     section_dir.mkdir(parents=True)
     (section_dir / "prose.md").write_text("Demo body", encoding="utf-8")
@@ -50,7 +50,7 @@ sections:
     title: Demo
     output_name: 01_demo.md
     tracks:
-      prose: manuscript/sections/demo/prose.md
+      prose: docs/manuscript/sections/demo/prose.md
 """,
         encoding="utf-8",
     )

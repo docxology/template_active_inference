@@ -160,8 +160,8 @@ class CoverageMatrix:
         return missing
 
 
-DEFAULT_REGISTRY_REL = Path("manuscript/sheaf/tracks.yaml")
-DEFAULT_MANIFEST_REL = Path("manuscript/sheaf/manifest.yaml")
+DEFAULT_REGISTRY_REL = Path("docs/manuscript/sheaf/tracks.yaml")
+DEFAULT_MANIFEST_REL = Path("docs/manuscript/sheaf/manifest.yaml")
 
 COVERAGE_COLORS: dict[CoverageColor, str] = {
     "black": "#000000",

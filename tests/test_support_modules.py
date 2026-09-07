@@ -49,10 +49,10 @@ def test_sheaf_package_exports_public_symbols() -> None:
 
 def test_ontology_helpers() -> None:
     root = Path(__file__).resolve().parents[1]
-    path = root / "manuscript" / "sections" / "imrad" / "intro_contributions" / "ontology.yaml"
+    path = root / "docs" / "manuscript" / "sections" / "imrad" / "intro_contributions" / "ontology.yaml"
     terms = load_section_ontology(path)
     assert "location" in terms
-    discussion = root / "manuscript" / "sections" / "imrad" / "discussion_outlook" / "ontology.yaml"
+    discussion = root / "docs" / "manuscript" / "sections" / "imrad" / "discussion_outlook" / "ontology.yaml"
     discussion_terms = load_section_ontology(discussion)
     assert discussion_terms["pedagogical_scope"] == "Pedagogical scope"
     gnn = root / "gnn" / "bernoulli_toy.gnn.md"

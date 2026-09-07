@@ -77,9 +77,9 @@ analysis:
     - z_generate_manuscript_variables.py
 
 sheaf:
-  manifest: manuscript/sheaf/manifest.yaml
-  registry: manuscript/sheaf/tracks.yaml
-  coverage_config: manuscript/sheaf/coverage.yaml
+  manifest: docs/manuscript/sheaf/manifest.yaml
+  registry: docs/manuscript/sheaf/tracks.yaml
+  coverage_config: docs/manuscript/sheaf/coverage.yaml
   composer: scripts/compose_manuscript.py
   figures_config: figures.yaml
   # Row/section counts are registry-backed (structural_counts); do not hard-code here.

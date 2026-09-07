@@ -27,7 +27,7 @@ def test_validate_all_gnn_ontology_covers_si_tmaze(project_root: Path) -> None:
 def test_validate_all_gnn_ontology_rejects_extra_section_alias(project_root: Path) -> None:
     from ontology.bindings import validate_all_gnn_ontology
 
-    ontology_path = project_root / "manuscript" / "sections" / "imrad" / "methods_pymdp" / "ontology.yaml"
+    ontology_path = project_root / "docs" / "manuscript" / "sections" / "imrad" / "methods_pymdp" / "ontology.yaml"
     original = ontology_path.read_text(encoding="utf-8")
     try:
         ontology_path.write_text(original + "\nalien_alias: HiddenState\n", encoding="utf-8")
@@ -170,6 +170,7 @@ def test_pymdp_runtime_diagnostics_captures_known_warning_and_rejects_unexpected
 ) -> None:
     from simulation.pymdp_config import load_pymdp_config
     from simulation.pymdp_runtime import (
+        KNOWN_JAX_STATIC_WARNING,
         construct_agent_with_diagnostics,
         validate_runtime_diagnostics,
         write_runtime_diagnostics,
@@ -186,6 +187,10 @@ def test_pymdp_runtime_diagnostics_captures_known_warning_and_rejects_unexpected
         import warnings
         from pymdp.agent import Agent
 
+        # Emit the audited jax warning explicitly so the known-vs-unexpected
+        # classification is exercised on every installed pymdp build, not
+        # only on jax-backed ones that warn on their own.
+        warnings.warn(KNOWN_JAX_STATIC_WARNING, UserWarning, stacklevel=2)
         warnings.warn("unexpected agent construction warning", UserWarning, stacklevel=2)
         return Agent(**kwargs)
 

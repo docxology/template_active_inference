@@ -98,7 +98,7 @@ def test_every_src_module_imports_with_infrastructure_blocked() -> None:
     assert not violations, "src modules require infrastructure at import time:\n" + "\n".join(violations)
 
 
-@pytest.mark.parametrize("required", ["pyproject.toml", "README.md", "src", "tests", "manuscript"])
+@pytest.mark.parametrize("required", ["pyproject.toml", "README.md", "src", "tests", "docs/manuscript"])
 def test_standalone_repo_skeleton_present(required: str) -> None:
     """A standalone GitHub repo needs these top-level entries."""
     assert (PROJECT_ROOT / required).exists(), f"standalone repo missing {required}"

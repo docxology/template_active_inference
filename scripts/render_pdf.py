@@ -9,8 +9,8 @@ checkout of this repository alone can produce its PDF with::
     uv run python scripts/render_pdf.py
 
 Typography is read from this project's own sources: page margins from
-``manuscript/config.yaml`` (``metadata.geometry``), the dense body font from
-``manuscript/preamble.md`` (the ``fontsize`` package), and red hyperlinks via
+``docs/manuscript/config.yaml`` (``metadata.geometry``), the dense body font from
+``docs/manuscript/preamble.md`` (the ``fontsize`` package), and red hyperlinks via
 pandoc's ``colorlinks`` variables. The richer monorepo pipeline
 (``scripts/pipeline/stage_03_render.py`` in the template repo) adds transmission bookends,
 QR strips, and LaTeX post-processing; this renderer is the portable subset.
@@ -44,7 +44,7 @@ def main() -> int:
     from manuscript.sheaf import compose_all_sections
     from manuscript.variables import generate_variables
 
-    manuscript_dir = PROJECT_ROOT / "manuscript"
+    manuscript_dir = PROJECT_ROOT / "docs" / "manuscript"
     out_pdf_dir = PROJECT_ROOT / "output" / "pdf"
     out_pdf_dir.mkdir(parents=True, exist_ok=True)
 

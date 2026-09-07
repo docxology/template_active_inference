@@ -142,7 +142,10 @@ def run_si_tmaze(
 
     n_steps = cfg.steps
     for t in range(n_steps):
-        qs = agent.infer_states([np.array([obs], dtype=np.int32)], agent.D)
+        # pymdp 0.0.7.x infer_states(observation) manages the empirical prior
+        # internally (D before the first action, B-expected states afterwards);
+        # the second positional was a prior in older pymdp APIs.
+        qs = agent.infer_states([np.array([obs], dtype=np.int32)])
         entropy = belief_entropy(qs)
         qs_state1 = qs_marginal_state1(qs)
         selected_policy: int | None = None
@@ -206,7 +209,7 @@ def run_si_tmaze(
         with log.timed(event="si_tmaze_step", step=t, obs=obs, action=action) as ctx:
             ctx["belief_entropy"] = entropy
             ctx["policy_len"] = spec.policy_len
-            ctx["num_policies"] = int(agent.policies.num_policies)
+            ctx["num_policies"] = int(len(agent.policies))
             ctx["qs_state1"] = qs_state1
             ctx["mode"] = cfg.mode
             if selected_policy is not None:
@@ -238,7 +241,7 @@ def run_si_tmaze(
     return SIRunResult(
         steps=n_steps,
         policy_len=spec.policy_len,
-        num_policies=int(agent.policies.num_policies),
+        num_policies=int(len(agent.policies)),
         mean_belief_entropy=float(np.mean(entropies)) if entropies else 0.0,
         actions=actions,
         observations=observations,

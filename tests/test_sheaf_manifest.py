@@ -21,7 +21,7 @@ pytestmark = [pytest.mark.timeout(300)]
 
 def test_manifest_loads_imrad_sections() -> None:
     root = Path(__file__).resolve().parents[1]
-    manifest = load_manifest(root / "manuscript" / "sheaf" / "manifest.yaml")
+    manifest = load_manifest(root / "docs" / "manuscript" / "sheaf" / "manifest.yaml")
     assert len(manifest.sections) == 17
     assert manifest.sections[0].id == "intro"
     assert manifest.sections[0].kind == "group"
@@ -34,7 +34,7 @@ def test_manifest_loads_imrad_sections() -> None:
 
 def test_validate_manifest_reports_missing_file(tmp_path: Path) -> None:
     root = Path(__file__).resolve().parents[1]
-    broken = tmp_path / "manuscript" / "sheaf" / "manifest.yaml"
+    broken = tmp_path / "docs" / "manuscript" / "sheaf" / "manifest.yaml"
     broken.parent.mkdir(parents=True)
     broken.write_text(
         """
@@ -125,14 +125,14 @@ sections:
 
 def test_strict_validate_fails_on_gray(tmp_path: Path) -> None:
     root = Path(__file__).resolve().parents[1]
-    manifest = load_manifest(root / "manuscript" / "sheaf" / "manifest.yaml")
-    registry = load_track_registry(root / "manuscript" / "sheaf" / "tracks.yaml")
+    manifest = load_manifest(root / "docs" / "manuscript" / "sheaf" / "manifest.yaml")
+    registry = load_track_registry(root / "docs" / "manuscript" / "sheaf" / "tracks.yaml")
     broken_section = SheafSection(
         id="broken_gray",
         title="Broken",
         short="b",
         order=99,
-        tracks={"prose": "manuscript/sections/does_not_exist.md"},
+        tracks={"prose": "docs/manuscript/sections/does_not_exist.md"},
         output_name="99_broken.md",
     )
     broken_manifest = SheafManifest(
@@ -149,7 +149,7 @@ def test_strict_validate_fails_on_gray(tmp_path: Path) -> None:
 
 def test_group_rows_skip_compose(tmp_path: Path) -> None:
     root = Path(__file__).resolve().parents[1]
-    result = compose_all_sections(root, manuscript_dir=tmp_path / "manuscript")
+    result = compose_all_sections(root, manuscript_dir=tmp_path / "docs" / "manuscript")
     names = {p.name for p in result.paths}
     assert "_group_intro.md" not in names
     assert "02_intro_motivation.md" in names

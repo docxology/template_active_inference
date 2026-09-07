@@ -3,7 +3,7 @@
 Implementation of the sheaf manuscript composition: registry tracks plus manifest rows resolve through generated and markdown renderers into flat manuscript sections, coverage JSON, heatmap/page artifacts, and hydrated publication text.
 
 - `models.py` — data models for tracks, sections, and the sheaf manifest.
-- `manifest.py` — load/validate the `manuscript/sheaf/` manifest and tracks.
+- `manifest.py` — load/validate the `docs/manuscript/sheaf/` manifest and tracks.
 - `registry.py` — track/fragment registry.
 - `renderers.py` — per-track fragment renderers.
 - `compose.py` — glue fragments into composed manuscript sections.

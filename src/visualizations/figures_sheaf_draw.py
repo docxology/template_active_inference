@@ -143,7 +143,7 @@ def draw_track_layers_panel(ax, project_root: Path) -> bool:
     from manuscript.sheaf.registry import load_track_registry
 
     root = project_root.resolve()
-    manifest = load_manifest(root / "manuscript" / "sheaf" / "manifest.yaml", project_root=root)
+    manifest = load_manifest(root / "docs" / "manuscript" / "sheaf" / "manifest.yaml", project_root=root)
     registry = load_track_registry(root / manifest.registry_path)
     if not registry.tracks:
         return False

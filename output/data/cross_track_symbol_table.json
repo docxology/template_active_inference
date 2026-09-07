@@ -4714,7 +4714,7 @@
       "gnn_term": "",
       "json_field": "$.tracks",
       "lean_namespace": "",
-      "model": "manuscript/sheaf/tracks.yaml",
+      "model": "docs/manuscript/sheaf/tracks.yaml",
       "ontology_declared": true,
       "section_ontology_declared": true,
       "section_ontology_term": "",
@@ -4723,7 +4723,7 @@
       ],
       "shape_declared": true,
       "source_kind": "json_field",
-      "symbol": "manuscript/sheaf/tracks.yaml:$.tracks",
+      "symbol": "docs/manuscript/sheaf/tracks.yaml:$.tracks",
       "term_consistent": true
     },
     {
@@ -4733,7 +4733,7 @@
       "gnn_term": "",
       "json_field": "$.sections",
       "lean_namespace": "",
-      "model": "manuscript/sheaf/manifest.yaml",
+      "model": "docs/manuscript/sheaf/manifest.yaml",
       "ontology_declared": true,
       "section_ontology_declared": true,
       "section_ontology_term": "",
@@ -4742,7 +4742,7 @@
       ],
       "shape_declared": true,
       "source_kind": "json_field",
-      "symbol": "manuscript/sheaf/manifest.yaml:$.sections",
+      "symbol": "docs/manuscript/sheaf/manifest.yaml:$.sections",
       "term_consistent": true
     },
     {
@@ -4752,7 +4752,7 @@
       "gnn_term": "",
       "json_field": "$.heatmap",
       "lean_namespace": "",
-      "model": "manuscript/sheaf/coverage.yaml",
+      "model": "docs/manuscript/sheaf/coverage.yaml",
       "ontology_declared": true,
       "section_ontology_declared": true,
       "section_ontology_term": "",
@@ -4761,7 +4761,7 @@
       ],
       "shape_declared": true,
       "source_kind": "json_field",
-      "symbol": "manuscript/sheaf/coverage.yaml:$.heatmap",
+      "symbol": "docs/manuscript/sheaf/coverage.yaml:$.heatmap",
       "term_consistent": true
     },
     {
@@ -4999,7 +4999,7 @@
       "gnn_term": "",
       "json_field": "$",
       "lean_namespace": "",
-      "model": "manuscript/02_intro_motivation.md",
+      "model": "docs/manuscript/02_intro_motivation.md",
       "ontology_declared": true,
       "section_ontology_declared": true,
       "section_ontology_term": "",
@@ -5008,7 +5008,7 @@
       ],
       "shape_declared": true,
       "source_kind": "json_field",
-      "symbol": "manuscript/02_intro_motivation.md:$",
+      "symbol": "docs/manuscript/02_intro_motivation.md:$",
       "term_consistent": true
     },
     {
@@ -5018,7 +5018,7 @@
       "gnn_term": "",
       "json_field": "$",
       "lean_namespace": "",
-      "model": "manuscript/05_methods_analytical.md",
+      "model": "docs/manuscript/05_methods_analytical.md",
       "ontology_declared": true,
       "section_ontology_declared": true,
       "section_ontology_term": "",
@@ -5027,7 +5027,7 @@
       ],
       "shape_declared": true,
       "source_kind": "json_field",
-      "symbol": "manuscript/05_methods_analytical.md:$",
+      "symbol": "docs/manuscript/05_methods_analytical.md:$",
       "term_consistent": true
     },
     {
@@ -5037,7 +5037,7 @@
       "gnn_term": "",
       "json_field": "$",
       "lean_namespace": "",
-      "model": "manuscript/10_results_mi_sweep.md",
+      "model": "docs/manuscript/10_results_mi_sweep.md",
       "ontology_declared": true,
       "section_ontology_declared": true,
       "section_ontology_term": "",
@@ -5046,7 +5046,7 @@
       ],
       "shape_declared": true,
       "source_kind": "json_field",
-      "symbol": "manuscript/10_results_mi_sweep.md:$",
+      "symbol": "docs/manuscript/10_results_mi_sweep.md:$",
       "term_consistent": true
     },
     {
@@ -5284,7 +5284,7 @@
       "gnn_term": "",
       "json_field": "$",
       "lean_namespace": "",
-      "model": "manuscript/15_discussion_outlook.md",
+      "model": "docs/manuscript/15_discussion_outlook.md",
       "ontology_declared": true,
       "section_ontology_declared": true,
       "section_ontology_term": "",
@@ -5293,7 +5293,7 @@
       ],
       "shape_declared": true,
       "source_kind": "json_field",
-      "symbol": "manuscript/15_discussion_outlook.md:$",
+      "symbol": "docs/manuscript/15_discussion_outlook.md:$",
       "term_consistent": true
     },
     {
@@ -5341,7 +5341,7 @@
       "gnn_term": "",
       "json_field": "$",
       "lean_namespace": "",
-      "model": "manuscript/08_methods_sheaf.md",
+      "model": "docs/manuscript/08_methods_sheaf.md",
       "ontology_declared": true,
       "section_ontology_declared": true,
       "section_ontology_term": "",
@@ -5350,7 +5350,7 @@
       ],
       "shape_declared": true,
       "source_kind": "json_field",
-      "symbol": "manuscript/08_methods_sheaf.md:$",
+      "symbol": "docs/manuscript/08_methods_sheaf.md:$",
       "term_consistent": true
     },
     {

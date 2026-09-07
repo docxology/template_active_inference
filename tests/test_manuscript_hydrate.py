@@ -40,7 +40,7 @@ def test_validate_manuscript_tokens_flags_unknown() -> None:
     from manuscript.hydrate import validate_manuscript_tokens
 
     keys = set(generate_variables(root, require_analysis_outputs=False))
-    unknown = validate_manuscript_tokens(root / "manuscript", keys)
+    unknown = validate_manuscript_tokens(root / "docs" / "manuscript", keys)
     assert unknown == []
 
 
@@ -59,8 +59,8 @@ def test_collect_malformed_token_names_ignores_latex_fenced_blocks() -> None:
 
 
 def test_write_resolved_manuscript_raises_on_single_brace_token(tmp_path: Path) -> None:
-    manuscript = tmp_path / "manuscript"
-    manuscript.mkdir()
+    manuscript = tmp_path / "docs" / "manuscript"
+    manuscript.mkdir(parents=True)
     (manuscript / "00_abstract.md").write_text(
         "Bad {appendix_sheaf_track_count} token.\n",
         encoding="utf-8",
@@ -72,8 +72,8 @@ def test_write_resolved_manuscript_raises_on_single_brace_token(tmp_path: Path) 
 
 
 def test_write_resolved_manuscript_raises_on_unknown_token(tmp_path: Path) -> None:
-    manuscript = tmp_path / "manuscript"
-    manuscript.mkdir()
+    manuscript = tmp_path / "docs" / "manuscript"
+    manuscript.mkdir(parents=True)
     (manuscript / "00_abstract.md").write_text("Value {{not_a_real_token}}.\n", encoding="utf-8")
     import pytest
 
@@ -83,8 +83,8 @@ def test_write_resolved_manuscript_raises_on_unknown_token(tmp_path: Path) -> No
 
 def test_write_resolved_manuscript_removes_tokens(tmp_path: Path) -> None:
     root = Path(__file__).resolve().parents[1]
-    manuscript = tmp_path / "manuscript"
-    manuscript.mkdir()
+    manuscript = tmp_path / "docs" / "manuscript"
+    manuscript.mkdir(parents=True)
     (manuscript / "00_abstract.md").write_text(
         "Tracks: {{pipeline_track_count}}; entropy {{si_tmaze_mean_belief_entropy_formatted}}.\n",
         encoding="utf-8",
@@ -97,10 +97,10 @@ def test_write_resolved_manuscript_removes_tokens(tmp_path: Path) -> None:
 
 
 def test_write_resolved_manuscript_retargets_output_links(tmp_path: Path) -> None:
-    manuscript = tmp_path / "manuscript"
-    manuscript.mkdir()
+    manuscript = tmp_path / "docs" / "manuscript"
+    manuscript.mkdir(parents=True)
     (manuscript / "00_abstract.md").write_text(
-        "![Figure](../output/figures/example.png){width=90%}\n",
+        "![Figure](../../output/figures/example.png){width=90%}\n",
         encoding="utf-8",
     )
 

@@ -17,9 +17,9 @@ metadata, replay provenance, and release-facing provenance drift checks.
   validation rule, and a negative-control test before manuscript prose may rely
   on it.
 - Project-local scratch output lives under
-  [`../../output/`](../../output/) during pipeline runs. Root
-  `output/templates/template_active_inference/` is populated only after the
-  stage 05 copy step — see [`../../../../../docs/RUN_GUIDE.md`](../../../../../docs/RUN_GUIDE.md).
+  [`../../output/`](../../output/) during pipeline runs; the standalone
+  repository regenerates it with the `scripts/` orchestrators instead of a
+  monorepo stage copy step.
 
 ## Verification
 

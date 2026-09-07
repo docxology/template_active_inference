@@ -7,7 +7,7 @@
       "component": "sheaf.registry",
       "detail": "34 tracks",
       "event_id": "registry_loaded",
-      "input": "manuscript/sheaf/tracks.yaml",
+      "input": "docs/manuscript/sheaf/tracks.yaml",
       "output": "registered_tracks",
       "status": "ok"
     },
@@ -15,7 +15,7 @@
       "component": "sheaf.manifest",
       "detail": "17 sections",
       "event_id": "manifest_loaded",
-      "input": "manuscript/sheaf/manifest.yaml",
+      "input": "docs/manuscript/sheaf/manifest.yaml",
       "output": "manifest_sections",
       "status": "ok"
     },
@@ -40,7 +40,7 @@
       "detail": "methods sheaf layer tables",
       "event_id": "layers_renderer_bound",
       "input": "output/data/sheaf_section_status_matrix.json",
-      "output": "manuscript/08_methods_sheaf.md",
+      "output": "docs/manuscript/08_methods_sheaf.md",
       "status": "ok"
     },
     {
@@ -64,7 +64,7 @@
       "detail": "16 composed markdown files",
       "event_id": "manuscript_sections_composed",
       "input": "manifest fragments",
-      "output": "manuscript/*.md",
+      "output": "docs/manuscript/*.md",
       "status": "ok"
     }
   ],

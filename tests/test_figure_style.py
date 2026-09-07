@@ -182,7 +182,7 @@ def test_no_orphan_hand_figure_labels_in_composed_manuscript() -> None:
     root = Path(__file__).resolve().parents[1]
     compose_all_sections(root)
     offenders = []
-    for md in sorted((root / "manuscript").glob("[0-9][0-9]_*.md")):
+    for md in sorted((root / "docs" / "manuscript").glob("[0-9][0-9]_*.md")):
         for i, line in enumerate(md.read_text(encoding="utf-8").splitlines(), 1):
             if _re.match(r"\*Figure\s+[0-9IMA]", line.strip()):
                 offenders.append(f"{md.name}:{i}:{line.strip()[:50]}")

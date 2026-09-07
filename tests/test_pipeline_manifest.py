@@ -17,7 +17,7 @@ def test_pipeline_manifest_lists_scripts() -> None:
 
 def test_config_analysis_scripts_match_default_manifest_order() -> None:
     root = Path(__file__).resolve().parents[1]
-    config = yaml.safe_load((root / "manuscript" / "config.yaml").read_text(encoding="utf-8"))
+    config = yaml.safe_load((root / "docs" / "manuscript" / "config.yaml").read_text(encoding="utf-8"))
     configured = config["analysis"]["scripts"]
 
     assert configured == [step.script for step in DEFAULT_ANALYSIS_SCRIPTS]

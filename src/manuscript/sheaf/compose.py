@@ -175,7 +175,7 @@ def compose_all_sections(
     if opts.strict and issues_have_errors(validation):
         messages = "; ".join(i.message for i in validation if i.level == "error")
         raise ValueError(f"Sheaf manifest validation failed: {messages}")
-    out_dir = manuscript_dir or (root / "manuscript")
+    out_dir = manuscript_dir or (root / "docs" / "manuscript")
     out_dir.mkdir(parents=True, exist_ok=True)
     written: list[Path] = []
     group_titles = _imrad_group_titles(manifest)

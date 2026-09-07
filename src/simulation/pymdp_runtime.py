@@ -54,9 +54,17 @@ def _backend_flags() -> dict[str, Any]:
         return {"jax_backend_error": type(exc).__name__}
 
 
-def _numpy_factors(factors: list[Any]) -> list[np.ndarray]:
-    return [np.asarray(factor, dtype=np.float64) for factor in factors]
+def _numpy_factors(factors: list[Any]) -> np.ndarray:
+    arrays = [np.asarray(factor, dtype=np.float64) for factor in factors]
+    if len(arrays) == 1:
+        # pymdp 0.0.7.x requires a numpy ndarray input; a single plain array
+        # keeps downstream normalization checks on numeric dtypes.
+        return arrays[0]
+    # Multi-factor models need a container; an object array of float arrays
+    # preserves per-factor access the way pymdp's obj_array helpers expect.
+    return np.array(arrays, dtype=object)
 
+PYMDP_ALGO_ALIASES = {"fpi": "VANILLA"}  # pymdp >= 0.0.7 renamed fixed-point inference.
 
 def _warning_record(warning: warnings.WarningMessage) -> dict[str, str | bool]:
     message = str(warning.message)
@@ -91,7 +99,9 @@ def construct_agent_with_diagnostics(
             C=_numpy_factors(model["C"]),
             D=_numpy_factors(model["D"]),
             policy_len=policy_len,
-            inference_algo=config.agent.inference_algo,
+            inference_algo=PYMDP_ALGO_ALIASES.get(
+                config.agent.inference_algo, config.agent.inference_algo
+            ),
             action_selection=config.agent.action_selection,
         )
 

@@ -31,7 +31,7 @@
       "equation_id": "eq:entangled_joint",
       "evidence_artifact": "output/data/parameter_sweep.csv",
       "model": "bernoulli_ising",
-      "source": "manuscript/sections/imrad/methods_analytical/formalism.md",
+      "source": "docs/manuscript/sections/imrad/methods_analytical/formalism.md",
       "status": "indexed",
       "symbol": "q_lambda(pi)"
     },
@@ -45,7 +45,7 @@
       "equation_id": "mi_closed_form",
       "evidence_artifact": "output/data/analytical_observable_sweep.json",
       "model": "bernoulli_ising",
-      "source": "manuscript/sections/imrad/methods_analytical/formalism.md",
+      "source": "docs/manuscript/sections/imrad/methods_analytical/formalism.md",
       "status": "indexed",
       "symbol": "I(lambda)"
     },

@@ -107,9 +107,9 @@ def _imrad_section_files(root: Path) -> list[tuple[str, str]]:
     the result to ``_figure_reference_sections`` via ``files=``.
     """
 
-    paths = sorted((root / "manuscript" / "sections" / "imrad").glob("**/*.md")) + sorted(
+    paths = sorted((root / "docs" / "manuscript" / "sections" / "imrad").glob("**/*.md")) + sorted(
         path
-        for path in (root / "manuscript").glob("*.md")
+        for path in (root / "docs" / "manuscript").glob("*.md")
         if path.name not in {"AGENTS.md", "README.md", "SYNTAX.md", "preamble.md"}
     )
     return [(_section_id_from_path(root, path), path.read_text(encoding="utf-8")) for path in paths if path.is_file()]
@@ -123,7 +123,7 @@ def _figure_reference_sections(root: Path, figure_id: str, *, files: list[tuple[
 
 
 def _manifest_section_tracks(root: Path) -> dict[str, list[str]]:
-    path = root / "manuscript" / "sheaf" / "manifest.yaml"
+    path = root / "docs" / "manuscript" / "sheaf" / "manifest.yaml"
     payload = load_yaml(path)
     section_tracks: dict[str, list[str]] = {}
     for section in payload.get("sections") or []:
@@ -300,7 +300,7 @@ def build_statistical_visualization_bridge(project_root: Path) -> dict[str, Any]
     from manuscript.sheaf.registry import load_track_registry
     from roadmap_tracks.scholarship import build_scholarship_source_matrix
 
-    registered_tracks = set(load_track_registry(root / "manuscript" / "sheaf" / "tracks.yaml").tracks)
+    registered_tracks = set(load_track_registry(root / "docs" / "manuscript" / "sheaf" / "tracks.yaml").tracks)
     scholarship = build_scholarship_source_matrix(root)
     scholarship_rows = [
         row

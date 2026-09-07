@@ -46,7 +46,7 @@ def semantic_gluing_issues(project_root: Path) -> list[str]:
             gnn_symbols=_gnn_symbols(root, "gnn/bernoulli_toy.gnn.md"),
             section_symbols=_section_ontology_symbols(
                 root,
-                "manuscript/sections/imrad/methods_analytical/ontology.yaml",
+                "docs/manuscript/sections/imrad/methods_analytical/ontology.yaml",
             ),
             symbol_map=BERNOULLI_SYMBOL_MAP,
             expected_terms=BERNOULLI_EXPECTED_TERMS,
@@ -58,7 +58,7 @@ def semantic_gluing_issues(project_root: Path) -> list[str]:
             gnn_symbols=_gnn_symbols(root, "gnn/si_tmaze.gnn.md"),
             section_symbols=_section_ontology_symbols(
                 root,
-                "manuscript/sections/imrad/methods_pymdp/ontology.yaml",
+                "docs/manuscript/sections/imrad/methods_pymdp/ontology.yaml",
             ),
             symbol_map=SI_SYMBOL_MAP,
             expected_terms=SI_EXPECTED_TERMS,

@@ -30,8 +30,8 @@ def _duplicate_track_markers(manuscript_dir: Path) -> list[str]:
 def validate_manuscript(project_root: Path) -> dict[str, bool]:
     """Validate manuscript."""
     root = project_root.resolve()
-    composed = list((root / "manuscript").glob("[0-9][0-9]_*.md"))
-    manifest_path = root / "manuscript" / "sheaf" / "manifest.yaml"
+    composed = list((root / "docs" / "manuscript").glob("[0-9][0-9]_*.md"))
+    manifest_path = root / "docs" / "manuscript" / "sheaf" / "manifest.yaml"
     from manuscript.sheaf import (
         load_coverage_json,
         load_sheaf_coverage_context,
@@ -86,7 +86,7 @@ def validate_manuscript(project_root: Path) -> dict[str, bool]:
         json_issues = validate_coverage_json_data(data, manifest, registry)
         coverage_matrix_valid = not any(i.level == "error" for i in json_issues)
 
-    full_sheaf_path = root / "manuscript" / "16_appendix_full_sheaf.md"
+    full_sheaf_path = root / "docs" / "manuscript" / "16_appendix_full_sheaf.md"
     full_sheaf_appendix_tracks = False
     if full_sheaf_path.exists():
         text = full_sheaf_path.read_text(encoding="utf-8")
@@ -97,7 +97,7 @@ def validate_manuscript(project_root: Path) -> dict[str, bool]:
     imrad_groups_present = sum(1 for s in manifest.sections if s.kind == "group") >= 4
     composed_leaf_count = sum(1 for s in manifest.sections if s.should_compose())
 
-    methods_sheaf_path = root / "manuscript" / "08_methods_sheaf.md"
+    methods_sheaf_path = root / "docs" / "manuscript" / "08_methods_sheaf.md"
     methods_sheaf_layers = False
     if methods_sheaf_path.exists():
         sheaf_text = methods_sheaf_path.read_text(encoding="utf-8")
@@ -132,7 +132,7 @@ def validate_manuscript(project_root: Path) -> dict[str, bool]:
     integration_issues = validate_integration_audit_artifacts(root)
     sheaf_track_issues = validate_sheaf_track_artifacts(root)
 
-    manuscript_dir = root / "manuscript"
+    manuscript_dir = root / "docs" / "manuscript"
     variable_keys = set(generate_variables(root, require_analysis_outputs=False))
     unknown_tokens = validate_manuscript_tokens(manuscript_dir, variable_keys)
     malformed_tokens: list[str] = []
@@ -144,7 +144,7 @@ def validate_manuscript(project_root: Path) -> dict[str, bool]:
 
     return {
         "sheaf_manifest": manifest_path.exists(),
-        "sheaf_registry": (root / "manuscript" / "sheaf" / "tracks.yaml").exists(),
+        "sheaf_registry": (root / "docs" / "manuscript" / "sheaf" / "tracks.yaml").exists(),
         "sheaf_valid": sheaf_ok,
         "coverage_matrix_valid": coverage_matrix_valid,
         "full_sheaf_appendix_tracks": full_sheaf_appendix_tracks,
@@ -154,12 +154,12 @@ def validate_manuscript(project_root: Path) -> dict[str, bool]:
         "figure_registry_yaml": figure_registry_yaml.exists(),
         "generated_figure_registry": generated_figure_registry.exists(),
         "composed_sections": len(composed) >= composed_leaf_count,
-        "sheaf_coverage_page": (root / "manuscript" / "00_00_sheaf_coverage.md").exists(),
+        "sheaf_coverage_page": (root / "docs" / "manuscript" / "00_00_sheaf_coverage.md").exists(),
         "sheaf_coverage_json": json_path.exists(),
         "sheaf_coverage_heatmap": heatmap_path.exists(),
         "methods_sheaf_layers": methods_sheaf_layers,
         "manuscript_tokens_registered": manuscript_tokens_registered,
-        "no_duplicate_sheaf_track_markers": not _duplicate_track_markers(root / "manuscript"),
+        "no_duplicate_sheaf_track_markers": not _duplicate_track_markers(root / "docs" / "manuscript"),
         "resolved_manuscript_hydrated": resolved_manuscript_hydrated,
         "gnn_concordance": gnn_ok,
         "semantic_sheaf_gluing": not validate_semantic_gluing(root),

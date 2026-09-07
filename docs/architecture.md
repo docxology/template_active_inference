@@ -23,6 +23,6 @@ flowchart TB
 ## Key source of truth files
 
 - `tracks.yaml`: Pipeline track gates
-- `manuscript/sheaf/tracks.yaml`: Manuscript sheaf registry
-- `manuscript/sheaf/manifest.yaml`: IMRAD section matrix
+- `docs/manuscript/sheaf/tracks.yaml`: Manuscript sheaf registry
+- `docs/manuscript/sheaf/manifest.yaml`: IMRAD section matrix
 - `figures.yaml`: Figure registry, captions, alt text

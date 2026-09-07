@@ -295,7 +295,7 @@
         {
           "track": "prose",
           "bound": true,
-          "path": "manuscript/sections/imrad/intro_motivation/prose.md",
+          "path": "docs/manuscript/sections/imrad/intro_motivation/prose.md",
           "status": "present",
           "color": "black"
         },
@@ -543,7 +543,7 @@
         {
           "track": "prose",
           "bound": true,
-          "path": "manuscript/sections/imrad/intro_contributions/prose.md",
+          "path": "docs/manuscript/sections/imrad/intro_contributions/prose.md",
           "status": "present",
           "color": "black"
         },
@@ -697,7 +697,7 @@
         {
           "track": "visualization",
           "bound": true,
-          "path": "manuscript/sections/imrad/intro_contributions/visualization.md",
+          "path": "docs/manuscript/sections/imrad/intro_contributions/visualization.md",
           "status": "present",
           "color": "black"
         },
@@ -753,7 +753,7 @@
         {
           "track": "ontology",
           "bound": true,
-          "path": "manuscript/sections/imrad/intro_contributions/ontology.yaml",
+          "path": "docs/manuscript/sections/imrad/intro_contributions/ontology.yaml",
           "status": "present",
           "color": "black"
         },
@@ -1039,28 +1039,28 @@
         {
           "track": "prose",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_analytical/prose.md",
+          "path": "docs/manuscript/sections/imrad/methods_analytical/prose.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "formalism",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_analytical/formalism.md",
+          "path": "docs/manuscript/sections/imrad/methods_analytical/formalism.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "simulation",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_analytical/simulation.md",
+          "path": "docs/manuscript/sections/imrad/methods_analytical/simulation.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "assumption_index",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_analytical/assumption_index.md",
+          "path": "docs/manuscript/sections/imrad/methods_analytical/assumption_index.md",
           "status": "present",
           "color": "black"
         },
@@ -1193,7 +1193,7 @@
         {
           "track": "visualization",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_analytical/visualization.md",
+          "path": "docs/manuscript/sections/imrad/methods_analytical/visualization.md",
           "status": "present",
           "color": "black"
         },
@@ -1242,14 +1242,14 @@
         {
           "track": "gnn",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_analytical/gnn.md",
+          "path": "docs/manuscript/sections/imrad/methods_analytical/gnn.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "ontology",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_analytical/ontology.yaml",
+          "path": "docs/manuscript/sections/imrad/methods_analytical/ontology.yaml",
           "status": "present",
           "color": "black"
         },
@@ -1287,14 +1287,14 @@
         {
           "track": "prose",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_pymdp/prose.md",
+          "path": "docs/manuscript/sections/imrad/methods_pymdp/prose.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "formalism",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_pymdp/formalism.md",
+          "path": "docs/manuscript/sections/imrad/methods_pymdp/formalism.md",
           "status": "present",
           "color": "black"
         },
@@ -1322,14 +1322,14 @@
         {
           "track": "pymdp",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_pymdp/pymdp.md",
+          "path": "docs/manuscript/sections/imrad/methods_pymdp/pymdp.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "interop",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_pymdp/interop.md",
+          "path": "docs/manuscript/sections/imrad/methods_pymdp/interop.md",
           "status": "present",
           "color": "black"
         },
@@ -1441,7 +1441,7 @@
         {
           "track": "visualization",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_pymdp/visualization.md",
+          "path": "docs/manuscript/sections/imrad/methods_pymdp/visualization.md",
           "status": "present",
           "color": "black"
         },
@@ -1490,14 +1490,14 @@
         {
           "track": "gnn",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_pymdp/gnn.md",
+          "path": "docs/manuscript/sections/imrad/methods_pymdp/gnn.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "ontology",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_pymdp/ontology.yaml",
+          "path": "docs/manuscript/sections/imrad/methods_pymdp/ontology.yaml",
           "status": "present",
           "color": "black"
         },
@@ -1535,7 +1535,7 @@
         {
           "track": "prose",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_lean/prose.md",
+          "path": "docs/manuscript/sections/imrad/methods_lean/prose.md",
           "status": "present",
           "color": "black"
         },
@@ -1689,35 +1689,35 @@
         {
           "track": "visualization",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_lean/visualization.md",
+          "path": "docs/manuscript/sections/imrad/methods_lean/visualization.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "lean",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_lean/lean.md",
+          "path": "docs/manuscript/sections/imrad/methods_lean/lean.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "model_checking",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_lean/model_checking.md",
+          "path": "docs/manuscript/sections/imrad/methods_lean/model_checking.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "theorem_traceability",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_lean/theorem_traceability.md",
+          "path": "docs/manuscript/sections/imrad/methods_lean/theorem_traceability.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "proof_extraction",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_lean/proof_extraction.md",
+          "path": "docs/manuscript/sections/imrad/methods_lean/proof_extraction.md",
           "status": "present",
           "color": "black"
         },
@@ -1783,14 +1783,14 @@
         {
           "track": "prose",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_sheaf/prose.md",
+          "path": "docs/manuscript/sections/imrad/methods_sheaf/prose.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "formalism",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_sheaf/formalism.md",
+          "path": "docs/manuscript/sections/imrad/methods_sheaf/formalism.md",
           "status": "present",
           "color": "black"
         },
@@ -1811,7 +1811,7 @@
         {
           "track": "layers",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_sheaf/layers.md",
+          "path": "docs/manuscript/sections/imrad/methods_sheaf/layers.md",
           "status": "present",
           "color": "black"
         },
@@ -1832,7 +1832,7 @@
         {
           "track": "provenance",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_sheaf/provenance.md",
+          "path": "docs/manuscript/sections/imrad/methods_sheaf/provenance.md",
           "status": "present",
           "color": "black"
         },
@@ -1846,63 +1846,63 @@
         {
           "track": "counterexample",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_sheaf/counterexample.md",
+          "path": "docs/manuscript/sections/imrad/methods_sheaf/counterexample.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "adversarial_audit",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_sheaf/adversarial_audit.md",
+          "path": "docs/manuscript/sections/imrad/methods_sheaf/adversarial_audit.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "evidence_fields",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_sheaf/evidence_fields.md",
+          "path": "docs/manuscript/sections/imrad/methods_sheaf/evidence_fields.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "release_bundle",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_sheaf/release_bundle.md",
+          "path": "docs/manuscript/sections/imrad/methods_sheaf/release_bundle.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "gate_ergonomics",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_sheaf/gate_ergonomics.md",
+          "path": "docs/manuscript/sections/imrad/methods_sheaf/gate_ergonomics.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "artifact_diffoscope",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_sheaf/artifact_diffoscope.md",
+          "path": "docs/manuscript/sections/imrad/methods_sheaf/artifact_diffoscope.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "artifact_license",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_sheaf/artifact_license.md",
+          "path": "docs/manuscript/sections/imrad/methods_sheaf/artifact_license.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "scholarship",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_sheaf/scholarship.md",
+          "path": "docs/manuscript/sections/imrad/methods_sheaf/scholarship.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "security_posture",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_sheaf/security_posture.md",
+          "path": "docs/manuscript/sections/imrad/methods_sheaf/security_posture.md",
           "status": "present",
           "color": "black"
         },
@@ -1930,14 +1930,14 @@
         {
           "track": "manuscript_staleness",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_sheaf/manuscript_staleness.md",
+          "path": "docs/manuscript/sections/imrad/methods_sheaf/manuscript_staleness.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "visualization",
           "bound": true,
-          "path": "manuscript/sections/imrad/methods_sheaf/visualization.md",
+          "path": "docs/manuscript/sections/imrad/methods_sheaf/visualization.md",
           "status": "present",
           "color": "black"
         },
@@ -2279,21 +2279,21 @@
         {
           "track": "prose",
           "bound": true,
-          "path": "manuscript/sections/imrad/results_mi_sweep/prose.md",
+          "path": "docs/manuscript/sections/imrad/results_mi_sweep/prose.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "formalism",
           "bound": true,
-          "path": "manuscript/sections/imrad/results_mi_sweep/formalism.md",
+          "path": "docs/manuscript/sections/imrad/results_mi_sweep/formalism.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "simulation",
           "bound": true,
-          "path": "manuscript/sections/imrad/results_mi_sweep/simulation.md",
+          "path": "docs/manuscript/sections/imrad/results_mi_sweep/simulation.md",
           "status": "present",
           "color": "black"
         },
@@ -2433,7 +2433,7 @@
         {
           "track": "visualization",
           "bound": true,
-          "path": "manuscript/sections/imrad/results_mi_sweep/visualization.md",
+          "path": "docs/manuscript/sections/imrad/results_mi_sweep/visualization.md",
           "status": "present",
           "color": "black"
         },
@@ -2527,7 +2527,7 @@
         {
           "track": "prose",
           "bound": true,
-          "path": "manuscript/sections/imrad/results_free_energy/prose.md",
+          "path": "docs/manuscript/sections/imrad/results_free_energy/prose.md",
           "status": "present",
           "color": "black"
         },
@@ -2681,7 +2681,7 @@
         {
           "track": "visualization",
           "bound": true,
-          "path": "manuscript/sections/imrad/results_free_energy/visualization.md",
+          "path": "docs/manuscript/sections/imrad/results_free_energy/visualization.md",
           "status": "present",
           "color": "black"
         },
@@ -2775,7 +2775,7 @@
         {
           "track": "prose",
           "bound": true,
-          "path": "manuscript/sections/imrad/results_si_tmaze/prose.md",
+          "path": "docs/manuscript/sections/imrad/results_si_tmaze/prose.md",
           "status": "present",
           "color": "black"
         },
@@ -2810,7 +2810,7 @@
         {
           "track": "pymdp",
           "bound": true,
-          "path": "manuscript/sections/imrad/results_si_tmaze/pymdp.md",
+          "path": "docs/manuscript/sections/imrad/results_si_tmaze/pymdp.md",
           "status": "present",
           "color": "black"
         },
@@ -2929,7 +2929,7 @@
         {
           "track": "visualization",
           "bound": true,
-          "path": "manuscript/sections/imrad/results_si_tmaze/visualization.md",
+          "path": "docs/manuscript/sections/imrad/results_si_tmaze/visualization.md",
           "status": "present",
           "color": "black"
         },
@@ -3023,7 +3023,7 @@
         {
           "track": "prose",
           "bound": true,
-          "path": "manuscript/sections/imrad/results_invariants/prose.md",
+          "path": "docs/manuscript/sections/imrad/results_invariants/prose.md",
           "status": "present",
           "color": "black"
         },
@@ -3037,7 +3037,7 @@
         {
           "track": "simulation",
           "bound": true,
-          "path": "manuscript/sections/imrad/results_invariants/simulation.md",
+          "path": "docs/manuscript/sections/imrad/results_invariants/simulation.md",
           "status": "present",
           "color": "black"
         },
@@ -3079,7 +3079,7 @@
         {
           "track": "replay_matrix",
           "bound": true,
-          "path": "manuscript/sections/imrad/results_invariants/replay_matrix.md",
+          "path": "docs/manuscript/sections/imrad/results_invariants/replay_matrix.md",
           "status": "present",
           "color": "black"
         },
@@ -3149,21 +3149,21 @@
         {
           "track": "sensitivity",
           "bound": true,
-          "path": "manuscript/sections/imrad/results_invariants/sensitivity.md",
+          "path": "docs/manuscript/sections/imrad/results_invariants/sensitivity.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "uncertainty",
           "bound": true,
-          "path": "manuscript/sections/imrad/results_invariants/uncertainty.md",
+          "path": "docs/manuscript/sections/imrad/results_invariants/uncertainty.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "benchmark",
           "bound": true,
-          "path": "manuscript/sections/imrad/results_invariants/benchmark.md",
+          "path": "docs/manuscript/sections/imrad/results_invariants/benchmark.md",
           "status": "present",
           "color": "black"
         },
@@ -3177,7 +3177,7 @@
         {
           "track": "visualization",
           "bound": true,
-          "path": "manuscript/sections/imrad/results_invariants/visualization.md",
+          "path": "docs/manuscript/sections/imrad/results_invariants/visualization.md",
           "status": "present",
           "color": "black"
         },
@@ -3212,14 +3212,14 @@
         {
           "track": "state_space_catalog",
           "bound": true,
-          "path": "manuscript/sections/imrad/results_invariants/state_space_catalog.md",
+          "path": "docs/manuscript/sections/imrad/results_invariants/state_space_catalog.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "causal_ablation",
           "bound": true,
-          "path": "manuscript/sections/imrad/results_invariants/causal_ablation.md",
+          "path": "docs/manuscript/sections/imrad/results_invariants/causal_ablation.md",
           "status": "present",
           "color": "black"
         },
@@ -3519,7 +3519,7 @@
         {
           "track": "prose",
           "bound": true,
-          "path": "manuscript/sections/imrad/discussion_outlook/prose.md",
+          "path": "docs/manuscript/sections/imrad/discussion_outlook/prose.md",
           "status": "present",
           "color": "black"
         },
@@ -3533,7 +3533,7 @@
         {
           "track": "simulation",
           "bound": true,
-          "path": "manuscript/sections/imrad/discussion_outlook/simulation.md",
+          "path": "docs/manuscript/sections/imrad/discussion_outlook/simulation.md",
           "status": "present",
           "color": "black"
         },
@@ -3631,7 +3631,7 @@
         {
           "track": "scholarship",
           "bound": true,
-          "path": "manuscript/sections/imrad/discussion_outlook/scholarship.md",
+          "path": "docs/manuscript/sections/imrad/discussion_outlook/scholarship.md",
           "status": "present",
           "color": "black"
         },
@@ -3729,7 +3729,7 @@
         {
           "track": "ontology",
           "bound": true,
-          "path": "manuscript/sections/imrad/discussion_outlook/ontology.yaml",
+          "path": "docs/manuscript/sections/imrad/discussion_outlook/ontology.yaml",
           "status": "present",
           "color": "black"
         },
@@ -3750,7 +3750,7 @@
         {
           "track": "release_notes",
           "bound": true,
-          "path": "manuscript/sections/imrad/discussion_outlook/release_notes.md",
+          "path": "docs/manuscript/sections/imrad/discussion_outlook/release_notes.md",
           "status": "present",
           "color": "black"
         }
@@ -4015,28 +4015,28 @@
         {
           "track": "prose",
           "bound": true,
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/prose.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/prose.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "formalism",
           "bound": true,
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/formalism.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/formalism.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "simulation",
           "bound": true,
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/simulation.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/simulation.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "assumption_index",
           "bound": true,
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/assumption_index.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/assumption_index.md",
           "status": "present",
           "color": "black"
         },
@@ -4050,203 +4050,203 @@
         {
           "track": "pymdp",
           "bound": true,
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/pymdp.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/pymdp.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "interop",
           "bound": true,
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/interop.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/interop.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "provenance",
           "bound": true,
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/provenance.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/provenance.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "replay_matrix",
           "bound": true,
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/replay_matrix.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/replay_matrix.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "counterexample",
           "bound": true,
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/counterexample.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/counterexample.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "adversarial_audit",
           "bound": true,
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/adversarial_audit.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/adversarial_audit.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "evidence_fields",
           "bound": true,
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/evidence_fields.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/evidence_fields.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "release_bundle",
           "bound": true,
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/release_bundle.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/release_bundle.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "gate_ergonomics",
           "bound": true,
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/gate_ergonomics.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/gate_ergonomics.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "artifact_diffoscope",
           "bound": true,
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/artifact_diffoscope.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/artifact_diffoscope.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "artifact_license",
           "bound": true,
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/artifact_license.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/artifact_license.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "scholarship",
           "bound": true,
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/scholarship.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/scholarship.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "security_posture",
           "bound": true,
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/security_posture.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/security_posture.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "sensitivity",
           "bound": true,
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/sensitivity.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/sensitivity.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "uncertainty",
           "bound": true,
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/uncertainty.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/uncertainty.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "benchmark",
           "bound": true,
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/benchmark.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/benchmark.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "manuscript_staleness",
           "bound": true,
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/manuscript_staleness.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/manuscript_staleness.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "visualization",
           "bound": true,
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/visualization.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/visualization.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "lean",
           "bound": true,
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/lean.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/lean.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "model_checking",
           "bound": true,
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/model_checking.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/model_checking.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "theorem_traceability",
           "bound": true,
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/theorem_traceability.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/theorem_traceability.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "proof_extraction",
           "bound": true,
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/proof_extraction.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/proof_extraction.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "state_space_catalog",
           "bound": true,
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/state_space_catalog.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/state_space_catalog.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "causal_ablation",
           "bound": true,
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/causal_ablation.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/causal_ablation.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "gnn",
           "bound": true,
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/gnn.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/gnn.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "ontology",
           "bound": true,
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/ontology.yaml",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/ontology.yaml",
           "status": "present",
           "color": "black"
         },
         {
           "track": "animation",
           "bound": true,
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/animation.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/animation.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "animation_delta",
           "bound": true,
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/animation_delta.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/animation_delta.md",
           "status": "present",
           "color": "black"
         },
         {
           "track": "release_notes",
           "bound": true,
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/release_notes.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/release_notes.md",
           "status": "present",
           "color": "black"
         }

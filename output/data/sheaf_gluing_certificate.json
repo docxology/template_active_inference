@@ -1400,7 +1400,7 @@
         "predicate": "non_empty"
       },
       "id": "sheaf_registry",
-      "path": "manuscript/sheaf/tracks.yaml",
+      "path": "docs/manuscript/sheaf/tracks.yaml",
       "section": "methods_sheaf",
       "statement": "Sheaf track registry is present and drives compose order.",
       "tracks": [
@@ -1414,7 +1414,7 @@
         "predicate": "non_empty"
       },
       "id": "sheaf_manifest",
-      "path": "manuscript/sheaf/manifest.yaml",
+      "path": "docs/manuscript/sheaf/manifest.yaml",
       "section": "methods_sheaf",
       "statement": "IMRAD section manifest binds track fragments for composition.",
       "tracks": [
@@ -1428,7 +1428,7 @@
         "predicate": "non_empty"
       },
       "id": "sheaf_coverage_config",
-      "path": "manuscript/sheaf/coverage.yaml",
+      "path": "docs/manuscript/sheaf/coverage.yaml",
       "section": "sheaf_coverage",
       "statement": "Coverage report and heatmap settings are configurable.",
       "tracks": [
@@ -1615,7 +1615,7 @@
         "predicate": "file_exists"
       },
       "id": "composed_intro_motivation",
-      "path": "manuscript/02_intro_motivation.md",
+      "path": "docs/manuscript/02_intro_motivation.md",
       "section": "intro_motivation",
       "statement": "Composed IMRAD introduction subsection exists for PDF pipeline.",
       "tracks": [
@@ -1627,7 +1627,7 @@
         "predicate": "file_exists"
       },
       "id": "composed_methods_analytical",
-      "path": "manuscript/05_methods_analytical.md",
+      "path": "docs/manuscript/05_methods_analytical.md",
       "section": "methods_analytical",
       "statement": "Composed Methods analytical subsection exists for PDF pipeline.",
       "tracks": [
@@ -1640,7 +1640,7 @@
         "predicate": "file_exists"
       },
       "id": "composed_results_mi",
-      "path": "manuscript/10_results_mi_sweep.md",
+      "path": "docs/manuscript/10_results_mi_sweep.md",
       "section": "results_mi_sweep",
       "statement": "Composed Results MI sweep subsection exists for PDF pipeline.",
       "tracks": [
@@ -1826,7 +1826,7 @@
         "predicate": "file_exists"
       },
       "id": "composed_discussion",
-      "path": "manuscript/15_discussion_outlook.md",
+      "path": "docs/manuscript/15_discussion_outlook.md",
       "section": "discussion_outlook",
       "statement": "Discussion outlook section binds simulation and ontology tracks.",
       "tracks": [
@@ -1867,7 +1867,7 @@
         "predicate": "file_exists"
       },
       "id": "composed_methods_sheaf",
-      "path": "manuscript/08_methods_sheaf.md",
+      "path": "docs/manuscript/08_methods_sheaf.md",
       "section": "methods_sheaf",
       "statement": "Methods sheaf section binds figure, generated layer tables, and semantic gluing signposts.",
       "tracks": [
@@ -2821,7 +2821,7 @@
           "predicate": "non_empty"
         },
         "id": "sheaf_registry",
-        "path": "manuscript/sheaf/tracks.yaml",
+        "path": "docs/manuscript/sheaf/tracks.yaml",
         "producer": "manual",
         "section": "methods_sheaf",
         "statement": "Sheaf track registry is present and drives compose order.",
@@ -2840,7 +2840,7 @@
           "predicate": "non_empty"
         },
         "id": "sheaf_manifest",
-        "path": "manuscript/sheaf/manifest.yaml",
+        "path": "docs/manuscript/sheaf/manifest.yaml",
         "producer": "manual",
         "section": "methods_sheaf",
         "statement": "IMRAD section manifest binds track fragments for composition.",
@@ -2859,7 +2859,7 @@
           "predicate": "non_empty"
         },
         "id": "sheaf_coverage_config",
-        "path": "manuscript/sheaf/coverage.yaml",
+        "path": "docs/manuscript/sheaf/coverage.yaml",
         "producer": "manual",
         "section": "sheaf_coverage",
         "statement": "Coverage report and heatmap settings are configurable.",
@@ -3121,7 +3121,7 @@
           "predicate": "file_exists"
         },
         "id": "composed_intro_motivation",
-        "path": "manuscript/02_intro_motivation.md",
+        "path": "docs/manuscript/02_intro_motivation.md",
         "producer": "manual",
         "section": "intro_motivation",
         "statement": "Composed IMRAD introduction subsection exists for PDF pipeline.",
@@ -3138,7 +3138,7 @@
           "predicate": "file_exists"
         },
         "id": "composed_methods_analytical",
-        "path": "manuscript/05_methods_analytical.md",
+        "path": "docs/manuscript/05_methods_analytical.md",
         "producer": "manual",
         "section": "methods_analytical",
         "statement": "Composed Methods analytical subsection exists for PDF pipeline.",
@@ -3156,7 +3156,7 @@
           "predicate": "file_exists"
         },
         "id": "composed_results_mi",
-        "path": "manuscript/10_results_mi_sweep.md",
+        "path": "docs/manuscript/10_results_mi_sweep.md",
         "producer": "manual",
         "section": "results_mi_sweep",
         "statement": "Composed Results MI sweep subsection exists for PDF pipeline.",
@@ -3410,7 +3410,7 @@
           "predicate": "file_exists"
         },
         "id": "composed_discussion",
-        "path": "manuscript/15_discussion_outlook.md",
+        "path": "docs/manuscript/15_discussion_outlook.md",
         "producer": "manual",
         "section": "discussion_outlook",
         "statement": "Discussion outlook section binds simulation and ontology tracks.",
@@ -3468,7 +3468,7 @@
           "predicate": "file_exists"
         },
         "id": "composed_methods_sheaf",
-        "path": "manuscript/08_methods_sheaf.md",
+        "path": "docs/manuscript/08_methods_sheaf.md",
         "producer": "manual",
         "section": "methods_sheaf",
         "statement": "Methods sheaf section binds figure, generated layer tables, and semantic gluing signposts.",
@@ -5064,7 +5064,7 @@
     "pymdp_policy_posterior_row_count": 10,
     "pymdp_policy_posteriors_normalized": 1,
     "pymdp_runtime_construction_count": 4,
-    "pymdp_runtime_known_warning_count": 4,
+    "pymdp_runtime_known_warning_count": 0,
     "pymdp_runtime_unexpected_warning_count": 0,
     "random_seed": 0,
     "release_attestation_all_attested": true,
@@ -5117,12 +5117,12 @@
     "si_action_diversity": 2,
     "si_action_switch_count": 1,
     "si_action_switch_rate_formatted": "1.000",
-    "si_entropy_drop": 0.0,
-    "si_entropy_drop_formatted": "0.0000",
-    "si_entropy_initial": 0.32508314364563223,
-    "si_entropy_max": 0.32508314364563223,
-    "si_entropy_min": 0.32508314364563223,
-    "si_entropy_terminal": 0.32508314364563223,
+    "si_entropy_drop": -1.9387045606711586e-26,
+    "si_entropy_drop_formatted": "-0.0000",
+    "si_entropy_initial": 2.8631110016483758e-11,
+    "si_entropy_max": 2.8631110016483777e-11,
+    "si_entropy_min": 2.8631110016483758e-11,
+    "si_entropy_terminal": 2.8631110016483777e-11,
     "si_goal_reached": 1,
     "si_graph_world_goal_reached": 1,
     "si_graph_world_node_count": 4,
@@ -5136,8 +5136,8 @@
     "si_policy_comparison_run_count": 4,
     "si_policy_comparison_state_goal_count": 2,
     "si_policy_efe_rows_explained": 1,
-    "si_tmaze_mean_belief_entropy": 0.32508314364563223,
-    "si_tmaze_mean_belief_entropy_formatted": "0.3251",
+    "si_tmaze_mean_belief_entropy": 2.8631110016483768e-11,
+    "si_tmaze_mean_belief_entropy_formatted": "0.0000",
     "si_tmaze_policy_len": 2,
     "si_tmaze_steps": 2,
     "si_trace_finite": true,
@@ -5704,7 +5704,7 @@
     "provenance_bundle_count": 5,
     "pymdp_config_hash_match": true,
     "pymdp_mode_match": true,
-    "pymdp_runtime_known_warning_count": 4,
+    "pymdp_runtime_known_warning_count": 0,
     "pymdp_runtime_ok": true,
     "pymdp_runtime_phase_rows_ok": true,
     "pymdp_runtime_unexpected_warning_count": 0,
@@ -5781,7 +5781,7 @@
       "title": "Motivation and scope",
       "tracks": {
         "prose": {
-          "path": "manuscript/sections/imrad/intro_motivation/prose.md",
+          "path": "docs/manuscript/sections/imrad/intro_motivation/prose.md",
           "status": "present"
         }
       }
@@ -5794,15 +5794,15 @@
       "title": "Contributions",
       "tracks": {
         "ontology": {
-          "path": "manuscript/sections/imrad/intro_contributions/ontology.yaml",
+          "path": "docs/manuscript/sections/imrad/intro_contributions/ontology.yaml",
           "status": "present"
         },
         "prose": {
-          "path": "manuscript/sections/imrad/intro_contributions/prose.md",
+          "path": "docs/manuscript/sections/imrad/intro_contributions/prose.md",
           "status": "present"
         },
         "visualization": {
-          "path": "manuscript/sections/imrad/intro_contributions/visualization.md",
+          "path": "docs/manuscript/sections/imrad/intro_contributions/visualization.md",
           "status": "present"
         }
       }
@@ -5823,31 +5823,31 @@
       "title": "Bernoulli\u2013Ising analytical model",
       "tracks": {
         "assumption_index": {
-          "path": "manuscript/sections/imrad/methods_analytical/assumption_index.md",
+          "path": "docs/manuscript/sections/imrad/methods_analytical/assumption_index.md",
           "status": "present"
         },
         "formalism": {
-          "path": "manuscript/sections/imrad/methods_analytical/formalism.md",
+          "path": "docs/manuscript/sections/imrad/methods_analytical/formalism.md",
           "status": "present"
         },
         "gnn": {
-          "path": "manuscript/sections/imrad/methods_analytical/gnn.md",
+          "path": "docs/manuscript/sections/imrad/methods_analytical/gnn.md",
           "status": "present"
         },
         "ontology": {
-          "path": "manuscript/sections/imrad/methods_analytical/ontology.yaml",
+          "path": "docs/manuscript/sections/imrad/methods_analytical/ontology.yaml",
           "status": "present"
         },
         "prose": {
-          "path": "manuscript/sections/imrad/methods_analytical/prose.md",
+          "path": "docs/manuscript/sections/imrad/methods_analytical/prose.md",
           "status": "present"
         },
         "simulation": {
-          "path": "manuscript/sections/imrad/methods_analytical/simulation.md",
+          "path": "docs/manuscript/sections/imrad/methods_analytical/simulation.md",
           "status": "present"
         },
         "visualization": {
-          "path": "manuscript/sections/imrad/methods_analytical/visualization.md",
+          "path": "docs/manuscript/sections/imrad/methods_analytical/visualization.md",
           "status": "present"
         }
       }
@@ -5860,31 +5860,31 @@
       "title": "pymdp simulation harness",
       "tracks": {
         "formalism": {
-          "path": "manuscript/sections/imrad/methods_pymdp/formalism.md",
+          "path": "docs/manuscript/sections/imrad/methods_pymdp/formalism.md",
           "status": "present"
         },
         "gnn": {
-          "path": "manuscript/sections/imrad/methods_pymdp/gnn.md",
+          "path": "docs/manuscript/sections/imrad/methods_pymdp/gnn.md",
           "status": "present"
         },
         "interop": {
-          "path": "manuscript/sections/imrad/methods_pymdp/interop.md",
+          "path": "docs/manuscript/sections/imrad/methods_pymdp/interop.md",
           "status": "present"
         },
         "ontology": {
-          "path": "manuscript/sections/imrad/methods_pymdp/ontology.yaml",
+          "path": "docs/manuscript/sections/imrad/methods_pymdp/ontology.yaml",
           "status": "present"
         },
         "prose": {
-          "path": "manuscript/sections/imrad/methods_pymdp/prose.md",
+          "path": "docs/manuscript/sections/imrad/methods_pymdp/prose.md",
           "status": "present"
         },
         "pymdp": {
-          "path": "manuscript/sections/imrad/methods_pymdp/pymdp.md",
+          "path": "docs/manuscript/sections/imrad/methods_pymdp/pymdp.md",
           "status": "present"
         },
         "visualization": {
-          "path": "manuscript/sections/imrad/methods_pymdp/visualization.md",
+          "path": "docs/manuscript/sections/imrad/methods_pymdp/visualization.md",
           "status": "present"
         }
       }
@@ -5897,27 +5897,27 @@
       "title": "Lean formalization boundary",
       "tracks": {
         "lean": {
-          "path": "manuscript/sections/imrad/methods_lean/lean.md",
+          "path": "docs/manuscript/sections/imrad/methods_lean/lean.md",
           "status": "present"
         },
         "model_checking": {
-          "path": "manuscript/sections/imrad/methods_lean/model_checking.md",
+          "path": "docs/manuscript/sections/imrad/methods_lean/model_checking.md",
           "status": "present"
         },
         "proof_extraction": {
-          "path": "manuscript/sections/imrad/methods_lean/proof_extraction.md",
+          "path": "docs/manuscript/sections/imrad/methods_lean/proof_extraction.md",
           "status": "present"
         },
         "prose": {
-          "path": "manuscript/sections/imrad/methods_lean/prose.md",
+          "path": "docs/manuscript/sections/imrad/methods_lean/prose.md",
           "status": "present"
         },
         "theorem_traceability": {
-          "path": "manuscript/sections/imrad/methods_lean/theorem_traceability.md",
+          "path": "docs/manuscript/sections/imrad/methods_lean/theorem_traceability.md",
           "status": "present"
         },
         "visualization": {
-          "path": "manuscript/sections/imrad/methods_lean/visualization.md",
+          "path": "docs/manuscript/sections/imrad/methods_lean/visualization.md",
           "status": "present"
         }
       }
@@ -5930,63 +5930,63 @@
       "title": "Sheaf composition",
       "tracks": {
         "adversarial_audit": {
-          "path": "manuscript/sections/imrad/methods_sheaf/adversarial_audit.md",
+          "path": "docs/manuscript/sections/imrad/methods_sheaf/adversarial_audit.md",
           "status": "present"
         },
         "artifact_diffoscope": {
-          "path": "manuscript/sections/imrad/methods_sheaf/artifact_diffoscope.md",
+          "path": "docs/manuscript/sections/imrad/methods_sheaf/artifact_diffoscope.md",
           "status": "present"
         },
         "artifact_license": {
-          "path": "manuscript/sections/imrad/methods_sheaf/artifact_license.md",
+          "path": "docs/manuscript/sections/imrad/methods_sheaf/artifact_license.md",
           "status": "present"
         },
         "counterexample": {
-          "path": "manuscript/sections/imrad/methods_sheaf/counterexample.md",
+          "path": "docs/manuscript/sections/imrad/methods_sheaf/counterexample.md",
           "status": "present"
         },
         "evidence_fields": {
-          "path": "manuscript/sections/imrad/methods_sheaf/evidence_fields.md",
+          "path": "docs/manuscript/sections/imrad/methods_sheaf/evidence_fields.md",
           "status": "present"
         },
         "formalism": {
-          "path": "manuscript/sections/imrad/methods_sheaf/formalism.md",
+          "path": "docs/manuscript/sections/imrad/methods_sheaf/formalism.md",
           "status": "present"
         },
         "gate_ergonomics": {
-          "path": "manuscript/sections/imrad/methods_sheaf/gate_ergonomics.md",
+          "path": "docs/manuscript/sections/imrad/methods_sheaf/gate_ergonomics.md",
           "status": "present"
         },
         "layers": {
-          "path": "manuscript/sections/imrad/methods_sheaf/layers.md",
+          "path": "docs/manuscript/sections/imrad/methods_sheaf/layers.md",
           "status": "present"
         },
         "manuscript_staleness": {
-          "path": "manuscript/sections/imrad/methods_sheaf/manuscript_staleness.md",
+          "path": "docs/manuscript/sections/imrad/methods_sheaf/manuscript_staleness.md",
           "status": "present"
         },
         "prose": {
-          "path": "manuscript/sections/imrad/methods_sheaf/prose.md",
+          "path": "docs/manuscript/sections/imrad/methods_sheaf/prose.md",
           "status": "present"
         },
         "provenance": {
-          "path": "manuscript/sections/imrad/methods_sheaf/provenance.md",
+          "path": "docs/manuscript/sections/imrad/methods_sheaf/provenance.md",
           "status": "present"
         },
         "release_bundle": {
-          "path": "manuscript/sections/imrad/methods_sheaf/release_bundle.md",
+          "path": "docs/manuscript/sections/imrad/methods_sheaf/release_bundle.md",
           "status": "present"
         },
         "scholarship": {
-          "path": "manuscript/sections/imrad/methods_sheaf/scholarship.md",
+          "path": "docs/manuscript/sections/imrad/methods_sheaf/scholarship.md",
           "status": "present"
         },
         "security_posture": {
-          "path": "manuscript/sections/imrad/methods_sheaf/security_posture.md",
+          "path": "docs/manuscript/sections/imrad/methods_sheaf/security_posture.md",
           "status": "present"
         },
         "visualization": {
-          "path": "manuscript/sections/imrad/methods_sheaf/visualization.md",
+          "path": "docs/manuscript/sections/imrad/methods_sheaf/visualization.md",
           "status": "present"
         }
       }
@@ -6007,19 +6007,19 @@
       "title": "Mutual-information parameter sweep",
       "tracks": {
         "formalism": {
-          "path": "manuscript/sections/imrad/results_mi_sweep/formalism.md",
+          "path": "docs/manuscript/sections/imrad/results_mi_sweep/formalism.md",
           "status": "present"
         },
         "prose": {
-          "path": "manuscript/sections/imrad/results_mi_sweep/prose.md",
+          "path": "docs/manuscript/sections/imrad/results_mi_sweep/prose.md",
           "status": "present"
         },
         "simulation": {
-          "path": "manuscript/sections/imrad/results_mi_sweep/simulation.md",
+          "path": "docs/manuscript/sections/imrad/results_mi_sweep/simulation.md",
           "status": "present"
         },
         "visualization": {
-          "path": "manuscript/sections/imrad/results_mi_sweep/visualization.md",
+          "path": "docs/manuscript/sections/imrad/results_mi_sweep/visualization.md",
           "status": "present"
         }
       }
@@ -6032,11 +6032,11 @@
       "title": "Free-energy decomposition",
       "tracks": {
         "prose": {
-          "path": "manuscript/sections/imrad/results_free_energy/prose.md",
+          "path": "docs/manuscript/sections/imrad/results_free_energy/prose.md",
           "status": "present"
         },
         "visualization": {
-          "path": "manuscript/sections/imrad/results_free_energy/visualization.md",
+          "path": "docs/manuscript/sections/imrad/results_free_energy/visualization.md",
           "status": "present"
         }
       }
@@ -6049,15 +6049,15 @@
       "title": "T-maze active-inference rollout",
       "tracks": {
         "prose": {
-          "path": "manuscript/sections/imrad/results_si_tmaze/prose.md",
+          "path": "docs/manuscript/sections/imrad/results_si_tmaze/prose.md",
           "status": "present"
         },
         "pymdp": {
-          "path": "manuscript/sections/imrad/results_si_tmaze/pymdp.md",
+          "path": "docs/manuscript/sections/imrad/results_si_tmaze/pymdp.md",
           "status": "present"
         },
         "visualization": {
-          "path": "manuscript/sections/imrad/results_si_tmaze/visualization.md",
+          "path": "docs/manuscript/sections/imrad/results_si_tmaze/visualization.md",
           "status": "present"
         }
       }
@@ -6070,39 +6070,39 @@
       "title": "Validation invariants",
       "tracks": {
         "benchmark": {
-          "path": "manuscript/sections/imrad/results_invariants/benchmark.md",
+          "path": "docs/manuscript/sections/imrad/results_invariants/benchmark.md",
           "status": "present"
         },
         "causal_ablation": {
-          "path": "manuscript/sections/imrad/results_invariants/causal_ablation.md",
+          "path": "docs/manuscript/sections/imrad/results_invariants/causal_ablation.md",
           "status": "present"
         },
         "prose": {
-          "path": "manuscript/sections/imrad/results_invariants/prose.md",
+          "path": "docs/manuscript/sections/imrad/results_invariants/prose.md",
           "status": "present"
         },
         "replay_matrix": {
-          "path": "manuscript/sections/imrad/results_invariants/replay_matrix.md",
+          "path": "docs/manuscript/sections/imrad/results_invariants/replay_matrix.md",
           "status": "present"
         },
         "sensitivity": {
-          "path": "manuscript/sections/imrad/results_invariants/sensitivity.md",
+          "path": "docs/manuscript/sections/imrad/results_invariants/sensitivity.md",
           "status": "present"
         },
         "simulation": {
-          "path": "manuscript/sections/imrad/results_invariants/simulation.md",
+          "path": "docs/manuscript/sections/imrad/results_invariants/simulation.md",
           "status": "present"
         },
         "state_space_catalog": {
-          "path": "manuscript/sections/imrad/results_invariants/state_space_catalog.md",
+          "path": "docs/manuscript/sections/imrad/results_invariants/state_space_catalog.md",
           "status": "present"
         },
         "uncertainty": {
-          "path": "manuscript/sections/imrad/results_invariants/uncertainty.md",
+          "path": "docs/manuscript/sections/imrad/results_invariants/uncertainty.md",
           "status": "present"
         },
         "visualization": {
-          "path": "manuscript/sections/imrad/results_invariants/visualization.md",
+          "path": "docs/manuscript/sections/imrad/results_invariants/visualization.md",
           "status": "present"
         }
       }
@@ -6123,23 +6123,23 @@
       "title": "Limitations and outlook",
       "tracks": {
         "ontology": {
-          "path": "manuscript/sections/imrad/discussion_outlook/ontology.yaml",
+          "path": "docs/manuscript/sections/imrad/discussion_outlook/ontology.yaml",
           "status": "present"
         },
         "prose": {
-          "path": "manuscript/sections/imrad/discussion_outlook/prose.md",
+          "path": "docs/manuscript/sections/imrad/discussion_outlook/prose.md",
           "status": "present"
         },
         "release_notes": {
-          "path": "manuscript/sections/imrad/discussion_outlook/release_notes.md",
+          "path": "docs/manuscript/sections/imrad/discussion_outlook/release_notes.md",
           "status": "present"
         },
         "scholarship": {
-          "path": "manuscript/sections/imrad/discussion_outlook/scholarship.md",
+          "path": "docs/manuscript/sections/imrad/discussion_outlook/scholarship.md",
           "status": "present"
         },
         "simulation": {
-          "path": "manuscript/sections/imrad/discussion_outlook/simulation.md",
+          "path": "docs/manuscript/sections/imrad/discussion_outlook/simulation.md",
           "status": "present"
         }
       }
@@ -6160,135 +6160,135 @@
       "title": "Appendix: full track coverage",
       "tracks": {
         "adversarial_audit": {
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/adversarial_audit.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/adversarial_audit.md",
           "status": "present"
         },
         "animation": {
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/animation.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/animation.md",
           "status": "present"
         },
         "animation_delta": {
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/animation_delta.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/animation_delta.md",
           "status": "present"
         },
         "artifact_diffoscope": {
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/artifact_diffoscope.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/artifact_diffoscope.md",
           "status": "present"
         },
         "artifact_license": {
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/artifact_license.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/artifact_license.md",
           "status": "present"
         },
         "assumption_index": {
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/assumption_index.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/assumption_index.md",
           "status": "present"
         },
         "benchmark": {
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/benchmark.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/benchmark.md",
           "status": "present"
         },
         "causal_ablation": {
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/causal_ablation.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/causal_ablation.md",
           "status": "present"
         },
         "counterexample": {
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/counterexample.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/counterexample.md",
           "status": "present"
         },
         "evidence_fields": {
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/evidence_fields.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/evidence_fields.md",
           "status": "present"
         },
         "formalism": {
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/formalism.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/formalism.md",
           "status": "present"
         },
         "gate_ergonomics": {
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/gate_ergonomics.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/gate_ergonomics.md",
           "status": "present"
         },
         "gnn": {
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/gnn.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/gnn.md",
           "status": "present"
         },
         "interop": {
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/interop.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/interop.md",
           "status": "present"
         },
         "lean": {
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/lean.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/lean.md",
           "status": "present"
         },
         "manuscript_staleness": {
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/manuscript_staleness.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/manuscript_staleness.md",
           "status": "present"
         },
         "model_checking": {
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/model_checking.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/model_checking.md",
           "status": "present"
         },
         "ontology": {
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/ontology.yaml",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/ontology.yaml",
           "status": "present"
         },
         "proof_extraction": {
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/proof_extraction.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/proof_extraction.md",
           "status": "present"
         },
         "prose": {
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/prose.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/prose.md",
           "status": "present"
         },
         "provenance": {
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/provenance.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/provenance.md",
           "status": "present"
         },
         "pymdp": {
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/pymdp.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/pymdp.md",
           "status": "present"
         },
         "release_bundle": {
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/release_bundle.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/release_bundle.md",
           "status": "present"
         },
         "release_notes": {
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/release_notes.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/release_notes.md",
           "status": "present"
         },
         "replay_matrix": {
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/replay_matrix.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/replay_matrix.md",
           "status": "present"
         },
         "scholarship": {
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/scholarship.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/scholarship.md",
           "status": "present"
         },
         "security_posture": {
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/security_posture.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/security_posture.md",
           "status": "present"
         },
         "sensitivity": {
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/sensitivity.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/sensitivity.md",
           "status": "present"
         },
         "simulation": {
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/simulation.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/simulation.md",
           "status": "present"
         },
         "state_space_catalog": {
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/state_space_catalog.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/state_space_catalog.md",
           "status": "present"
         },
         "theorem_traceability": {
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/theorem_traceability.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/theorem_traceability.md",
           "status": "present"
         },
         "uncertainty": {
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/uncertainty.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/uncertainty.md",
           "status": "present"
         },
         "visualization": {
-          "path": "manuscript/sections/imrad/appendix_full_sheaf/visualization.md",
+          "path": "docs/manuscript/sections/imrad/appendix_full_sheaf/visualization.md",
           "status": "present"
         }
       }

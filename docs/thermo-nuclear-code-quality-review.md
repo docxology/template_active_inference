@@ -27,7 +27,7 @@ import the private names):
 - `roadmap_tracks/supplemental.py`, `roadmap_tracks/visualization_audit.py`,
   `roadmap_tracks/security.py`, `roadmap_tracks/scholarship.py` — lenient
   `load_json` / `write_json`.
-- `validation_spine/artifacts.py` and `manuscript/sheaf/semantic_restrictions.py`
+- `validation_spine/artifacts.py` and `docs/manuscript/sheaf/semantic_restrictions.py`
   — `load_json_strict`, preserving their fail-closed reads of provenance and
   semantic-gluing artifacts.
 - `tests/gate_support.py` — `write_json` in `temporary_json_mutation`.
@@ -48,7 +48,7 @@ import the private names):
 - [`../tests/README.md`](../tests/README.md) documents fast-iteration commands:
   `uv sync --extra dev`, `-m "not long_running"`, and isolated `-n auto` for the
   state-free analytical modules (generated-artifact gates stay serial because
-  they mutate shared `manuscript/` and `output/` paths).
+  they mutate shared `docs/manuscript/` and `output/` paths).
 
 ## Type-check configuration
 
@@ -56,7 +56,7 @@ The root `pyproject.toml` mypy override targeted a path that never existed
 (`projects.template_active_inference.*`). It now lists both the real
 `projects.templates.template_active_inference.*` namespace and the flat
 top-level module names produced by the `src/` layout (`analytical`, `gnn`,
-`json_io`, `roadmap_tracks`, `manuscript`, `validation_spine`, …), matching the
+`json_io`, `roadmap_tracks`, `docs/manuscript`, `validation_spine`, …), matching the
 `template_literature_meta_analysis` and `template_search_project` pattern. Only
 infrastructure is held type-strict.
 

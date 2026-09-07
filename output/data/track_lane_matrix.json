@@ -1802,7 +1802,7 @@
       ],
       "matrix_complete": true,
       "negative_control": "track_lane_matrix_row_only_forgery",
-      "primary_artifact": "manuscript/sheaf/manifest.yaml",
+      "primary_artifact": "docs/manuscript/sheaf/manifest.yaml",
       "primary_artifact_exists": true,
       "producer": "compose_manuscript.py",
       "producer_configured": true,
@@ -1828,7 +1828,7 @@
       "sheaf_tracks_registered": true,
       "source_paths": [
         "src/manuscript",
-        "manuscript/sheaf",
+        "docs/manuscript/sheaf",
         "figures.yaml"
       ],
       "source_paths_present": true,

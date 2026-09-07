@@ -5,7 +5,7 @@ The fenced `latex` block below is extracted by the renderer
 before `\begin{document}`. Keep it to package loads and macro definitions only.
 
 **Typography is config-driven.** Page margins live in
-`manuscript/config.yaml` → `metadata.geometry` (forwarded to pandoc as `-V geometry:`),
+`docs/manuscript/config.yaml` → `metadata.geometry` (forwarded to pandoc as `-V geometry:`),
 so do **not** declare `\geometry{...}` here — a second declaration would clash with the
 pandoc-emitted `geometry` package. Global font size is set here via the class-agnostic
 `fontsize` package because the default `article` class only accepts 10/11/12 pt natively.

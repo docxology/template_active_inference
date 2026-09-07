@@ -31,8 +31,8 @@ __all__ = [
 
 def _figure_inputs() -> list[str]:
     return [
-        "manuscript/sheaf/manifest.yaml",
-        "manuscript/sheaf/tracks.yaml",
+        "docs/manuscript/sheaf/manifest.yaml",
+        "docs/manuscript/sheaf/tracks.yaml",
         "output/data/sheaf_coverage_matrix.json",
         "figures.yaml",
     ]
@@ -43,7 +43,7 @@ def _has_explicit_panel_tracks(root: Path) -> bool:
     from manuscript.sheaf.registry import load_track_registry
 
     try:
-        manifest = load_manifest(root / "manuscript" / "sheaf" / "manifest.yaml", project_root=root)
+        manifest = load_manifest(root / "docs" / "manuscript" / "sheaf" / "manifest.yaml", project_root=root)
         registry = load_track_registry(root / manifest.registry_path)
         return bool(registry.tracks)
     except (FileNotFoundError, ValueError, KeyError):

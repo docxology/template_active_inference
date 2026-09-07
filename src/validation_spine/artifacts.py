@@ -57,10 +57,10 @@ CORE_ARTIFACT_PRODUCERS: dict[str, str] = {
 }
 
 CONFIG_INPUTS: tuple[str, ...] = (
-    "manuscript/config.yaml",
-    "manuscript/sheaf/manifest.yaml",
-    "manuscript/sheaf/tracks.yaml",
-    "manuscript/sheaf/coverage.yaml",
+    "docs/manuscript/config.yaml",
+    "docs/manuscript/sheaf/manifest.yaml",
+    "docs/manuscript/sheaf/tracks.yaml",
+    "docs/manuscript/sheaf/coverage.yaml",
     "tracks.yaml",
     "figures.yaml",
     "pymdp.yaml",
@@ -93,7 +93,7 @@ def _file_fingerprint(path: Path) -> tuple[bool, int, str]:
 
 
 def _configured_analysis_scripts(root: Path) -> list[str]:
-    path = root / "manuscript" / "config.yaml"
+    path = root / "docs" / "manuscript" / "config.yaml"
     payload = load_yaml(path)
     return [str(script) for script in ((payload.get("analysis") or {}).get("scripts") or [])]
 

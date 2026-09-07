@@ -20,7 +20,7 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
-_COPY_DIRS = ("manuscript", "gnn", "lean", "data", "docs", "output", "scripts", "src", "tests")
+_COPY_DIRS = ("gnn", "lean", "data", "docs", "output", "scripts", "src", "tests")
 _COPY_IGNORE = shutil.ignore_patterns("__pycache__", ".pytest_cache", ".coverage*")
 
 

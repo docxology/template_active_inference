@@ -37,8 +37,8 @@ from direct_recompute_support import copy_project_tree
 
 def test_figure_inputs_lists_the_four_dependencies() -> None:
     assert _figure_inputs() == [
-        "manuscript/sheaf/manifest.yaml",
-        "manuscript/sheaf/tracks.yaml",
+        "docs/manuscript/sheaf/manifest.yaml",
+        "docs/manuscript/sheaf/tracks.yaml",
         "output/data/sheaf_coverage_matrix.json",
         "figures.yaml",
     ]

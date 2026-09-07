@@ -183,7 +183,7 @@ def build_replay_matrix(project_root: Path) -> dict[str, Any]:
         outputs = sorted(rel for rel, producer in producers.items() if producer == script)
         if not outputs and script == "compose_manuscript.py":
             outputs = [
-                path.relative_to(root).as_posix() for path in sorted((root / "manuscript").glob("[0-9][0-9]_*.md"))
+                path.relative_to(root).as_posix() for path in sorted((root / "docs" / "manuscript").glob("[0-9][0-9]_*.md"))
             ]
         method = "subprocess_replay" if any(rel in replay_by_artifact for rel in outputs) else "artifact_fingerprint"
         checked_outputs = [rel for rel in outputs if rel not in cycle_excluded]
@@ -201,7 +201,7 @@ def build_replay_matrix(project_root: Path) -> dict[str, Any]:
                 "artifacts": outputs,
                 "cycle_excluded_artifacts": sorted(rel for rel in outputs if rel in cycle_excluded),
                 "hash_checked_artifacts": checked_outputs,
-                "input_config_hash": _sha256(root / "manuscript" / "config.yaml"),
+                "input_config_hash": _sha256(root / "docs" / "manuscript" / "config.yaml"),
                 "output_hashes": {rel: _sha256(root / rel) for rel in checked_outputs},
                 "matched": (bool(outputs) and matched) or (not outputs and script == "compose_manuscript.py"),
             }

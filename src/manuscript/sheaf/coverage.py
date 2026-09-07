@@ -39,7 +39,7 @@ def load_sheaf_coverage_context(
     from manuscript.sheaf.registry import load_track_registry
 
     root = project_root.resolve()
-    mpath = manifest_path or (root / "manuscript" / "sheaf" / "manifest.yaml")
+    mpath = manifest_path or (root / "docs" / "manuscript" / "sheaf" / "manifest.yaml")
     manifest = load_manifest(mpath, project_root=root)
     registry = load_track_registry(root / manifest.registry_path)
     matrix = build_coverage_matrix(registry, manifest, root)

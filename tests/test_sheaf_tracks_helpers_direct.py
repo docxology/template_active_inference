@@ -48,7 +48,7 @@ def test_load_structured_normalizes_non_object_yaml_to_empty(tmp_path: Path) -> 
 
 
 def test_bound_tracks_ignores_non_mapping_yaml_tracks(tmp_path: Path) -> None:
-    manifest = tmp_path / "manuscript" / "sheaf" / "manifest.yaml"
+    manifest = tmp_path / "docs" / "manuscript" / "sheaf" / "manifest.yaml"
     manifest.parent.mkdir(parents=True)
     manifest.write_text(
         "sections:\n  - id: ignored\n    tracks: [analytical]\n  - id: valid\n    tracks:\n      analytical: {}\n",
@@ -134,7 +134,7 @@ def test_remove_legacy_artifacts_deletes_present_real_file(tmp_path: Path) -> No
 
 
 def test_canonical_artifact_rows_bind_known_project_copy_state(copied_root: Path) -> None:
-    config = copied_root / "manuscript" / "config.yaml"
+    config = copied_root / "docs" / "manuscript" / "config.yaml"
     ledger = copied_root / "data" / "claim_ledger.yaml"
     artifact = copied_root / "output" / "data" / "parameter_sweep.csv"
     snapshots = {path: path.read_bytes() for path in (config, ledger, artifact)}

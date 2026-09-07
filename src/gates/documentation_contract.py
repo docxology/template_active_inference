@@ -249,7 +249,7 @@ def check_hydrated_output_links(project_root: Path) -> list[DocumentationIssue]:
         text = _read_text_if_present(path)
         if text is None:
             continue
-        for pattern in ("](../output/", "](<../output/"):
+        for pattern in ("](../../output/", "](<../../output/"):
             index = text.find(pattern)
             if index >= 0:
                 issues.append(

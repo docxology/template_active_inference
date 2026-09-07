@@ -23,7 +23,7 @@ pytestmark = [pytest.mark.timeout(120)]
 
 def test_compose_writes_markdown_sections(tmp_path: Path) -> None:
     root = Path(__file__).resolve().parents[1]
-    out = tmp_path / "manuscript"
+    out = tmp_path / "docs" / "manuscript"
     result = compose_all_sections(root, manuscript_dir=out)
     assert len(result.paths) == 12
     text = (out / "06_methods_pymdp.md").read_text(encoding="utf-8")
@@ -34,8 +34,8 @@ def test_compose_writes_markdown_sections(tmp_path: Path) -> None:
 
 def test_discussion_ontology_renders_labels_not_raw_yaml() -> None:
     root = Path(__file__).resolve().parents[1]
-    manifest = load_manifest(root / "manuscript" / "sheaf" / "manifest.yaml")
-    registry = load_track_registry(root / "manuscript" / "sheaf" / "tracks.yaml")
+    manifest = load_manifest(root / "docs" / "manuscript" / "sheaf" / "manifest.yaml")
+    registry = load_track_registry(root / "docs" / "manuscript" / "sheaf" / "tracks.yaml")
     section = next(s for s in manifest.sections if s.id == "discussion_outlook")
     text = compose_section(section, root, registry=registry)
     assert "**Pedagogical scope**" in text
@@ -44,8 +44,8 @@ def test_discussion_ontology_renders_labels_not_raw_yaml() -> None:
 
 def test_compose_filters_enabled_tracks() -> None:
     root = Path(__file__).resolve().parents[1]
-    manifest = load_manifest(root / "manuscript" / "sheaf" / "manifest.yaml")
-    registry = load_track_registry(root / "manuscript" / "sheaf" / "tracks.yaml")
+    manifest = load_manifest(root / "docs" / "manuscript" / "sheaf" / "manifest.yaml")
+    registry = load_track_registry(root / "docs" / "manuscript" / "sheaf" / "tracks.yaml")
     section = next(s for s in manifest.sections if s.id == "intro_contributions")
     text = compose_section(
         section,
@@ -85,15 +85,15 @@ sections:
 
 def test_missing_track_error_policy() -> None:
     root = Path(__file__).resolve().parents[1]
-    manifest = load_manifest(root / "manuscript" / "sheaf" / "manifest.yaml")
-    registry = load_track_registry(root / "manuscript" / "sheaf" / "tracks.yaml")
+    manifest = load_manifest(root / "docs" / "manuscript" / "sheaf" / "manifest.yaml")
+    registry = load_track_registry(root / "docs" / "manuscript" / "sheaf" / "tracks.yaml")
     section = next(s for s in manifest.sections if s.id == "intro_motivation")
     broken = SheafSection(
         id=section.id,
         title=section.title,
         short=section.short,
         order=section.order,
-        tracks={"prose": "manuscript/sections/missing_prose.md"},
+        tracks={"prose": "docs/manuscript/sections/missing_prose.md"},
         output_name=section.output_name,
         kind=section.kind,
         imrad=section.imrad,
@@ -111,13 +111,13 @@ def test_missing_track_error_policy() -> None:
 
 def test_compose_warn_policy_records_issue() -> None:
     root = Path(__file__).resolve().parents[1]
-    registry = load_track_registry(root / "manuscript" / "sheaf" / "tracks.yaml")
+    registry = load_track_registry(root / "docs" / "manuscript" / "sheaf" / "tracks.yaml")
     section = SheafSection(
         id="warn",
         title="Warn",
         short="w",
         order=1,
-        tracks={"prose": "manuscript/sections/missing.md"},
+        tracks={"prose": "docs/manuscript/sections/missing.md"},
         output_name="01_warn.md",
     )
     issues: list = []
@@ -136,7 +136,7 @@ def test_compose_single_section_filter(tmp_path: Path) -> None:
     root = Path(__file__).resolve().parents[1]
     result = compose_all_sections(
         root,
-        manuscript_dir=tmp_path / "manuscript",
+        manuscript_dir=tmp_path / "docs" / "manuscript",
         options=ComposeOptions(section_ids=frozenset({"intro_motivation"})),
     )
     assert len(result.paths) == 1
@@ -200,7 +200,7 @@ def test_compose_cli_validate_only_exports_coverage(
     assert str(heatmap_path.resolve()) in captured.out
     assert json_path.exists()
     assert heatmap_path.exists()
-    assert (root / "manuscript" / "00_00_sheaf_coverage.md").exists()
+    assert (root / "docs" / "manuscript" / "00_00_sheaf_coverage.md").exists()
 
 
 def test_compose_cli_composes_selected_tracks(tmp_path: Path, capsys: pytest.CaptureFixture[str]) -> None:
@@ -212,7 +212,7 @@ def test_compose_cli_composes_selected_tracks(tmp_path: Path, capsys: pytest.Cap
     )
 
     captured = capsys.readouterr()
-    out = root / "manuscript" / "01_demo.md"
+    out = root / "docs" / "manuscript" / "01_demo.md"
     assert result == 0, captured.err
     assert str(out) in captured.out
     text = out.read_text(encoding="utf-8")
@@ -222,7 +222,7 @@ def test_compose_cli_composes_selected_tracks(tmp_path: Path, capsys: pytest.Cap
 
 def test_compose_cli_reports_validation_errors(tmp_path: Path, capsys: pytest.CaptureFixture[str]) -> None:
     root = write_cli_fixture_project(tmp_path)
-    (root / "manuscript" / "sheaf" / "manifest.yaml").write_text(
+    (root / "docs" / "manuscript" / "sheaf" / "manifest.yaml").write_text(
         """
 sections:
   - id: broken
@@ -241,8 +241,8 @@ sections:
 
 def test_full_section_compose_contains_all_markers() -> None:
     root = Path(__file__).resolve().parents[1]
-    manifest = load_manifest(root / "manuscript" / "sheaf" / "manifest.yaml")
-    registry = load_track_registry(root / "manuscript" / "sheaf" / "tracks.yaml")
+    manifest = load_manifest(root / "docs" / "manuscript" / "sheaf" / "manifest.yaml")
+    registry = load_track_registry(root / "docs" / "manuscript" / "sheaf" / "tracks.yaml")
     section = next(s for s in manifest.sections if s.id == "appendix_full_sheaf")
     text = compose_section(section, root, registry=registry)
     for track_id in section.tracks:
@@ -251,7 +251,7 @@ def test_full_section_compose_contains_all_markers() -> None:
 
 def test_compose_emits_imrad_dividers_and_section_labels(tmp_path: Path) -> None:
     root = Path(__file__).resolve().parents[1]
-    out = tmp_path / "manuscript"
+    out = tmp_path / "docs" / "manuscript"
     compose_all_sections(root, manuscript_dir=out)
     methods_text = (out / "05_methods_analytical.md").read_text(encoding="utf-8")
     assert "\\section*{Methods}" in methods_text
@@ -263,7 +263,7 @@ def test_compose_emits_imrad_dividers_and_section_labels(tmp_path: Path) -> None
 
 def test_composed_methods_sheaf_contains_figure_and_tables(tmp_path: Path) -> None:
     root = Path(__file__).resolve().parents[1]
-    out = tmp_path / "manuscript"
+    out = tmp_path / "docs" / "manuscript"
     compose_all_sections(root, manuscript_dir=out)
     text = (out / "08_methods_sheaf.md").read_text(encoding="utf-8")
     assert "sheaf_layers_overview.png" in text
@@ -279,7 +279,7 @@ def test_composed_methods_sheaf_contains_figure_and_tables(tmp_path: Path) -> No
 def test_resolve_track_body_layers_report(project_root: Path) -> None:
     from manuscript.sheaf.renderers import resolve_track_body
 
-    manifest = load_manifest(project_root / "manuscript" / "sheaf" / "manifest.yaml", project_root=project_root)
+    manifest = load_manifest(project_root / "docs" / "manuscript" / "sheaf" / "manifest.yaml", project_root=project_root)
     registry = load_track_registry(project_root / manifest.registry_path)
     section = next(s for s in manifest.sections if s.id == "methods_sheaf")
     rel = section.tracks["layers"]

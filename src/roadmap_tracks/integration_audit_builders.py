@@ -35,7 +35,7 @@ def _sha256(path: Path) -> str:
 
 
 def _analysis_scripts(root: Path) -> list[str]:
-    data = load_yaml(root / "manuscript" / "config.yaml")
+    data = load_yaml(root / "docs" / "manuscript" / "config.yaml")
     return [str(script) for script in ((data.get("analysis") or {}).get("scripts") or [])]
 
 
@@ -134,8 +134,8 @@ def build_cross_track_symbol_table(project_root: Path) -> dict[str, Any]:
 
     rows = []
     section_ontology_paths = {
-        "bernoulli_toy": root / "manuscript" / "sections" / "imrad" / "methods_analytical" / "ontology.yaml",
-        "si_tmaze": root / "manuscript" / "sections" / "imrad" / "methods_pymdp" / "ontology.yaml",
+        "bernoulli_toy": root / "docs" / "manuscript" / "sections" / "imrad" / "methods_analytical" / "ontology.yaml",
+        "si_tmaze": root / "docs" / "manuscript" / "sections" / "imrad" / "methods_pymdp" / "ontology.yaml",
     }
     for path in sorted((root / "gnn").glob("*.gnn.md")):
         model_id = path.stem.replace(".gnn", "")
@@ -273,7 +273,7 @@ def build_manuscript_token_provenance(project_root: Path) -> dict[str, Any]:
 
     variables = {**generate_variables(root, require_analysis_outputs=False), **variables}
     rows = []
-    paths = sorted((root / "manuscript").glob("*.md")) + sorted((root / "manuscript" / "sections").glob("**/*.md"))
+    paths = sorted((root / "docs" / "manuscript").glob("*.md")) + sorted((root / "docs" / "manuscript" / "sections").glob("**/*.md"))
     excluded = {"AGENTS.md", "README.md", "SYNTAX.md", "preamble.md"}
     resolved_dir = root / "output" / "manuscript"
     resolved_outputs = sorted(resolved_dir.glob("*.md")) if resolved_dir.is_dir() else []
@@ -281,7 +281,7 @@ def build_manuscript_token_provenance(project_root: Path) -> dict[str, Any]:
         if path.name in excluded:
             continue
         text = path.read_text(encoding="utf-8")
-        if root / "manuscript" / "sections" in path.parents:
+        if root / "docs" / "manuscript" / "sections" in path.parents:
             candidate_outputs = resolved_outputs
         else:
             preferred = resolved_dir / path.name
@@ -356,7 +356,7 @@ def build_manuscript_staleness_report(project_root: Path) -> dict[str, Any]:
     variables = generate_variables(root, require_analysis_outputs=False)
     rows: list[dict[str, Any]] = []
     output_dir = root / "output" / "manuscript"
-    for path in sorted((root / "manuscript").glob("*.md")):
+    for path in sorted((root / "docs" / "manuscript").glob("*.md")):
         if path.name in EXCLUDED_DOC_FILENAMES:
             continue
         resolved_path = output_dir / path.name
@@ -468,7 +468,7 @@ def build_validation_gate_index(project_root: Path) -> dict[str, Any]:
         ),
         gate(
             "validate_manuscript",
-            ["manuscript/sheaf", "output/manuscript"],
+            ["docs/manuscript/sheaf", "output/manuscript"],
             ["output/data/sheaf_gluing_certificate.json"],
             "stale_semantic_certificate",
             "uv run python scripts/compose_manuscript.py --validate-only --strict",

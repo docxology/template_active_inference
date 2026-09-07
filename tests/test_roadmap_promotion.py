@@ -443,7 +443,7 @@ def test_cross_track_symbol_table_binds_type_shape_and_section_ontology(project_
     assert pi_row["gnn_term"] == "PolicyPosterior"
     assert pi_row["section_ontology_term"] == "PolicyPosterior"
 
-    ontology_path = project_root / "manuscript" / "sections" / "imrad" / "methods_pymdp" / "ontology.yaml"
+    ontology_path = project_root / "docs" / "manuscript" / "sections" / "imrad" / "methods_pymdp" / "ontology.yaml"
     with temporary_text_mutation(
         ontology_path,
         lambda text: text.replace("pi: PolicyPosterior", "pi: HiddenState"),
@@ -457,7 +457,7 @@ def test_cross_track_symbol_table_binds_type_shape_and_section_ontology(project_
 def test_promoted_scripts_are_configured_between_validation_spine_and_hydration(project_root: Path) -> None:
     from orchestration.pipeline_manifest import DEFAULT_ANALYSIS_SCRIPTS
 
-    configured = yaml.safe_load((project_root / "manuscript" / "config.yaml").read_text(encoding="utf-8"))["analysis"][
+    configured = yaml.safe_load((project_root / "docs" / "manuscript" / "config.yaml").read_text(encoding="utf-8"))["analysis"][
         "scripts"
     ]
     promoted = [

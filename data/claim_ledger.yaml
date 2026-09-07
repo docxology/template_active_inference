@@ -1,7 +1,7 @@
 claims:
 - id: sheaf_registry
   statement: Sheaf track registry is present and drives compose order.
-  path: manuscript/sheaf/tracks.yaml
+  path: docs/manuscript/sheaf/tracks.yaml
   section: methods_sheaf
   tracks:
   - manuscript
@@ -11,7 +11,7 @@ claims:
     predicate: non_empty
 - id: sheaf_manifest
   statement: IMRAD section manifest binds track fragments for composition.
-  path: manuscript/sheaf/manifest.yaml
+  path: docs/manuscript/sheaf/manifest.yaml
   section: methods_sheaf
   tracks:
   - manuscript
@@ -21,7 +21,7 @@ claims:
     predicate: non_empty
 - id: sheaf_coverage_config
   statement: Coverage report and heatmap settings are configurable.
-  path: manuscript/sheaf/coverage.yaml
+  path: docs/manuscript/sheaf/coverage.yaml
   section: sheaf_coverage
   tracks:
   - manuscript
@@ -161,7 +161,7 @@ claims:
     equals: 0
 - id: composed_intro_motivation
   statement: Composed IMRAD introduction subsection exists for PDF pipeline.
-  path: manuscript/02_intro_motivation.md
+  path: docs/manuscript/02_intro_motivation.md
   section: intro_motivation
   tracks:
   - manuscript
@@ -169,7 +169,7 @@ claims:
     predicate: file_exists
 - id: composed_methods_analytical
   statement: Composed Methods analytical subsection exists for PDF pipeline.
-  path: manuscript/05_methods_analytical.md
+  path: docs/manuscript/05_methods_analytical.md
   section: methods_analytical
   tracks:
   - analytical
@@ -178,7 +178,7 @@ claims:
     predicate: file_exists
 - id: composed_results_mi
   statement: Composed Results MI sweep subsection exists for PDF pipeline.
-  path: manuscript/10_results_mi_sweep.md
+  path: docs/manuscript/10_results_mi_sweep.md
   section: results_mi_sweep
   tracks:
   - analytical
@@ -315,7 +315,7 @@ claims:
     predicate: file_exists
 - id: composed_discussion
   statement: Discussion outlook section binds simulation and ontology tracks.
-  path: manuscript/15_discussion_outlook.md
+  path: docs/manuscript/15_discussion_outlook.md
   section: discussion_outlook
   tracks:
   - simulation
@@ -347,7 +347,7 @@ claims:
 - id: composed_methods_sheaf
   statement: Methods sheaf section binds figure, generated layer tables, and semantic
     gluing signposts.
-  path: manuscript/08_methods_sheaf.md
+  path: docs/manuscript/08_methods_sheaf.md
   section: methods_sheaf
   tracks:
   - manuscript

@@ -535,9 +535,9 @@ def test_canonical_track_contract_negative_controls(project_root: Path) -> None:
     from roadmap_tracks import validate_sheaf_track_source_contract
 
     ensure_gate_artifacts(project_root)
-    config_path = project_root / "manuscript" / "config.yaml"
-    manifest_path = project_root / "manuscript" / "sheaf" / "manifest.yaml"
-    registry_path = project_root / "manuscript" / "sheaf" / "tracks.yaml"
+    config_path = project_root / "docs" / "manuscript" / "config.yaml"
+    manifest_path = project_root / "docs" / "manuscript" / "sheaf" / "manifest.yaml"
+    registry_path = project_root / "docs" / "manuscript" / "sheaf" / "tracks.yaml"
     ledger_path = project_root / "data" / "claim_ledger.yaml"
 
     def remove_sheaf_producer(text: str) -> str:

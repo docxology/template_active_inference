@@ -155,7 +155,7 @@ def test_semantic_gluing_rejects_wrong_si_ontology(project_root: Path) -> None:
     from manuscript.sheaf.semantic import validate_semantic_gluing
 
     ensure_gate_artifacts(project_root)
-    ontology_path = project_root / "manuscript" / "sections" / "imrad" / "methods_pymdp" / "ontology.yaml"
+    ontology_path = project_root / "docs" / "manuscript" / "sections" / "imrad" / "methods_pymdp" / "ontology.yaml"
     with temporary_text_mutation(
         ontology_path,
         lambda text: text.replace("pi: PolicyPosterior", "pi: HiddenState"),
@@ -280,7 +280,7 @@ def test_semantic_gluing_rejects_missing_or_malformed_saved_certificate(project_
 def test_dependency_graph_rejects_required_artifact_without_configured_producer(project_root: Path) -> None:
     from manuscript.sheaf.semantic import validate_configured_artifact_producers
 
-    config_path = project_root / "manuscript" / "config.yaml"
+    config_path = project_root / "docs" / "manuscript" / "config.yaml"
     with temporary_text_mutation(
         config_path,
         lambda text: text.replace("    - simulate_si_graph_world.py\n", ""),

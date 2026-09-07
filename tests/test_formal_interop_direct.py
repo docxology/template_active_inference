@@ -98,7 +98,7 @@ def test_ontology_alias_index_has_no_conflicts(project_root: Path) -> None:
 
 def test_ontology_alias_index_reports_conflicting_aliases(tmp_path: Path) -> None:
     for section, term in (("intro", "TermA"), ("methods", "TermB")):
-        section_dir = tmp_path / "manuscript" / "sections" / "imrad" / section
+        section_dir = tmp_path / "docs" / "manuscript" / "sections" / "imrad" / section
         section_dir.mkdir(parents=True)
         (section_dir / "ontology.yaml").write_text(yaml.safe_dump({"terms": {"shared_alias": term}}), encoding="utf-8")
     payload = build_ontology_alias_index(tmp_path)

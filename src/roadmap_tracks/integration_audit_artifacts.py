@@ -172,7 +172,7 @@ def build_artifact_license_audit(project_root: Path) -> dict[str, Any]:
     root = project_root.resolve()
     provenance = _load_json(root / "output" / "data" / "artifact_provenance.json")
     project_license = "MIT"
-    config = load_yaml(root / "manuscript" / "config.yaml")
+    config = load_yaml(root / "docs" / "manuscript" / "config.yaml")
     project_license = str((config.get("metadata") or {}).get("license") or project_license)
     rows = []
     for row in provenance.get("rows") or list((provenance.get("artifacts") or {}).values()):
@@ -183,7 +183,7 @@ def build_artifact_license_audit(project_root: Path) -> dict[str, Any]:
                 "artifact": rel,
                 "license": project_license,
                 "source_kind": "generated_local" if generated else "project_source",
-                "license_safe": generated or rel.startswith(("manuscript/", "src/", "data/", "lean/", "gnn/")),
+                "license_safe": generated or rel.startswith(("docs/manuscript/", "src/", "data/", "lean/", "gnn/")),
                 "producer": row.get("producer", ""),
             }
         )
@@ -239,7 +239,7 @@ def build_scope_boundary_audit(project_root: Path) -> dict[str, Any]:
     rows = []
     violations: list[str] = []
     allowed_future_files = {"15_discussion_outlook.md", "17_conclusion.md"}
-    for path in sorted((root / "manuscript").glob("[0-9][0-9]_*.md")):
+    for path in sorted((root / "docs" / "manuscript").glob("[0-9][0-9]_*.md")):
         text = path.read_text(encoding="utf-8").lower()
         scope_category, matched_phrase = _blocked_scope_match(text)
         forbidden = bool(scope_category)

@@ -22,7 +22,7 @@ def test_coverage_cell_symbol_maps_colors() -> None:
 
 
 def test_track_registry_table_row_count(project_root: Path) -> None:
-    manifest = load_manifest(project_root / "manuscript" / "sheaf" / "manifest.yaml", project_root=project_root)
+    manifest = load_manifest(project_root / "docs" / "manuscript" / "sheaf" / "manifest.yaml", project_root=project_root)
     registry = load_track_registry(project_root / manifest.registry_path)
     table = render_track_registry_table(registry)
     assert "<!-- sheaf-layers:registry -->" in table
@@ -32,7 +32,7 @@ def test_track_registry_table_row_count(project_root: Path) -> None:
 
 
 def test_binding_matrix_totals_use_tokens(project_root: Path) -> None:
-    manifest = load_manifest(project_root / "manuscript" / "sheaf" / "manifest.yaml", project_root=project_root)
+    manifest = load_manifest(project_root / "docs" / "manuscript" / "sheaf" / "manifest.yaml", project_root=project_root)
     registry = load_track_registry(project_root / manifest.registry_path)
     matrix = build_coverage_matrix(registry, manifest, project_root)
     table = render_binding_matrix_table(matrix, manifest, project_root=project_root)

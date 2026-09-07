@@ -48,18 +48,18 @@ def _sha256(path: Path) -> str:
 
 
 def _analysis_scripts(root: Path) -> list[str]:
-    cfg = _load_yaml(root / "manuscript" / "config.yaml")
+    cfg = _load_yaml(root / "docs" / "manuscript" / "config.yaml")
     return [str(script) for script in ((cfg.get("analysis") or {}).get("scripts") or [])]
 
 
 def _registry_tracks(root: Path) -> dict[str, dict[str, Any]]:
-    registry = _load_yaml(root / "manuscript" / "sheaf" / "tracks.yaml")
+    registry = _load_yaml(root / "docs" / "manuscript" / "sheaf" / "tracks.yaml")
     tracks = registry.get("tracks") or {}
     return tracks if isinstance(tracks, dict) else {}
 
 
 def _manifest_sections(root: Path) -> list[dict[str, Any]]:
-    manifest = _load_yaml(root / "manuscript" / "sheaf" / "manifest.yaml")
+    manifest = _load_yaml(root / "docs" / "manuscript" / "sheaf" / "manifest.yaml")
     sections = manifest.get("sections") or []
     return [section for section in sections if isinstance(section, dict)]
 
@@ -134,10 +134,10 @@ def _deterministic_seed(root: Path) -> int:
 
 def _config_digest(root: Path) -> str:
     inputs = (
-        "manuscript/config.yaml",
-        "manuscript/sheaf/manifest.yaml",
-        "manuscript/sheaf/tracks.yaml",
-        "manuscript/sheaf/coverage.yaml",
+        "docs/manuscript/config.yaml",
+        "docs/manuscript/sheaf/manifest.yaml",
+        "docs/manuscript/sheaf/tracks.yaml",
+        "docs/manuscript/sheaf/coverage.yaml",
         "tracks.yaml",
         "figures.yaml",
         "pymdp.yaml",

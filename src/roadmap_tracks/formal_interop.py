@@ -289,7 +289,7 @@ def build_ontology_alias_index(project_root: Path) -> dict[str, Any]:
     rows = []
     conflicts: list[str] = []
     seen: dict[str, str] = {}
-    for path in sorted((root / "manuscript" / "sections" / "imrad").glob("*/ontology.yaml")):
+    for path in sorted((root / "docs" / "manuscript" / "sections" / "imrad").glob("*/ontology.yaml")):
         section = path.parent.name
         for alias, term in sorted(load_section_ontology(path).items()):
             prior = seen.get(alias)

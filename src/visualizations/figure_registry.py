@@ -121,7 +121,7 @@ def render_figure_markdown(
     """Render figure markdown."""
     del figure_number, caption_prefix
     spec = load_figure_registry(project_root)[figure_id]
-    rel = f"../output/figures/{spec.filename}"
+    rel = f"../../output/figures/{spec.filename}"
     alt = spec.alt
     caption = spec.caption
     if variables:

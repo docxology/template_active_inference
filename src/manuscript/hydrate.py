@@ -93,13 +93,13 @@ def substitute_snake_case_tokens(
 
 def retarget_resolved_output_links(text: str) -> str:
     """Retarget output links for hydrated copies under output/manuscript/."""
-    return text.replace("](../output/", "](../").replace("](<../output/", "](<../")
+    return text.replace("](../../output/", "](../").replace("](<../../output/", "](<../")
 
 
 def write_resolved_manuscript(project_root: Path, variables: dict[str, Any]) -> Path:
     """Write token-substituted markdown copies to output/manuscript/."""
     root = project_root.resolve()
-    manuscript_dir = root / "manuscript"
+    manuscript_dir = root / "docs" / "manuscript"
     out_dir = root / "output" / "manuscript"
     out_dir.mkdir(parents=True, exist_ok=True)
     string_vars = format_variables(variables)

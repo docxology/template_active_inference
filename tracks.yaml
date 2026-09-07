@@ -1,9 +1,9 @@
 # Pipeline track gates and artifact contract.
-# Sheaf fragment registry (compose order/renderers): manuscript/sheaf/tracks.yaml
+# Sheaf fragment registry (compose order/renderers): docs/manuscript/sheaf/tracks.yaml
 
 sheaf:
-  registry: manuscript/sheaf/tracks.yaml
-  manifest: manuscript/sheaf/manifest.yaml
+  registry: docs/manuscript/sheaf/tracks.yaml
+  manifest: docs/manuscript/sheaf/manifest.yaml
   composer: scripts/compose_manuscript.py
 
 tracks:
@@ -168,7 +168,7 @@ tracks:
     required: false
   - id: manuscript
     label: Sheaf composer and registry
-    paths: [src/manuscript, manuscript/sheaf, figures.yaml]
+    paths: [src/manuscript, docs/manuscript/sheaf, figures.yaml]
     gate: validate_manuscript
     required: true
 

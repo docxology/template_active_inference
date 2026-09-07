@@ -26,8 +26,8 @@ import pytest
 import yaml
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-PREAMBLE = PROJECT_ROOT / "manuscript" / "preamble.md"
-CONFIG = PROJECT_ROOT / "manuscript" / "config.yaml"
+PREAMBLE = PROJECT_ROOT / "docs" / "manuscript" / "preamble.md"
+CONFIG = PROJECT_ROOT / "docs" / "manuscript" / "config.yaml"
 
 
 def _fenced_latex(preamble_text: str) -> str:

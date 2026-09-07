@@ -185,8 +185,8 @@ def test_reproducibility_replay_rejects_stale_saved_hash(project_root: Path) -> 
 
 
 def test_validation_spine_tracks_are_registered_and_bound(project_root: Path) -> None:
-    registry = yaml.safe_load((project_root / "manuscript" / "sheaf" / "tracks.yaml").read_text(encoding="utf-8"))
-    manifest = yaml.safe_load((project_root / "manuscript" / "sheaf" / "manifest.yaml").read_text(encoding="utf-8"))
+    registry = yaml.safe_load((project_root / "docs" / "manuscript" / "sheaf" / "tracks.yaml").read_text(encoding="utf-8"))
+    manifest = yaml.safe_load((project_root / "docs" / "manuscript" / "sheaf" / "manifest.yaml").read_text(encoding="utf-8"))
 
     assert {"provenance", "replay_matrix", "counterexample", "adversarial_audit"} <= set(registry["tracks"])
     by_id = {section["id"]: section for section in manifest["sections"]}
@@ -199,7 +199,7 @@ def test_validation_spine_tracks_are_registered_and_bound(project_root: Path) ->
 def test_validation_spine_script_is_in_configured_analysis_dag(project_root: Path) -> None:
     from orchestration.pipeline_manifest import DEFAULT_ANALYSIS_SCRIPTS
 
-    config = yaml.safe_load((project_root / "manuscript" / "config.yaml").read_text(encoding="utf-8"))
+    config = yaml.safe_load((project_root / "docs" / "manuscript" / "config.yaml").read_text(encoding="utf-8"))
     configured = config["analysis"]["scripts"]
 
     assert "generate_validation_spine.py" in configured

@@ -38,8 +38,8 @@ def test_coverage_matrix_colors() -> None:
 
 def test_heatmap_writes_png(tmp_path: Path) -> None:
     root = Path(__file__).resolve().parents[1]
-    manifest = load_manifest(root / "manuscript" / "sheaf" / "manifest.yaml")
-    registry = load_track_registry(root / "manuscript" / "sheaf" / "tracks.yaml")
+    manifest = load_manifest(root / "docs" / "manuscript" / "sheaf" / "manifest.yaml")
+    registry = load_track_registry(root / "docs" / "manuscript" / "sheaf" / "tracks.yaml")
     matrix = build_coverage_matrix(registry, manifest, root)
     json_out = tmp_path / "output" / "data" / "sheaf_coverage_matrix.json"
     write_coverage_json(matrix, json_out)
@@ -74,8 +74,8 @@ def test_coverage_json_has_zero_gray_on_clean_tree() -> None:
     json_path = emit_coverage_artifacts(root)
     data = load_coverage_json(json_path)
     assert gray_cell_count_from_json(data) == 0
-    manifest = load_manifest(root / "manuscript" / "sheaf" / "manifest.yaml")
-    registry = load_track_registry(root / "manuscript" / "sheaf" / "tracks.yaml")
+    manifest = load_manifest(root / "docs" / "manuscript" / "sheaf" / "manifest.yaml")
+    registry = load_track_registry(root / "docs" / "manuscript" / "sheaf" / "tracks.yaml")
     issues = validate_coverage_json_data(data, manifest, registry)
     assert not any(i.level == "error" for i in issues)
 

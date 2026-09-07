@@ -7,13 +7,13 @@ claim pass; regenerate the producer that owns the artifact.
 
 ## Authored surfaces
 
-- `manuscript/sections/imrad/**` contains editable section fragments.
-- `manuscript/sheaf/tracks.yaml` declares fragment types, renderers, and order.
-- `manuscript/sheaf/manifest.yaml` binds fragments to IMRAD rows.
+- `docs/manuscript/sections/imrad/**` contains editable section fragments.
+- `docs/manuscript/sheaf/tracks.yaml` declares fragment types, renderers, and order.
+- `docs/manuscript/sheaf/manifest.yaml` binds fragments to IMRAD rows.
 - `tracks.yaml` declares pipeline tracks, gates, and extension artifacts.
 - `figures.yaml` is the source of truth for figure ids, captions, alt text,
   widths, and section bindings.
-- `manuscript/refs/labels.yaml` is intentionally absent; it was a stale second
+- `docs/manuscript/refs/labels.yaml` is intentionally absent; it was a stale second
   figure registry. Figure labels are declared only by `figures.yaml` and
   materialized in `output/figures/figure_registry.json`.
 - `pymdp.yaml`, `domain_profile.yaml`, and `data/claim_ledger.yaml` define
@@ -27,7 +27,7 @@ claim pass; regenerate the producer that owns the artifact.
   contract index. It binds generated artifacts to producers, configured scripts,
   pipeline/sheaf lanes, manuscript consumers, claim predicates, validators,
   negative controls, freshness fields, and copied-root parity.
-- `manuscript/0*.md`, except hand-authored front/back matter, are composed from
+- `docs/manuscript/0*.md`, except hand-authored front/back matter, are composed from
   sheaf fragments by `scripts/compose_manuscript.py`.
 - `output/manuscript/*.md` is hydrated from composed manuscript sections plus
   `output/data/manuscript_variables.json`.
@@ -97,7 +97,7 @@ bridge sources are missing. `output/data/statistical_visualization_bridge.json`
 expands those marked rows into a sheaf/scholarship crosswalk with manuscript
 sections, registered tracks, statistical source links, and the manuscript
 sections that actually reference each statistically backed figure. Each
-referenced section is resolved back through `manuscript/sheaf/manifest.yaml`,
+referenced section is resolved back through `docs/manuscript/sheaf/manifest.yaml`,
 and validation requires the section to carry a `visualization` track binding.
 
 ### What "reproducible" means for a figure

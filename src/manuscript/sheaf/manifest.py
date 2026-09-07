@@ -37,12 +37,14 @@ def load_manifest(
     """Load manifest from a file."""
     manifest_path = manifest_path.resolve()
     if project_root is not None:
-        root = project_root.resolve()
+        registry = registry_path or (project_root.resolve() / DEFAULT_REGISTRY_REL)
     elif manifest_path.parent.name == "sheaf" and manifest_path.parent.parent.name == "manuscript":
-        root = manifest_path.parent.parent.parent
+        # <root>/docs/manuscript/sheaf/manifest.yaml: the registry sits beside
+        # the manifest, so resolve it relative to the manuscript directory
+        # instead of assuming a repo-root-relative DEFAULT_REGISTRY_REL.
+        registry = registry_path or (manifest_path.parent.parent / "sheaf" / "tracks.yaml")
     else:
-        root = manifest_path.parent
-    registry = registry_path or (root / DEFAULT_REGISTRY_REL)
+        registry = registry_path or (manifest_path.parent / DEFAULT_REGISTRY_REL)
     raw = load_yaml(manifest_path)
     defaults_raw = raw.get("defaults") or {}
     manifest_defaults = SheafDefaults(

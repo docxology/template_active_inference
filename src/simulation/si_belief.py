@@ -7,7 +7,7 @@ import numpy as np
 
 def marginal_state_belief(qs: list) -> np.ndarray:
     """Process marginal state belief."""
-    if not qs:
+    if len(qs) == 0:
         raise ValueError("state belief must contain at least one factor")
     q = np.asarray(qs[0], dtype=np.float64)
     q = np.squeeze(q)

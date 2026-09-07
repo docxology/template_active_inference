@@ -65,9 +65,9 @@ def test_row_key_is_identity_tuple() -> None:
 
 
 def test_section_id_from_path_imrad_and_numeric_prefix(tmp_path: Path) -> None:
-    imrad_path = tmp_path / "manuscript" / "sections" / "imrad" / "methods_pymdp" / "01_body.md"
+    imrad_path = tmp_path / "docs" / "manuscript" / "sections" / "imrad" / "methods_pymdp" / "01_body.md"
     assert _section_id_from_path(tmp_path, imrad_path) == "methods_pymdp"
-    numeric_path = tmp_path / "manuscript" / "03_02_results.md"
+    numeric_path = tmp_path / "docs" / "manuscript" / "03_02_results.md"
     assert _section_id_from_path(tmp_path, numeric_path) == "results"
 
 
@@ -96,7 +96,7 @@ def test_build_matrix_connects_all_configured_sources(copied_root: Path) -> None
     assert payload["all_sources_connected"] is True
 
     # forcing-false control: without the bibliography no row can be connected
-    bib = copied_root / "manuscript" / "references.bib"
+    bib = copied_root / "docs" / "manuscript" / "references.bib"
     original = bib.read_bytes()
     try:
         bib.unlink()

@@ -76,14 +76,14 @@ def validate_all_gnn_ontology(project_root: Path) -> list[str]:
     checks = (
         (
             root / "gnn" / "bernoulli_toy.gnn.md",
-            root / "manuscript" / "sections" / "imrad" / "methods_analytical" / "ontology.yaml",
+            root / "docs" / "manuscript" / "sections" / "imrad" / "methods_analytical" / "ontology.yaml",
             BERNOULLI_SYMBOL_MAP,
             BERNOULLI_EXPECTED_TERMS,
             "bernoulli_toy",
         ),
         (
             root / "gnn" / "si_tmaze.gnn.md",
-            root / "manuscript" / "sections" / "imrad" / "methods_pymdp" / "ontology.yaml",
+            root / "docs" / "manuscript" / "sections" / "imrad" / "methods_pymdp" / "ontology.yaml",
             SI_SYMBOL_MAP,
             SI_EXPECTED_TERMS,
             "si_tmaze",

@@ -20,7 +20,7 @@ def _rel(root: Path, path: Path) -> str:
 
 
 def _configured_analysis_scripts(root: Path) -> list[str]:
-    config_path = root / "manuscript" / "config.yaml"
+    config_path = root / "docs" / "manuscript" / "config.yaml"
     data = load_yaml(config_path)
     analysis = data.get("analysis") or {}
     scripts = analysis.get("scripts") or []

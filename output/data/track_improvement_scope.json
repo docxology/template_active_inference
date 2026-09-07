@@ -109,10 +109,10 @@
       "track_id": "evidence_fields"
     },
     {
-      "current_proof": "manuscript/sheaf/manifest.yaml",
+      "current_proof": "docs/manuscript/sheaf/manifest.yaml",
       "gate_or_predicate": "validate_manuscript",
       "negative_control": "missing_fragment_coverage",
-      "next_proving_artifact": "manuscript/sheaf/manifest.yaml",
+      "next_proving_artifact": "docs/manuscript/sheaf/manifest.yaml",
       "priority": "medium",
       "scope_boundary": "deterministic toy-only",
       "status": "live",
@@ -209,10 +209,10 @@
       "track_id": "proof_extraction"
     },
     {
-      "current_proof": "manuscript/sheaf/manifest.yaml",
+      "current_proof": "docs/manuscript/sheaf/manifest.yaml",
       "gate_or_predicate": "validate_manuscript",
       "negative_control": "missing_fragment_coverage",
-      "next_proving_artifact": "manuscript/sheaf/manifest.yaml",
+      "next_proving_artifact": "docs/manuscript/sheaf/manifest.yaml",
       "priority": "medium",
       "scope_boundary": "deterministic toy-only",
       "status": "live",
@@ -674,7 +674,7 @@
       "versioned_track_id": false
     },
     {
-      "artifact": "manuscript/sheaf/manifest.yaml",
+      "artifact": "docs/manuscript/sheaf/manifest.yaml",
       "artifact_exists": true,
       "claim_ids": [],
       "has_artifact": true,
@@ -969,7 +969,7 @@
       "versioned_track_id": false
     },
     {
-      "artifact": "manuscript/sheaf/manifest.yaml",
+      "artifact": "docs/manuscript/sheaf/manifest.yaml",
       "artifact_exists": true,
       "claim_ids": [],
       "has_artifact": true,

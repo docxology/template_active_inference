@@ -152,7 +152,7 @@ def test_source_contract_flags_bare_skeleton(tmp_path: Path) -> None:
 
 def test_source_contract_flags_versioned_and_empirical_promotion(tmp_path: Path) -> None:
     """A crafted registry trips the versioned-id and empirical-adapter guards."""
-    sheaf_dir = tmp_path / "manuscript" / "sheaf"
+    sheaf_dir = tmp_path / "docs" / "manuscript" / "sheaf"
     sheaf_dir.mkdir(parents=True, exist_ok=True)
     (sheaf_dir / "tracks.yaml").write_text(
         yaml.safe_dump({"tracks": {"provenance_v2": {}, "empirical_adapter": {}}}),

@@ -48,7 +48,7 @@ def _track_artifact(track_id: str) -> str:
         "benchmark": "output/data/toy_benchmark_matrix.json",
         "gnn": "output/reports/gnn_lint_report.json",
         "lean": "output/reports/lean_theorem_inventory.json",
-        "manuscript": "manuscript/sheaf/manifest.yaml",
+        "manuscript": "docs/manuscript/sheaf/manifest.yaml",
         "manuscript_staleness": "output/reports/manuscript_staleness_report.json",
         "ontology": "output/data/ontology_profile_matrix.json",
         "pymdp": "output/data/si_policy_comparison.json",
@@ -65,11 +65,11 @@ def _track_artifact(track_id: str) -> str:
         "release_notes": CANONICAL_ARTIFACTS["release_notes"],
         "scholarship": CANONICAL_ARTIFACTS["scholarship"],
         "security_posture": CANONICAL_ARTIFACTS["security_posture"],
-        "prose": "manuscript/sheaf/manifest.yaml",
-        "formalism": "manuscript/sheaf/manifest.yaml",
+        "prose": "docs/manuscript/sheaf/manifest.yaml",
+        "formalism": "docs/manuscript/sheaf/manifest.yaml",
         "layers": "output/data/sheaf_coverage_matrix.json",
     }
-    return artifacts.get(track_id, "manuscript/sheaf/manifest.yaml")
+    return artifacts.get(track_id, "docs/manuscript/sheaf/manifest.yaml")
 
 
 def _pipeline_sheaf_tracks(track: dict[str, Any], registry: dict[str, dict[str, Any]]) -> list[str]:

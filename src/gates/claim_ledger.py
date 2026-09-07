@@ -296,7 +296,7 @@ def validate_claim_ledger(project_root: Path) -> bool:
     )
 
     ledger = load_yaml(ledger_path)
-    manifest_path = root / "manuscript" / "sheaf" / "manifest.yaml"
+    manifest_path = root / "docs" / "manuscript" / "sheaf" / "manifest.yaml"
     manifest = load_manifest(manifest_path, project_root=root) if manifest_path.exists() else None
     registry = (
         load_track_registry(root / manifest.registry_path)
@@ -355,7 +355,7 @@ def verify_claim_bindings(project_root: Path) -> list[str]:
                 f"pymdp mode mismatch: config mode={cfg_mode!r} but recorded rollout mode={summary_mode!r}"
             )
 
-    invariants_section = root / "manuscript" / "13_results_invariants.md"
+    invariants_section = root / "docs" / "manuscript" / "13_results_invariants.md"
     if invariants_section.is_file() and "merged" in invariants_section.read_text(encoding="utf-8").lower():
         from manuscript.invariant_counts import invariants_are_merged
 

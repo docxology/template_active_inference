@@ -3,7 +3,7 @@
   "field_count": 97,
   "rows": [
     {
-      "artifact": "manuscript/sheaf/tracks.yaml",
+      "artifact": "docs/manuscript/sheaf/tracks.yaml",
       "claim_id": "sheaf_registry",
       "edge_kind": "claim_field_to_artifact",
       "field": "tracks",
@@ -11,7 +11,7 @@
       "jsonpath": "$.tracks",
       "manuscript_section": "methods_sheaf",
       "semantic_restriction": "sheaf_registry_evidence_field_present",
-      "source_artifact": "manuscript/sheaf/tracks.yaml",
+      "source_artifact": "docs/manuscript/sheaf/tracks.yaml",
       "token_count": 0,
       "tokens": [],
       "tracks": [
@@ -25,7 +25,7 @@
       ]
     },
     {
-      "artifact": "manuscript/sheaf/manifest.yaml",
+      "artifact": "docs/manuscript/sheaf/manifest.yaml",
       "claim_id": "sheaf_manifest",
       "edge_kind": "claim_field_to_artifact",
       "field": "sections",
@@ -33,7 +33,7 @@
       "jsonpath": "$.sections",
       "manuscript_section": "methods_sheaf",
       "semantic_restriction": "sheaf_manifest_evidence_field_present",
-      "source_artifact": "manuscript/sheaf/manifest.yaml",
+      "source_artifact": "docs/manuscript/sheaf/manifest.yaml",
       "token_count": 0,
       "tokens": [],
       "tracks": [
@@ -47,7 +47,7 @@
       ]
     },
     {
-      "artifact": "manuscript/sheaf/coverage.yaml",
+      "artifact": "docs/manuscript/sheaf/coverage.yaml",
       "claim_id": "sheaf_coverage_config",
       "edge_kind": "claim_field_to_artifact",
       "field": "heatmap",
@@ -55,7 +55,7 @@
       "jsonpath": "$.heatmap",
       "manuscript_section": "sheaf_coverage",
       "semantic_restriction": "sheaf_coverage_config_evidence_field_present",
-      "source_artifact": "manuscript/sheaf/coverage.yaml",
+      "source_artifact": "docs/manuscript/sheaf/coverage.yaml",
       "token_count": 0,
       "tokens": [],
       "tracks": [
@@ -352,7 +352,7 @@
       ]
     },
     {
-      "artifact": "manuscript/02_intro_motivation.md",
+      "artifact": "docs/manuscript/02_intro_motivation.md",
       "claim_id": "composed_intro_motivation",
       "edge_kind": "claim_field_to_artifact",
       "field": "",
@@ -360,7 +360,7 @@
       "jsonpath": "$",
       "manuscript_section": "intro_motivation",
       "semantic_restriction": "composed_intro_motivation_evidence_field_present",
-      "source_artifact": "manuscript/02_intro_motivation.md",
+      "source_artifact": "docs/manuscript/02_intro_motivation.md",
       "token_count": 0,
       "tokens": [],
       "tracks": [
@@ -373,7 +373,7 @@
       ]
     },
     {
-      "artifact": "manuscript/05_methods_analytical.md",
+      "artifact": "docs/manuscript/05_methods_analytical.md",
       "claim_id": "composed_methods_analytical",
       "edge_kind": "claim_field_to_artifact",
       "field": "",
@@ -381,7 +381,7 @@
       "jsonpath": "$",
       "manuscript_section": "methods_analytical",
       "semantic_restriction": "composed_methods_analytical_evidence_field_present",
-      "source_artifact": "manuscript/05_methods_analytical.md",
+      "source_artifact": "docs/manuscript/05_methods_analytical.md",
       "token_count": 0,
       "tokens": [],
       "tracks": [
@@ -395,7 +395,7 @@
       ]
     },
     {
-      "artifact": "manuscript/10_results_mi_sweep.md",
+      "artifact": "docs/manuscript/10_results_mi_sweep.md",
       "claim_id": "composed_results_mi",
       "edge_kind": "claim_field_to_artifact",
       "field": "",
@@ -403,7 +403,7 @@
       "jsonpath": "$",
       "manuscript_section": "results_mi_sweep",
       "semantic_restriction": "composed_results_mi_evidence_field_present",
-      "source_artifact": "manuscript/10_results_mi_sweep.md",
+      "source_artifact": "docs/manuscript/10_results_mi_sweep.md",
       "token_count": 0,
       "tokens": [],
       "tracks": [
@@ -869,7 +869,7 @@
       ]
     },
     {
-      "artifact": "manuscript/15_discussion_outlook.md",
+      "artifact": "docs/manuscript/15_discussion_outlook.md",
       "claim_id": "composed_discussion",
       "edge_kind": "claim_field_to_artifact",
       "field": "",
@@ -877,7 +877,7 @@
       "jsonpath": "$",
       "manuscript_section": "discussion_outlook",
       "semantic_restriction": "composed_discussion_evidence_field_present",
-      "source_artifact": "manuscript/15_discussion_outlook.md",
+      "source_artifact": "docs/manuscript/15_discussion_outlook.md",
       "token_count": 0,
       "tokens": [],
       "tracks": [
@@ -938,7 +938,7 @@
       ]
     },
     {
-      "artifact": "manuscript/08_methods_sheaf.md",
+      "artifact": "docs/manuscript/08_methods_sheaf.md",
       "claim_id": "composed_methods_sheaf",
       "edge_kind": "claim_field_to_artifact",
       "field": "",
@@ -946,7 +946,7 @@
       "jsonpath": "$",
       "manuscript_section": "methods_sheaf",
       "semantic_restriction": "composed_methods_sheaf_evidence_field_present",
-      "source_artifact": "manuscript/08_methods_sheaf.md",
+      "source_artifact": "docs/manuscript/08_methods_sheaf.md",
       "token_count": 0,
       "tokens": [],
       "tracks": [

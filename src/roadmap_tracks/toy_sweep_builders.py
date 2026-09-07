@@ -87,7 +87,7 @@ def build_analytical_assumption_index(project_root: Path) -> dict[str, Any]:
         {
             "equation_id": "eq:entangled_joint",
             "symbol": "q_lambda(pi)",
-            "source": "manuscript/sections/imrad/methods_analytical/formalism.md",
+            "source": "docs/manuscript/sections/imrad/methods_analytical/formalism.md",
             "model": "bernoulli_ising",
             "assumptions": [
                 "binary_policy_space",
@@ -101,7 +101,7 @@ def build_analytical_assumption_index(project_root: Path) -> dict[str, Any]:
         {
             "equation_id": "mi_closed_form",
             "symbol": "I(lambda)",
-            "source": "manuscript/sections/imrad/methods_analytical/formalism.md",
+            "source": "docs/manuscript/sections/imrad/methods_analytical/formalism.md",
             "model": "bernoulli_ising",
             "assumptions": [
                 "binary_policy_space",

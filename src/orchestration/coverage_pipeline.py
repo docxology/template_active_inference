@@ -13,8 +13,8 @@ def _coverage_input_paths(project_root: Path) -> list[Path]:
     return [
         p
         for p in (
-            root / "manuscript" / "sheaf" / "manifest.yaml",
-            root / "manuscript" / "sheaf" / "tracks.yaml",
+            root / "docs" / "manuscript" / "sheaf" / "manifest.yaml",
+            root / "docs" / "manuscript" / "sheaf" / "tracks.yaml",
         )
         if p.is_file()
     ]
@@ -77,7 +77,7 @@ def ensure_coverage_artifacts(
     elif render_heatmap and png_out_path.is_file():
         png_out = png_out_path
 
-    page_path = root / "manuscript" / "00_00_sheaf_coverage.md"
+    page_path = root / "docs" / "manuscript" / "00_00_sheaf_coverage.md"
     page_out: Path | None = None
     if write_page and (force or _is_stale(page_path, [json_out])):
         page_out = write_coverage_page(root)

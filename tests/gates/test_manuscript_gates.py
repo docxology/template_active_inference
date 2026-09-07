@@ -63,7 +63,7 @@ def test_validate_manuscript_methods_sheaf_layers_negative(
     project_root: Path,
     composed_methods_sheaf: Path,
 ) -> None:
-    path = project_root / "manuscript" / "08_methods_sheaf.md"
+    path = project_root / "docs" / "manuscript" / "08_methods_sheaf.md"
     original = path.read_text(encoding="utf-8")
     try:
         path.write_text(original.replace("<!-- sheaf-layers:registry -->", ""), encoding="utf-8")
@@ -88,7 +88,7 @@ def test_validate_manuscript_methods_sheaf_layers_negative_markers(
     needle: str,
     replacement: str,
 ) -> None:
-    path = project_root / "manuscript" / "08_methods_sheaf.md"
+    path = project_root / "docs" / "manuscript" / "08_methods_sheaf.md"
     original = path.read_text(encoding="utf-8")
     try:
         path.write_text(original.replace(needle, replacement), encoding="utf-8")
@@ -99,7 +99,7 @@ def test_validate_manuscript_methods_sheaf_layers_negative_markers(
 
 
 def test_validate_manuscript_full_sheaf_appendix_tracks_negative(project_root: Path) -> None:
-    path = project_root / "manuscript" / "16_appendix_full_sheaf.md"
+    path = project_root / "docs" / "manuscript" / "16_appendix_full_sheaf.md"
     original = path.read_text(encoding="utf-8")
     try:
         path.write_text(original.replace("sheaf-track:prose", "sheaf-track:broken"), encoding="utf-8")
@@ -169,7 +169,7 @@ def test_validate_manuscript_tokens_registered_negative(project_root: Path, tmp_
     from manuscript.hydrate import validate_manuscript_tokens
     from manuscript.variables import generate_variables
 
-    manuscript = tmp_path / "manuscript"
+    manuscript = tmp_path / "docs" / "manuscript"
     manuscript.mkdir()
     (manuscript / "00_abstract.md").write_text("{{not_a_registered_token}}\n", encoding="utf-8")
 
@@ -183,7 +183,7 @@ def test_validate_manuscript_tokens_registered_negative(project_root: Path, tmp_
 
 def test_validate_manuscript_duplicate_track_marker_negative(project_root: Path) -> None:
     """A composed section with a doubled sheaf-track marker must fail the gate."""
-    path = project_root / "manuscript" / "sections" / "imrad" / "methods_lean" / "lean.md"
+    path = project_root / "docs" / "manuscript" / "sections" / "imrad" / "methods_lean" / "lean.md"
     original = path.read_text(encoding="utf-8")
     marker = "<!-- sheaf-track:lean -->"
     try:

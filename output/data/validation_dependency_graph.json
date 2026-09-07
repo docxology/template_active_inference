@@ -11176,17 +11176,17 @@
     },
     {
       "kind": "artifact_field_to_rendered_target",
-      "source": "manuscript/sheaf/tracks.yaml",
+      "source": "docs/manuscript/sheaf/tracks.yaml",
       "target": "methods_sheaf"
     },
     {
       "kind": "artifact_field_to_rendered_target",
-      "source": "manuscript/sheaf/manifest.yaml",
+      "source": "docs/manuscript/sheaf/manifest.yaml",
       "target": "methods_sheaf"
     },
     {
       "kind": "artifact_field_to_rendered_target",
-      "source": "manuscript/sheaf/coverage.yaml",
+      "source": "docs/manuscript/sheaf/coverage.yaml",
       "target": "sheaf_coverage"
     },
     {
@@ -11251,17 +11251,17 @@
     },
     {
       "kind": "artifact_field_to_rendered_target",
-      "source": "manuscript/02_intro_motivation.md",
+      "source": "docs/manuscript/02_intro_motivation.md",
       "target": "intro_motivation"
     },
     {
       "kind": "artifact_field_to_rendered_target",
-      "source": "manuscript/05_methods_analytical.md",
+      "source": "docs/manuscript/05_methods_analytical.md",
       "target": "methods_analytical"
     },
     {
       "kind": "artifact_field_to_rendered_target",
-      "source": "manuscript/10_results_mi_sweep.md",
+      "source": "docs/manuscript/10_results_mi_sweep.md",
       "target": "results_mi_sweep"
     },
     {
@@ -11326,7 +11326,7 @@
     },
     {
       "kind": "artifact_field_to_rendered_target",
-      "source": "manuscript/15_discussion_outlook.md",
+      "source": "docs/manuscript/15_discussion_outlook.md",
       "target": "discussion_outlook"
     },
     {
@@ -11341,7 +11341,7 @@
     },
     {
       "kind": "artifact_field_to_rendered_target",
-      "source": "manuscript/08_methods_sheaf.md",
+      "source": "docs/manuscript/08_methods_sheaf.md",
       "target": "methods_sheaf"
     },
     {
@@ -11732,7 +11732,7 @@
     {
       "kind": "figure_to_source",
       "source": "gnn_ontology_concordance",
-      "target": "manuscript/sections/imrad"
+      "target": "docs/manuscript/sections/imrad"
     },
     {
       "kind": "figure_to_source",
@@ -11757,7 +11757,7 @@
     {
       "kind": "figure_to_source",
       "source": "multi_track_architecture",
-      "target": "manuscript/sheaf/tracks.yaml"
+      "target": "docs/manuscript/sheaf/tracks.yaml"
     },
     {
       "kind": "figure_to_source",
@@ -11777,7 +11777,7 @@
     {
       "kind": "figure_to_source",
       "source": "scholarship_source_map",
-      "target": "manuscript/references.bib"
+      "target": "docs/manuscript/references.bib"
     },
     {
       "kind": "figure_to_source",
@@ -12242,7 +12242,7 @@
   ],
   "field_edges": [
     {
-      "artifact": "manuscript/sheaf/tracks.yaml",
+      "artifact": "docs/manuscript/sheaf/tracks.yaml",
       "claim_id": "sheaf_registry",
       "jsonpath": "$.tracks",
       "kind": "claim_field_to_artifact",
@@ -12251,7 +12251,7 @@
       "validator": "validate_outputs"
     },
     {
-      "artifact": "manuscript/sheaf/manifest.yaml",
+      "artifact": "docs/manuscript/sheaf/manifest.yaml",
       "claim_id": "sheaf_manifest",
       "jsonpath": "$.sections",
       "kind": "claim_field_to_artifact",
@@ -12260,7 +12260,7 @@
       "validator": "validate_outputs"
     },
     {
-      "artifact": "manuscript/sheaf/coverage.yaml",
+      "artifact": "docs/manuscript/sheaf/coverage.yaml",
       "claim_id": "sheaf_coverage_config",
       "jsonpath": "$.heatmap",
       "kind": "claim_field_to_artifact",
@@ -12377,7 +12377,7 @@
       "validator": "validate_manuscript"
     },
     {
-      "artifact": "manuscript/02_intro_motivation.md",
+      "artifact": "docs/manuscript/02_intro_motivation.md",
       "claim_id": "composed_intro_motivation",
       "jsonpath": "$",
       "kind": "claim_field_to_artifact",
@@ -12386,7 +12386,7 @@
       "validator": "validate_outputs"
     },
     {
-      "artifact": "manuscript/05_methods_analytical.md",
+      "artifact": "docs/manuscript/05_methods_analytical.md",
       "claim_id": "composed_methods_analytical",
       "jsonpath": "$",
       "kind": "claim_field_to_artifact",
@@ -12395,7 +12395,7 @@
       "validator": "validate_outputs"
     },
     {
-      "artifact": "manuscript/10_results_mi_sweep.md",
+      "artifact": "docs/manuscript/10_results_mi_sweep.md",
       "claim_id": "composed_results_mi",
       "jsonpath": "$",
       "kind": "claim_field_to_artifact",
@@ -12512,7 +12512,7 @@
       "validator": "validate_outputs"
     },
     {
-      "artifact": "manuscript/15_discussion_outlook.md",
+      "artifact": "docs/manuscript/15_discussion_outlook.md",
       "claim_id": "composed_discussion",
       "jsonpath": "$",
       "kind": "claim_field_to_artifact",
@@ -12539,7 +12539,7 @@
       "validator": "validate_manuscript"
     },
     {
-      "artifact": "manuscript/08_methods_sheaf.md",
+      "artifact": "docs/manuscript/08_methods_sheaf.md",
       "claim_id": "composed_methods_sheaf",
       "jsonpath": "$",
       "kind": "claim_field_to_artifact",

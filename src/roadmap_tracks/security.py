@@ -12,8 +12,8 @@ from json_io import write_json as _write_json
 SECURITY_POSTURE_SCHEMA = "template_active_inference.security_posture_audit.v1"
 
 SOURCE_SENTINEL = "project_source_tree"
-SCAN_ROOTS = ("src", "scripts", "tests", "manuscript", "data", "lean", "gnn")
-SCAN_FILES = ("pyproject.toml", "tracks.yaml", "figures.yaml", "pymdp.yaml", "manuscript/config.yaml")
+SCAN_ROOTS = ("src", "scripts", "tests", "docs", "data", "lean", "gnn")
+SCAN_FILES = ("pyproject.toml", "tracks.yaml", "figures.yaml", "pymdp.yaml", "docs/manuscript/config.yaml")
 SCAN_SUFFIXES = {".py", ".md", ".yaml", ".yml", ".toml", ".lean", ".json"}
 
 SECRET_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (

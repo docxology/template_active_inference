@@ -27,12 +27,12 @@
       "id": "validate_manuscript",
       "indexed": true,
       "inputs": [
-        "manuscript/sheaf",
+        "docs/manuscript/sheaf",
         "output/manuscript"
       ],
       "negative_control_id": "stale_semantic_certificate",
       "required_inputs": [
-        "manuscript/sheaf",
+        "docs/manuscript/sheaf",
         "output/manuscript"
       ]
     },

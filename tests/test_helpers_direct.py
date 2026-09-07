@@ -250,7 +250,7 @@ class TestSheafTracksIOConfigDigest:
         assert _config_digest(tmp_path) == d
 
     def test_digest_changes_when_file_content_changes(self, tmp_path: Path) -> None:
-        cfg_dir = tmp_path / "manuscript"
+        cfg_dir = tmp_path / "docs" / "manuscript"
         cfg_dir.mkdir(parents=True)
         cfg = cfg_dir / "config.yaml"
         cfg.write_text("key: value\n")

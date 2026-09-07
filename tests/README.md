@@ -1,7 +1,7 @@
 # Tests
 
 Project test suite for the multi-track Active Inference exemplar. Track counts are
-registry-backed (`tracks.yaml`, `manuscript/sheaf/tracks.yaml`); tests should pin
+registry-backed (`tracks.yaml`, `docs/manuscript/sheaf/tracks.yaml`); tests should pin
 behaviour and generated contracts, not copied numeric prose. Use real numerical
 computations and fixed seeds rather than mocks.
 
@@ -72,10 +72,8 @@ other state-free modules above.
 
 ## Slow full-suite gates
 
-The canonical full-suite evidence line lives in `TODO.md`; live pass counts
-and measured coverage are tracked in
-[`docs/_generated/COUNTS.md`](../../../../docs/_generated/COUNTS.md), so no
-suite counts or timings are pinned in this file. The slowest tests are
+The canonical full-suite evidence line lives in `TODO.md`, so no suite counts
+or timings are pinned in this file. The slowest tests are
 expected to be the end-to-end generated-artifact gates: manuscript mutation
 negatives in `tests/gates/test_manuscript_gates.py`, claim-ledger negatives in
 `tests/gates/test_claim_ledger.py`, roadmap artifact promotion in

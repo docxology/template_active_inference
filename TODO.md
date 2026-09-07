@@ -1,8 +1,7 @@
 # template_active_inference TODO
 
-This backlog is future-only. Completed validation and dated review evidence are preserved in
-[`docs/maintenance/exemplar-backlog-history.md`](../../../docs/maintenance/exemplar-backlog-history.md)
-or in source-owned generated receipts. Each active row must retain a stable ID, size, dependency,
+This backlog is future-only. Completed validation and dated review evidence are preserved
+in source-owned generated receipts. Each active row must retain a stable ID, size, dependency,
 next action, proving artifact, acceptance command, and negative control; absence of an owner or external receipt
 keeps a capability blocked rather than silently promoting it.
 
@@ -23,8 +22,8 @@ keeps a capability blocked rather than silently promoting it.
 | Major | Blocked scope or release-level changes only; no unblocked major rows are planned in this pass |
 
 The track lanes used below are planning labels only. Their source-of-truth files
-remain `tracks.yaml`, `manuscript/sheaf/tracks.yaml`,
-`manuscript/sheaf/manifest.yaml`, `figures.yaml`, generated reports, and the
+remain `tracks.yaml`, `docs/manuscript/sheaf/tracks.yaml`,
+`docs/manuscript/sheaf/manifest.yaml`, `figures.yaml`, generated reports, and the
 validator code.
 
 ## Lane glossary
@@ -34,7 +33,7 @@ validator code.
 | Analytical | `src/analytical/`, `output/data/parameter_sweep.csv`, `output/data/analytical_observable_sweep.json`, `output/data/analytical_assumption_index.json`, `output/data/sensitivity_sweep.json`, `output/data/uncertainty_summary.json`, `output/data/toy_benchmark_matrix.json`, `output/data/state_space_catalog.json`, `output/data/causal_ablation_matrix.json` |
 | pymdp | `pymdp.yaml`, `src/simulation/`, `output/data/si_tmaze_summary.json`, `output/data/si_tmaze_trace.json`, `output/data/si_policy_comparison.json`, `output/data/pymdp_policy_posterior_grid.json`, `output/reports/pymdp_runtime_diagnostics.json` |
 | Formal | `lean/`, `gnn/`, `output/reports/model_checking_witnesses.json`, `output/data/theorem_traceability_matrix.json`, `output/data/proof_extraction_index.json`, `output/data/proof_dependency_graph.json` |
-| Semantic | `manuscript/sheaf/tracks.yaml`, `manuscript/sheaf/manifest.yaml`, `output/data/sheaf_gluing_certificate.json`, `output/data/validation_dependency_graph.json`, `output/data/cross_track_symbol_table.json`, `output/data/manuscript_token_provenance.json`, `output/data/evidence_field_index.json` |
+| Semantic | `docs/manuscript/sheaf/tracks.yaml`, `docs/manuscript/sheaf/manifest.yaml`, `output/data/sheaf_gluing_certificate.json`, `output/data/validation_dependency_graph.json`, `output/data/cross_track_symbol_table.json`, `output/data/manuscript_token_provenance.json`, `output/data/evidence_field_index.json` |
 | Visualization | `figures.yaml`, `src/visualizations/`, `src/roadmap_tracks/visualization_contract.py`, `output/data/figure_source_map.json`, `output/reports/visualization_quality_audit.json`, `output/reports/figure_hash_manifest.json`, `output/data/statistical_visualization_bridge.json` |
 | Release | `output/reports/release_bundle_manifest.json`, `output/reports/artifact_diffoscope.json`, `output/reports/artifact_license_audit.json`, `output/reports/release_notes_evidence.json`, `output/reports/release_attestation.json`, `output/reports/security_posture_audit.json` |
 | Scope | `output/reports/scope_boundary_audit.json`, `output/reports/blocked_scope_manifest.json`, `output/data/track_improvement_scope.json`, `output/data/scholarship_source_matrix.json`, `data/claim_ledger.yaml` |
@@ -50,9 +49,9 @@ adding new track IDs.
 ## Configurable-surface gaps
 
 Future configurable surfaces should remain registry-owned. Add or change
-capabilities through `tracks.yaml`, `manuscript/sheaf/tracks.yaml`,
-`manuscript/sheaf/manifest.yaml`, `figures.yaml`, and
-`manuscript/config.yaml`; keep `manuscript/config.yaml.example` structurally in
+capabilities through `tracks.yaml`, `docs/manuscript/sheaf/tracks.yaml`,
+`docs/manuscript/sheaf/manifest.yaml`, `figures.yaml`, and
+`docs/manuscript/config.yaml`; keep `docs/manuscript/config.yaml.example` structurally in
 parity with placeholder-safe values whenever a top-level section is added.
 
 ## Documentation and signposting gaps

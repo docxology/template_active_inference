@@ -8,7 +8,7 @@
         "predicate": "non_empty"
       },
       "id": "sheaf_registry",
-      "path": "manuscript/sheaf/tracks.yaml",
+      "path": "docs/manuscript/sheaf/tracks.yaml",
       "producer": "manual",
       "section": "methods_sheaf",
       "statement": "Sheaf track registry is present and drives compose order.",
@@ -27,7 +27,7 @@
         "predicate": "non_empty"
       },
       "id": "sheaf_manifest",
-      "path": "manuscript/sheaf/manifest.yaml",
+      "path": "docs/manuscript/sheaf/manifest.yaml",
       "producer": "manual",
       "section": "methods_sheaf",
       "statement": "IMRAD section manifest binds track fragments for composition.",
@@ -46,7 +46,7 @@
         "predicate": "non_empty"
       },
       "id": "sheaf_coverage_config",
-      "path": "manuscript/sheaf/coverage.yaml",
+      "path": "docs/manuscript/sheaf/coverage.yaml",
       "producer": "manual",
       "section": "sheaf_coverage",
       "statement": "Coverage report and heatmap settings are configurable.",
@@ -308,7 +308,7 @@
         "predicate": "file_exists"
       },
       "id": "composed_intro_motivation",
-      "path": "manuscript/02_intro_motivation.md",
+      "path": "docs/manuscript/02_intro_motivation.md",
       "producer": "manual",
       "section": "intro_motivation",
       "statement": "Composed IMRAD introduction subsection exists for PDF pipeline.",
@@ -325,7 +325,7 @@
         "predicate": "file_exists"
       },
       "id": "composed_methods_analytical",
-      "path": "manuscript/05_methods_analytical.md",
+      "path": "docs/manuscript/05_methods_analytical.md",
       "producer": "manual",
       "section": "methods_analytical",
       "statement": "Composed Methods analytical subsection exists for PDF pipeline.",
@@ -343,7 +343,7 @@
         "predicate": "file_exists"
       },
       "id": "composed_results_mi",
-      "path": "manuscript/10_results_mi_sweep.md",
+      "path": "docs/manuscript/10_results_mi_sweep.md",
       "producer": "manual",
       "section": "results_mi_sweep",
       "statement": "Composed Results MI sweep subsection exists for PDF pipeline.",
@@ -597,7 +597,7 @@
         "predicate": "file_exists"
       },
       "id": "composed_discussion",
-      "path": "manuscript/15_discussion_outlook.md",
+      "path": "docs/manuscript/15_discussion_outlook.md",
       "producer": "manual",
       "section": "discussion_outlook",
       "statement": "Discussion outlook section binds simulation and ontology tracks.",
@@ -655,7 +655,7 @@
         "predicate": "file_exists"
       },
       "id": "composed_methods_sheaf",
-      "path": "manuscript/08_methods_sheaf.md",
+      "path": "docs/manuscript/08_methods_sheaf.md",
       "producer": "manual",
       "section": "methods_sheaf",
       "statement": "Methods sheaf section binds figure, generated layer tables, and semantic gluing signposts.",

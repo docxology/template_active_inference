@@ -62,7 +62,7 @@ def test_render_log_all_events_ok_with_forcing_false_control(settled_root: Path)
     assert log["schema"] == RENDER_LOG_SCHEMA
     assert log["all_events_ok"] is True
 
-    methods_sheaf = settled_root / "manuscript" / "08_methods_sheaf.md"
+    methods_sheaf = settled_root / "docs" / "manuscript" / "08_methods_sheaf.md"
     original = methods_sheaf.read_bytes()
     try:
         methods_sheaf.unlink()
