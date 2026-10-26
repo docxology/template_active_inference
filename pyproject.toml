@@ -10,20 +10,23 @@ description = "Multi-track Active Inference exemplar: analytical + pymdp + sheaf
 authors = [{ name = "Daniel Ari Friedman", email = "daniel@activeinference.institute" }]
 requires-python = ">=3.10"
 dependencies = [
-    "numpy>=1.24.0",
-    "matplotlib>=3.7.0",
+    "numpy>=2.2.6",
+    "matplotlib>=3.10.9",
     "pillow>=12.3.0",
-    "pyyaml>=6.0",
-    "scipy>=1.11.0",
+    "pyyaml>=6.0.3",
+    "scipy>=1.15.3",
+    # WHY: pymdp 1.0.4 changes the A-matrix convention and breaks the SI runner
+    # (agent init IndexError on stacked A). Re-run scripts/simulate_si_tmaze.py
+    # and tests/test_si_runner.py before moving this pin.
     "inferactively-pymdp==1.0.1",
 ]
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=7.4.0",
-    "pytest-cov>=4.1.0",
+    "pytest>=9.1.1",
+    "pytest-cov>=7.1.0",
     "pytest-timeout>=2.4.0",
-    "pytest-xdist>=3.6.0",
+    "pytest-xdist>=3.8.0",
 ]
 
 [tool.pytest.ini_options]

@@ -293,8 +293,9 @@ uv run python scripts/generate_method_inventory.py --check
 
 Current release evidence is recertified with
 `uv run pytest tests/ --cov=src --cov-fail-under=90`; live test counts,
-coverage, and timings are recorded in the `TODO.md` evidence line, not pinned
-here.
+coverage, and timings are read from that run, while the parent template
+checkout keeps the generated `docs/_generated/COUNTS.md`; counts are not
+pinned here.
 
 Run the documentation and artifact contract checks from this project root:
 

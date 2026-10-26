@@ -281,8 +281,8 @@ Total documented definitions: 820
 
 | line | kind | name | documentation source | summary |
 | ---: | --- | --- | --- | --- |
-| 17 | `function` | `extract_preamble` | docstring | Return the LaTeX inside the ```latex fence of preamble.md (or ""). |
-| 29 | `function` | `geometry_string` | docstring | Read page geometry from ``docs/manuscript/config.yaml``; fall back to 0.5 in margins. |
+| 16 | `function` | `extract_preamble` | docstring | Return the LaTeX inside the ```latex fence of preamble.md (or ""). |
+| 28 | `function` | `geometry_string` | docstring | Read page geometry from ``manuscript/config.yaml``; fall back to 0.5 in margins. |
 
 ## `src/manuscript/sheaf/cli.py`
 
@@ -375,7 +375,7 @@ Total documented definitions: 820
 | ---: | --- | --- | --- | --- |
 | 21 | `function` | `parse_missing` | docstring | Parse missing. |
 | 31 | `function` | `load_manifest` | docstring | Load manifest from a file. |
-| 102 | `function` | `default_manifest_path` | docstring | Process default manifest path. |
+| 104 | `function` | `default_manifest_path` | docstring | Process default manifest path. |
 
 ## `src/manuscript/sheaf/models.py`
 
@@ -447,7 +447,7 @@ Total documented definitions: 820
 | 21 | `function` | `_section_records` | inventory fallback | Inventory fallback for function `_section_records` defined at `src/manuscript/sheaf/semantic_evidence.py:21`. |
 | 47 | `function` | `_claim_records` | inventory fallback | Inventory fallback for function `_claim_records` defined at `src/manuscript/sheaf/semantic_evidence.py:47`. |
 | 65 | `function` | `build_evidence_crosswalk` | docstring | Build a claim-to-artifact crosswalk from the typed claim ledger. |
-| 87 | `function` | `build_validation_dependency_graph` | docstring | Build script → artifact → docs/manuscript/gate dependency records. |
+| 87 | `function` | `build_validation_dependency_graph` | docstring | Build script → artifact → manuscript/gate dependency records. |
 | 94 | `function` | `validate_configured_artifact_producers` | docstring | Fail when required generated artifacts lack configured analysis producers. |
 | 168 | `function` | `_semantic_artifact_sources` | inventory fallback | Inventory fallback for function `_semantic_artifact_sources` defined at `src/manuscript/sheaf/semantic_evidence.py:168`. |
 | 172 | `function` | `_semantic_payloads` | inventory fallback | Inventory fallback for function `_semantic_payloads` defined at `src/manuscript/sheaf/semantic_evidence.py:172`. |
@@ -1095,11 +1095,11 @@ Total documented definitions: 820
 | 35 | `function` | `_portable_versions` | docstring | Normalize interpreter-dependent package versions for tracked evidence. |
 | 44 | `function` | `_backend_flags` | inventory fallback | Inventory fallback for function `_backend_flags` defined at `src/simulation/pymdp_runtime.py:44`. |
 | 57 | `function` | `_numpy_factors` | inventory fallback | Inventory fallback for function `_numpy_factors` defined at `src/simulation/pymdp_runtime.py:57`. |
-| 61 | `function` | `_warning_record` | inventory fallback | Inventory fallback for function `_warning_record` defined at `src/simulation/pymdp_runtime.py:61`. |
-| 70 | `function` | `construct_agent_with_diagnostics` | docstring | Construct ``pymdp.Agent`` while capturing the one audited JAX warning. |
-| 120 | `function` | `build_runtime_diagnostics` | docstring | Build runtime diagnostics. |
-| 237 | `function` | `write_runtime_diagnostics` | docstring | Write runtime diagnostics to the output path. |
-| 249 | `function` | `validate_runtime_diagnostics` | docstring | Validate runtime diagnostics. |
+| 69 | `function` | `_warning_record` | inventory fallback | Inventory fallback for function `_warning_record` defined at `src/simulation/pymdp_runtime.py:69`. |
+| 78 | `function` | `construct_agent_with_diagnostics` | docstring | Construct ``pymdp.Agent`` while capturing the one audited JAX warning. |
+| 130 | `function` | `build_runtime_diagnostics` | docstring | Build runtime diagnostics. |
+| 247 | `function` | `write_runtime_diagnostics` | docstring | Write runtime diagnostics to the output path. |
+| 259 | `function` | `validate_runtime_diagnostics` | docstring | Validate runtime diagnostics. |
 
 ## `src/simulation/si_artifacts.py`
 
@@ -1237,16 +1237,16 @@ Total documented definitions: 820
 
 | line | kind | name | documentation source | summary |
 | ---: | --- | --- | --- | --- |
-| 15 | `function` | `_safe_float` | inventory fallback | Inventory fallback for function `_safe_float` defined at `src/visualizations/figure_style.py:15`. |
-| 22 | `function` | `_safe_int` | inventory fallback | Inventory fallback for function `_safe_int` defined at `src/visualizations/figure_style.py:22`. |
-| 68 | `class` | `FigureStyleConfig` | docstring | Data container for FigureStyleConfig. |
-| 79 | `function` | `FigureStyleConfig.color` | docstring | Process color. |
-| 83 | `function` | `FigureStyleConfig.text_size` | docstring | Process text size. |
-| 88 | `function` | `FigureStyleConfig.layout_value` | docstring | Process layout value. |
-| 92 | `function` | `FigureStyleConfig.rc_params` | docstring | Process rc params. |
-| 113 | `function` | `active_style` | docstring | Process active style. |
-| 118 | `function` | `load_figure_style` | docstring | Load figure style from a file. |
-| 164 | `function` | `apply_style` | docstring | Process apply style. |
+| 14 | `function` | `_safe_float` | inventory fallback | Inventory fallback for function `_safe_float` defined at `src/visualizations/figure_style.py:14`. |
+| 21 | `function` | `_safe_int` | inventory fallback | Inventory fallback for function `_safe_int` defined at `src/visualizations/figure_style.py:21`. |
+| 67 | `class` | `FigureStyleConfig` | docstring | Data container for FigureStyleConfig. |
+| 78 | `function` | `FigureStyleConfig.color` | docstring | Process color. |
+| 82 | `function` | `FigureStyleConfig.text_size` | docstring | Process text size. |
+| 87 | `function` | `FigureStyleConfig.layout_value` | docstring | Process layout value. |
+| 91 | `function` | `FigureStyleConfig.rc_params` | docstring | Process rc params. |
+| 112 | `function` | `active_style` | docstring | Process active style. |
+| 117 | `function` | `load_figure_style` | docstring | Load figure style from a file. |
+| 163 | `function` | `apply_style` | docstring | Process apply style. |
 
 ## `src/visualizations/figures.py`
 
