@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc 3.10" />
+  <meta name="generator" content="pandoc 3.13" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>12_results_si_tmaze.md.web</title>
   <style>
@@ -11,7 +11,10 @@
     */
     html {
       color: #1a1a1a;
+      color: light-dark(#1a1a1a, #fdfdfd);
       background-color: #fdfdfd;
+      background-color: light-dark(#fdfdfd, #1a1a1a);
+      color-scheme: light dark;
     }
     body {
       margin: 0 auto;
@@ -36,12 +39,16 @@
     }
     @media print {
       html {
-        background-color: white;
+        color-scheme: light only;
       }
-      body {
+      html, body, pre, code {
         background-color: transparent;
+      }
+      body, a, a:visited, blockquote {
         color: black;
-        font-size: 12pt;
+      }
+      pre, code {
+        padding: 0;
       }
       p, h2, h3 {
         orphans: 3;
@@ -54,11 +61,8 @@
     p {
       margin: 1em 0;
     }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
+    a, a:visited {
+      color: inherit;
     }
     img {
       max-width: 100%;
@@ -87,8 +91,11 @@
     blockquote {
       margin: 1em 0 1em 1.7em;
       padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
+      border-left: 2px solid;
+      border-color: #e6e6e6;
+      border-color: light-dark(#e6e6e6, #4c4c4c);
       color: #606060;
+      color: light-dark(#606060, #b6b6b6);
     }
     code {
       white-space: pre-wrap;
@@ -112,7 +119,7 @@
     }
     hr {
       border: none;
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       height: 1px;
       margin: 1em 0;
     }
@@ -129,11 +136,11 @@
     }
     tbody {
       margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
     }
     th {
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       padding: 0.25em 0.5em 0.25em 0.5em;
     }
     td {
@@ -173,11 +180,478 @@
       vertical-align: middle;
     }
   </style>
-  <script defer=""
-  src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"
-  type="text/javascript"></script>
+  <script data-template-mathjax-config>
+window.MathJax = window.MathJax || {};
+window.MathJax.chtml = Object.assign({}, window.MathJax.chtml, {
+  fontURL: "https://cdn.jsdelivr.net/npm/@mathjax/mathjax-newcm-font@4.0.0/chtml/woff2",
+  dynamicPrefix: "https://cdn.jsdelivr.net/npm/@mathjax/mathjax-newcm-font@4.0.0/chtml/dynamic"
+});
+var templateMathOutput = window.MathJax.output || {};
+window.MathJax.output = Object.assign({}, templateMathOutput, {
+  displayOverflow: "linebreak",
+  linebreaks: Object.assign({}, templateMathOutput.linebreaks, {
+    inline: true,
+    width: "100%",
+    lineleading: 0.5
+  })
+});
+window.normalizeTemplateMathJaxAria = function () {
+  document.querySelectorAll("mjx-speech[aria-roledescription]").forEach(function (node) {
+    var roleDescription = node.getAttribute("aria-roledescription") || "";
+    if (/[-]/.test(roleDescription)) {
+      node.setAttribute("aria-roledescription", "mathematical expression");
+    }
+  });
+};
+window.MathJax.startup = Object.assign({}, window.MathJax.startup, {
+  ready: function () {
+    var measuredWidth = document.documentElement.clientWidth;
+    var reflowQueued = false;
+    window.MathJax.startup.defaultReady();
+    window.templateMathJaxReflowPromise = window.MathJax.startup.promise.then(
+      window.normalizeTemplateMathJaxAria
+    );
+    function reflowDisplayMath() {
+      if (reflowQueued || document.documentElement.clientWidth === measuredWidth) return;
+      reflowQueued = true;
+      window.templateMathJaxReflowPromise = window.templateMathJaxReflowPromise
+        .catch(function () { /* A later resize may retry a failed render. */ })
+        .then(async function () {
+          var width = document.documentElement.clientWidth;
+          try {
+            // MathJax 4 MathItem.STATE.METRICS = 110. The default RERENDER
+            // state retains old container metrics and cannot reflow on zoom.
+            await window.MathJax.startup.document.rerenderPromise(110);
+            window.normalizeTemplateMathJaxAria();
+            window.templateMathJaxReflowError = null;
+          } catch (error) {
+            window.templateMathJaxReflowError = String(error);
+            console.error("MathJax viewport reflow failed", error);
+            throw error;
+          } finally {
+            measuredWidth = width;
+            reflowQueued = false;
+          }
+        })
+        .then(reflowDisplayMath);
+      // Keep failure observable to callers without an unhandled rejection.
+      window.templateMathJaxReflowPromise.catch(function () {});
+    }
+    window.addEventListener("resize", reflowDisplayMath);
+    // Also cover a resize that happened during the initial asynchronous render.
+    window.templateMathJaxReflowPromise.then(reflowDisplayMath);
+  }
+});
+</script>
+<script defer=""
+  type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-chtml.js" integrity="sha384-2BWc4dVaHADUocwKrUrK9u3iDwHxVMKXWEcoRmUkXYSFKhAsgVAYClu9ydNuo5Oz" crossorigin="anonymous"></script>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
+
+<style>
+:root {
+  --brand-1: #5b6ee0;
+  --web-bg: #f8f8f8;
+  --web-surface: #ffffff;
+  --web-text: #2c3e50;
+  --web-border: #bdc3c7;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand-1: #7e8ce8;
+    --web-bg: #0f1420;
+    --web-surface: #161c2b;
+    --web-text: #e6eaf2;
+    --web-border: #2a3447;
+  }
+}
+.theorem-box {
+  border-left: 4px solid var(--brand-1);
+  background: var(--web-surface);
+  padding: 0.6em 1em;
+  margin: 1.1em 0;
+  border-radius: 0 4px 4px 0;
+}
+.theorem-box.definition { border-left-style: dashed; }
+.theorem-box > p:first-child { margin-top: 0; }
+.theorem-box > p:last-child { margin-bottom: 0; }
+.figure-long-description {
+  border: 1px solid var(--web-border);
+  border-radius: 4px;
+  margin-block: 0.75rem;
+  padding: 0.5rem 0.75rem;
+}
+.figure-long-description > summary { cursor: pointer; font-weight: 700; }
+.figure-long-description > p { max-width: 80ch; overflow-wrap: anywhere; }
+.figure-exact-values { max-width: 80ch; overflow-wrap: anywhere; }
+code { overflow-wrap: anywhere; word-break: break-word; }
+pre {
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+pre code { overflow-wrap: inherit; white-space: inherit; word-break: inherit; }
+div.sourceCode { max-width: 100%; overflow: visible; }
+pre.sourceCode { background: #2c3e50; color: #ecf0f1; }
+pre.sourceCode code,
+pre.sourceCode code span { color: inherit; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+mjx-container[display="true"] { max-width: 100%; overflow: visible; }
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+.table-scroll:focus-visible {
+  outline: 3px solid var(--brand-1);
+  outline-offset: 3px;
+}
+.table-scroll > table { margin-block: 0; display: table; min-width: 100%; width: 100%; }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+body {
+  font-family: 'Liberation Serif', 'Times New Roman', serif;
+  line-height: 1.6;
+  width: min(100%, 800px);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  color: #1a1a1a;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+main,
+nav,
+section,
+article,
+figure,
+figcaption {
+  min-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 0.65rem 0.9rem;
+  transform: translateY(-120%);
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.skip-link:visited {
+  color: #ffffff;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  body {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  figure img {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+  overflow-wrap: anywhere;
+}
+
+code {
+  background-color: #ecf0f1;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: 'Liberation Mono', 'Courier New', monospace;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+pre {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 15px;
+  border-radius: 5px;
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  overflow-wrap: inherit;
+  white-space: inherit;
+  word-break: inherit;
+}
+
+div.sourceCode {
+  max-width: 100%;
+  overflow: visible;
+}
+
+pre.sourceCode {
+  background: #2c3e50;
+  color: #ecf0f1;
+}
+
+pre.sourceCode code,
+pre.sourceCode code span {
+  color: inherit;
+}
+
+pre > code.sourceCode {
+  white-space: pre-wrap;
+}
+
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+
+.table-scroll:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.table-scroll > table {
+  margin-block: 0;
+  display: table;
+  min-width: 100%;
+  width: 100%;
+}
+
+figure {
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+
+th, td {
+  border: 1px solid #bdc3c7;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #1f6f8b;
+  color: white;
+}
+
+/* Preserve a complete inline-code header within the table's scroll region. */
+th code {
+  color: inherit;
+  background-color: transparent;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  margin: 20px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  color: #b91c1c;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
+  overflow-wrap: anywhere;
+}
+
+a:visited {
+  color: #8f1d1d;
+}
+
+a:hover {
+  text-decoration-thickness: 0.14em;
+}
+
+a:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.toc {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.toc a,
+#TOC a {
+  color: #b91c1c;
+  display: inline-block;
+  min-height: 28px;
+  line-height: 1.5;
+  padding-block: 2px;
+}
+
+.toc li,
+#TOC li {
+  margin-block: 1px;
+}
+
+.math {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.1em;
+}
+
+mjx-container[display="true"] {
+  display: block;
+  max-width: 100%;
+  overflow: visible;
+  padding-bottom: 0.25rem;
+}
+
+.figure {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.figure img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* A reading column keeps prose comfortable, but dense scientific figures need
+   a larger inspection surface.  The rendered image remains responsive and the
+   explicit link opens its source-resolution asset without changing the PDF. */
+.figure-full-size-link {
+  color: inherit;
+  display: block;
+  max-width: 100%;
+  text-align: center;
+}
+
+.figure-full-size-link img {
+  cursor: zoom-in;
+  margin-bottom: 0.45rem;
+}
+
+.figure-full-size-label {
+  color: #1f6f8b;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.figure-full-size-link:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 4px;
+}
+
+@media (min-width: 1000px) {
+  /* Wide figure links stay within the viewport but extend beyond the prose
+     column. Do not clip their labels at the narrower body boundary. */
+  body {
+    overflow-x: visible;
+  }
+
+  .figure-full-size-link {
+    left: 50%;
+    max-width: none;
+    position: relative;
+    transform: translateX(-50%);
+    width: min(1080px, calc(100vw - 3rem));
+  }
+}
+
+.figure-caption {
+  font-style: italic;
+  color: #4b5563;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.figure-long-description,
+.figure-exact-values {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+</style>
+<script data-template-source-font-loader src="assets/source-web-fonts.js"></script>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<main id="main-content" tabindex="-1">
 <h1 id="sec:results_si_tmaze">T-maze active-inference rollout</h1>
 <!-- sheaf-track:prose -->
 <p>The pymdp harness rolls out a T-maze active-inference agent in
@@ -188,8 +662,8 @@ expected-free-energy policy posterior) is selectable via
 <code>mode: policy_inference</code> (<span class="citation"
 data-cites="sec:methods_pymdp">[@sec:methods_pymdp]</span>). Summary
 metrics land in <code>output/data/si_tmaze_summary.json</code>.</p>
-<p>Steps recorded: 2. Mean belief entropy: 0.3251. Belief entropy over
-the rollout is traced in <span class="citation"
+<p>Steps recorded: 2. Mean belief entropy: 0. Belief entropy over the
+rollout is traced in <span class="citation"
 data-cites="fig:si_belief_entropy_curve">[@fig:si_belief_entropy_curve]</span>;
 the paired observation and action indices are in <span class="citation"
 data-cites="fig:si_obs_action_trace">[@fig:si_obs_action_trace]</span>.
@@ -291,10 +765,10 @@ decomposition above.</p>
 run log: <code>output/logs/pymdp_runs.jsonl</code>.</p>
 <!-- sheaf-track:visualization -->
 <figure id="fig:cue_tmaze_advantage">
-<img src="../figures/cue_tmaze_advantage.png" style="width:95.0%"
+<a class="figure-full-size-link" href="figures/cue_tmaze_advantage.png" target="_blank" rel="noopener" aria-label="Open full-size figure, Cue-then-reward T-maze where epistemic value is strictly necessary."><img src="figures/cue_tmaze_advantage.png" style="width:95.0%"
 data-fig-alt="Two-panel bar chart for the cue-then-reward T-maze. The left panel shows the cue information gain I(context; observation) in nats and the expected reward log-preference for an epistemic agent that samples the cue versus a greedy agent that commits to an arm, demonstrating a positive behavioural advantage for cue-sampling. The right panel shows the flat Expected Free Energy of the cue-first and greedy policies, which are identical, illustrating that flat EFE propagation cannot reward cue-sampling and the sophisticated observation- conditioned evaluator is required."
-alt="Cue-then-reward T-maze where epistemic value is strictly necessary. Left: the cue carries 0.6931 nats of information and the cue-sampling agent reaches reward with a measured advantage of 4.0000 nats over a greedy agent. Right: flat Expected Free Energy scores the cue-first and greedy policies identically (identical), so the sophisticated observation- conditioned evaluator is what makes information-seeking required. Closed form (no sampling)." />
-<figcaption aria-hidden="true">Cue-then-reward T-maze where epistemic
+alt="Two-panel bar chart for the cue-then-reward T-maze. The left panel shows the cue information gain I(context; observation) in nats and the expected reward log-preference for an epistemic agent that samples the cue versus a greedy agent that commits to an arm, demonstrating a positive behavioural advantage for cue-sampling. The right panel shows the flat Expected Free Energy of the cue-first and greedy policies, which are identical, illustrating that flat EFE propagation cannot reward cue-sampling and the sophisticated observation- conditioned evaluator is required." /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
+<figcaption>Cue-then-reward T-maze where epistemic
 value is strictly necessary. Left: the cue carries 0.6931 nats of
 information and the cue-sampling agent reaches reward with a measured
 advantage of 4.0000 nats over a greedy agent. Right: flat Expected Free
@@ -303,10 +777,10 @@ so the sophisticated observation- conditioned evaluator is what makes
 information-seeking required. Closed form (no sampling).</figcaption>
 </figure>
 <figure id="fig:efe_decomposition">
-<img src="../figures/efe_decomposition.png" style="width:95.0%"
+<a class="figure-full-size-link" href="figures/efe_decomposition.png" target="_blank" rel="noopener" aria-label="Open full-size figure, Closed-form Expected Free Energy decomposition over the finite T-maze policies."><img src="figures/efe_decomposition.png" style="width:95.0%"
 data-fig-alt="Two-panel bar chart of the Expected Free Energy term decomposition across the four length-two T-maze policies (action sequences 00, 01, 10, 11). The left panel stacks risk (pragmatic deviation, the KL of policy-predicted outcomes from preferences) below ambiguity (epistemic, the expected likelihood entropy) so each bar&#39;s height is the Expected Free Energy G(pi); the goal-seeking policy with minimum G is marked. The right panel shows the equal-and-opposite pragmatic value (expected log-preference) and epistemic value (state-outcome mutual information) per policy, with a zero reference line, illustrating the exact identity G(pi) = -(pragmatic + epistemic)."
-alt="Closed-form Expected Free Energy decomposition over the finite T-maze policies. Left: G(\pi) = risk + ambiguity (stacked), with the goal-seeking minimiser marked. Right: the pragmatic and epistemic values, which sum to -G(\pi). Both forms are computed in closed form (no sampling) and satisfy risk + ambiguity + pragmatic + epistemic = 0 to machine precision." />
-<figcaption aria-hidden="true">Closed-form Expected Free Energy
+alt="Two-panel bar chart of the Expected Free Energy term decomposition across the four length-two T-maze policies (action sequences 00, 01, 10, 11). The left panel stacks risk (pragmatic deviation, the KL of policy-predicted outcomes from preferences) below ambiguity (epistemic, the expected likelihood entropy) so each bar&#x27;s height is the Expected Free Energy G(pi); the goal-seeking policy with minimum G is marked. The right panel shows the equal-and-opposite pragmatic value (expected log-preference) and epistemic value (state-outcome mutual information) per policy, with a zero reference line, illustrating the exact identity G(pi) = -(pragmatic + epistemic)." /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
+<figcaption>Closed-form Expected Free Energy
 decomposition over the finite T-maze policies. Left: <span
 class="math inline">\(G(\pi)\)</span> = risk + ambiguity (stacked), with
 the goal-seeking minimiser marked. Right: the pragmatic and epistemic
@@ -315,10 +789,10 @@ forms are computed in closed form (no sampling) and satisfy risk +
 ambiguity + pragmatic + epistemic = 0 to machine precision.</figcaption>
 </figure>
 <figure id="fig:precision_sweep">
-<img src="../figures/precision_sweep.png" style="width:90.0%"
+<a class="figure-full-size-link" href="figures/precision_sweep.png" target="_blank" rel="noopener" aria-label="Open full-size figure, Precision sweep over the closed-form T-maze policy posterior q(\pi)\propto\exp(-\gamma G)…"><img src="figures/precision_sweep.png" style="width:90.0%"
 data-fig-alt="Dual-axis line plot of how the T-maze policy posterior q(pi) = softmax(-gamma G) sharpens as the precision gamma increases from 0 to 16. The left axis plots the Shannon entropy of the posterior in nats, decreasing from ln 4 at gamma=0 and saturating at the ln(|optimal set|) floor (a dashed reference line) because two policies tie at the expected-free-energy minimum. The right axis plots the probability mass placed on the expected-free-energy optimal policy set, rising from 0.5 toward 1 and crossing the selection threshold; the precision at which it crosses is marked."
-alt="Precision sweep over the closed-form T-maze policy posterior q(\pi)\propto\exp(-\gamma G) across 33 grid points up to \gamma=16. Entropy falls from \ln 4 to the \ln|\Pi^\star| floor (2 tied optima, second action irrelevant under the absorbing goal); the optimal-set mass crosses 0.99 at \gamma=3. Entropy at \gamma=1 is 1.1458 nats. Computed in closed form (no sampling)." />
-<figcaption aria-hidden="true">Precision sweep over the closed-form
+alt="Dual-axis line plot of how the T-maze policy posterior q(pi) = softmax(-gamma G) sharpens as the precision gamma increases from 0 to 16. The left axis plots the Shannon entropy of the posterior in nats, decreasing from ln 4 at gamma=0 and saturating at the ln(|optimal set|) floor (a dashed reference line) because two policies tie at the expected-free-energy minimum. The right axis plots the probability mass placed on the expected-free-energy optimal policy set, rising from 0.5 toward 1 and crossing the selection threshold; the precision at which it crosses is marked." /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
+<figcaption>Precision sweep over the closed-form
 T-maze policy posterior <span
 class="math inline">\(q(\pi)\propto\exp(-\gamma G)\)</span> across 33
 grid points up to <span class="math inline">\(\gamma\)</span>=16.
@@ -331,10 +805,10 @@ class="math inline">\(\gamma\)</span>=1 is 1.1458 nats. Computed in
 closed form (no sampling).</figcaption>
 </figure>
 <figure id="fig:dirichlet_convergence">
-<img src="../figures/dirichlet_convergence.png" style="width:85.0%"
+<a class="figure-full-size-link" href="figures/dirichlet_convergence.png" target="_blank" rel="noopener" aria-label="Open full-size figure, Dirichlet model learning: KL (A_{\text{true}} \,\|\, A_{\text{learned}}) versus…"><img src="figures/dirichlet_convergence.png" style="width:85.0%"
 data-fig-alt="Single-panel semilog line chart of the Kullback-Leibler divergence from the true T-maze likelihood matrix A to the Dirichlet-learned expected likelihood, plotted against the update step. The divergence starts large at the uniform prior and falls monotonically toward zero as deterministic observation-state counts accumulate, crossing a dashed convergence-tolerance reference line; the first step below tolerance is marked. The curve is computed in closed form from a fixed expected-count stream (no sampling)."
-alt="Dirichlet model learning: KL(A_{\text{true}} \,\|\, A_{\text{learned}}) versus concentration-update step. The expected likelihood E[A] = pA / \sum_o pA converges monotonically to the true generative likelihood; the run reaches the convergence tolerance at step 3 with final KL 1.29e-03 nats. Deterministic (no sampling), so the curve is byte-reproducible." />
-<figcaption aria-hidden="true">Dirichlet model learning: KL<span
+alt="Single-panel semilog line chart of the Kullback-Leibler divergence from the true T-maze likelihood matrix A to the Dirichlet-learned expected likelihood, plotted against the update step. The divergence starts large at the uniform prior and falls monotonically toward zero as deterministic observation-state counts accumulate, crossing a dashed convergence-tolerance reference line; the first step below tolerance is marked. The curve is computed in closed form from a fixed expected-count stream (no sampling)." /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
+<figcaption>Dirichlet model learning: KL<span
 class="math inline">\((A_{\text{true}} \,\|\,
 A_{\text{learned}})\)</span> versus concentration-update step. The
 expected likelihood <span class="math inline">\(E[A] = pA / \sum_o
@@ -344,25 +818,26 @@ the run reaches the convergence tolerance at step 3 with final KL
 byte-reproducible.</figcaption>
 </figure>
 <figure id="fig:si_belief_entropy_curve">
-<img src="../figures/si_belief_entropy_curve.png" style="width:90.0%"
-data-fig-alt="Line plot of belief entropy in nats versus timestep for the pymdp T-maze rollout. Entropy ranges from 0.3251 to 0.3251 nats across 2 steps in state_inference mode."
-alt="Belief entropy over time for the T-maze rollout (mean 0.3251 nats)." />
-<figcaption aria-hidden="true">Belief entropy over time for the T-maze
-rollout (mean 0.3251 nats).</figcaption>
+<a class="figure-full-size-link" href="figures/si_belief_entropy_curve.png" target="_blank" rel="noopener" aria-label="Open full-size figure, Belief entropy over time for the T-maze rollout (mean 0.0000 nats)."><img src="figures/si_belief_entropy_curve.png" style="width:90.0%"
+data-fig-alt="Line plot of belief entropy in nats versus timestep for the pymdp T-maze rollout. Entropy ranges from 0 to 0 nats across 2 steps in state_inference mode."
+alt="Line plot of belief entropy in nats versus timestep for the pymdp T-maze rollout. Entropy ranges from 0 to 0 nats across 2 steps in state_inference mode." /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
+<figcaption>Belief entropy over time for the T-maze
+rollout (mean 0.0000 nats).</figcaption>
 </figure>
 <figure id="fig:si_obs_action_trace">
-<img src="../figures/si_obs_action_trace.png" style="width:90.0%"
+<a class="figure-full-size-link" href="figures/si_obs_action_trace.png" target="_blank" rel="noopener" aria-label="Open full-size figure, Observation and action traces for the T-maze rollout (action diversity 2)."><img src="figures/si_obs_action_trace.png" style="width:90.0%"
 data-fig-alt="Dual-panel plot of observation index and action index versus timestep for the pymdp T-maze rollout. The upper panel shows discrete observations; the lower panel shows actions. Goal reached flag is 1."
-alt="Observation and action traces for the T-maze rollout (action diversity 2)." />
-<figcaption aria-hidden="true">Observation and action traces for the
+alt="Dual-panel plot of observation index and action index versus timestep for the pymdp T-maze rollout. The upper panel shows discrete observations; the lower panel shows actions. Goal reached flag is 1." /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
+<figcaption>Observation and action traces for the
 T-maze rollout (action diversity 2).</figcaption>
 </figure>
 <figure id="fig:si_tmaze_actions">
-<img src="../figures/si_tmaze_actions.png" style="width:90.0%"
+<a class="figure-full-size-link" href="figures/si_tmaze_actions.png" target="_blank" rel="noopener" aria-label="Open full-size figure, Discrete action index over time for the pymdp T-maze rollout (policy length 2)."><img src="figures/si_tmaze_actions.png" style="width:90.0%"
 data-fig-alt="Step plot of discrete action index versus timestep for the pymdp T-maze rollout in state_inference mode. Actions change at each timestep with light fill under the step trace; policy depth is 2 steps."
-alt="Discrete action index over time for the pymdp T-maze rollout (policy length 2)." />
-<figcaption aria-hidden="true">Discrete action index over time for the
+alt="Step plot of discrete action index versus timestep for the pymdp T-maze rollout in state_inference mode. Actions change at each timestep with light fill under the step trace; policy depth is 2 steps." /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
+<figcaption>Discrete action index over time for the
 pymdp T-maze rollout (policy length 2).</figcaption>
 </figure>
+</main>
 </body>
 </html>

@@ -10,9 +10,11 @@
 \section*{BEGINNING OF TRANSMISSION}\label{beginning-of-transmission}
 ```
 
-**State:** published
+**State:** unpublished / pending pairing
 
-**Pairing:** complete (DOI, GitHub, SHA-256, Zenodo URL)
+**Pairing:** pending — unresolved:
+- ✗ GitHub release URL: `pending`
+- ✗ PDF SHA-256: `pending`
 
 ```{=latex}
 \subsubsection*{Release metadata}
@@ -21,12 +23,11 @@
 | Field | Value |
 | --- | --- |
 | Title | Active Inference Multi-Track Exemplar |
-| Version | 0.3.2 |
+| Version | 0.4.0 |
 | Concept DOI | 10.5281/zenodo.20417021 |
-| Version DOI | 10.5281/zenodo.20931870 |
-| GitHub | [https://github.com/docxology/template_active_inference/releases/tag/v0.3.2](https://github.com/docxology/template_active_inference/releases/tag/v0.3.2) |
+| GitHub | docxology/template_active_inference |
 | Zenodo | [https://zenodo.org/records/20417021](https://zenodo.org/records/20417021) |
-| SHA-256 | `f191b48f94394cab…` |
+| SHA-256 | pending |
 | SHA-512 | pending |
 
 ```{=latex}
@@ -37,11 +38,11 @@
 - Scan **Zenodo** / **GitHub** QR codes and confirm they resolve to this release pairing.
 - Full hashes and structured fields: `../data/transmission_manifest.json`.
 
-![Integrity QR strip](../figures/transmission_integrity_strip.png){width=98%}
+![Integrity QR strip](figures/transmission_integrity_strip.png){width=98%}
 
 Structured manifest: `../data/transmission_manifest.json`
 
-![Publication pairing flow](../figures/transmission_pairing.png){width=35%}
+![Publication pairing flow](figures/transmission_pairing.png){width=35%}
 
 **Stego:** off | overlays text | barcodes on | XMP on | manifest on → `./secure_run.sh`
 
@@ -76,6 +77,7 @@ This page summarizes which **sheaf fragment tracks** are bound for each IMRAD ro
 - **Introduction** *(group)*
 -   **Motivation and scope**
 -   **Contributions**
+
 ## Methods
 
 - **Methods** *(group)*
@@ -83,6 +85,7 @@ This page summarizes which **sheaf fragment tracks** are bound for each IMRAD ro
 -   **pymdp simulation harness**
 -   **Lean formalization boundary**
 -   **Sheaf composition**
+
 ## Results
 
 - **Results** *(group)*
@@ -90,16 +93,18 @@ This page summarizes which **sheaf fragment tracks** are bound for each IMRAD ro
 -   **Free-energy decomposition**
 -   **T-maze active-inference rollout**
 -   **Validation invariants**
+
 ## Discussion
 
 - **Discussion** *(group)*
 -   **Limitations and outlook**
+
 ## Appendix
 
 - **Appendix** *(group)*
 -   **Appendix: full track coverage**
 
-![Sheaf track coverage matrix: 17 IMRAD rows × 34 fragment columns. Black = present (P), white = absent (—), gray = missing (M). Counts: 95 present / 95 bound / 0 missing. Generated from `output/data/sheaf_coverage_matrix.json`.](../figures/sheaf_coverage_heatmap.png){#fig:sheaf_coverage_heatmap width=95% fig-alt="Heatmap matrix of IMRAD manuscript rows versus 34 sheaf fragment track columns. Black cells mean the track is bound and the fragment file exists; white cells mean the track is not bound; gray cells mean bound but missing. Rows are grouped by IMRAD block with indented subsection labels; column headers list track ids."}
+![Sheaf track coverage matrix: 17 IMRAD rows × 34 fragment columns. Black = present (P), white = absent (—), gray = missing (M). Counts: 95 present / 95 bound / 0 missing. Generated from `output/data/sheaf_coverage_matrix.json`.](figures/sheaf_coverage_heatmap.png){#fig:sheaf_coverage_heatmap width=95% fig-alt="Heatmap matrix of IMRAD manuscript rows versus 34 sheaf fragment track columns. Black cells mean the track is bound and the fragment file exists; white cells mean the track is not bound; gray cells mean bound but missing. Rows are grouped by IMRAD block with indented subsection labels; column headers list track ids."}
 
 Appendix row `16_appendix_full_sheaf.md` binds 33 fragment track types as a composability proof (registry defines 34 types; optional `layers` is methods-only).
 
@@ -135,13 +140,13 @@ We study a minimal Active Inference stack on toy models: a Bernoulli–Ising ana
 
 ## Scientific scope
 
-This manuscript couples three tracks on toy Active Inference models: a Bernoulli–Ising analytical oracle, a pymdp T-maze rollout, and a sheaf-indexed assembly contract that binds 34 optional fragment tracks under an IMRAD outline. The conceptual lineage is the free-energy and active-inference literature [friston2010fep; buckley2017mathreview; parr2022active], with critical scope pressure from accounts that separate FEP's broad organizing role from direct empirical brain claims [gershman2019fepbrain]. Here that distinction is operational: the scientific claims stay within these models and their generated artifacts, not biological agents.
+This manuscript couples three tracks on toy Active Inference models: a Bernoulli–Ising analytical oracle, a pymdp T-maze rollout, and a sheaf-indexed assembly contract that binds 34 optional fragment tracks under an IMRAD outline. The conceptual lineage is the free-energy and active-inference literature [@friston2010fep; @buckley2017mathreview; @parr2022active], with critical scope pressure from accounts that separate FEP's broad organizing role from direct empirical brain claims [@gershman2019fepbrain]. Here that distinction is operational: the scientific claims stay within these models and their generated artifacts, not biological agents.
 
 ## Manuscript structure
 
 Three **scientific tracks** (analytical, pymdp, sheaf composition) map onto 34 **composable fragment types** and 31 pipeline gates ([@fig:multi_track_architecture]). [@sec:sheaf_coverage] summarizes which fragment tracks bind to each manifest row. [@sec:methods_sheaf] documents the compose pipeline, coverage semantics ([@eq:coverage_cell]), and strict validation gates.
 
-The pymdp track follows the [pymdp sophisticated_inference examples](https://github.com/infer-actively/pymdp/tree/main/examples/experimental/sophisticated_inference) [pymdp2024] with a minimal T-maze and planning horizon `policy_len = 2`. Other sections cite [@sec:methods_pymdp] instead of repeating that reference.
+The pymdp track follows the [pymdp sophisticated_inference examples](https://github.com/infer-actively/pymdp/tree/main/examples/experimental/sophisticated_inference) [@pymdp2024] with a minimal T-maze and planning horizon `policy_len = 2`. Other sections cite [@sec:methods_pymdp] instead of repeating that reference.
 
 
 
@@ -165,9 +170,13 @@ Ontology-facing symbols are checked per model: the Bernoulli toy binds `pi1`, `p
 
 <!-- sheaf-track:visualization -->
 
-![Multi-track architecture: analytical, pymdp, and sheaf composition lanes mapped to 31 pipeline gates and 34 composable fragment types.](../figures/multi_track_architecture.png){#fig:multi_track_architecture width=95% fig-alt="Process diagram linking three scientific tracks to 31 pipeline gates and 34 sheaf fragment types across 17 manifest rows."}
+![Multi-track architecture: analytical, pymdp, and sheaf composition lanes mapped to 31 pipeline gates and 34 composable fragment types.](figures/multi_track_architecture.png){#fig:multi_track_architecture width=95% fig-alt="Process diagram linking three scientific tracks to 31 pipeline gates and 34 sheaf fragment types across 17 manifest rows."}
 
 <!-- sheaf-track:ontology -->
+
+```{=latex}
+\begin{samepage}
+```
 
 ### Ontology bindings
 
@@ -175,6 +184,10 @@ Ontology-facing symbols are checked per model: the Bernoulli toy binds `pi1`, `p
 - `location` → **HiddenState**
 - `observation` → **ObservationLikelihood**
 - `policy` → **PolicyPosterior**
+
+```{=latex}
+\end{samepage}
+```
 
 
 
@@ -194,7 +207,7 @@ Ontology-facing symbols are checked per model: the Bernoulli toy binds `pi1`, `p
 
 The analytical method is a finite **K=2 Bernoulli / Ising** oracle. The entangled joint [@eq:entangled_joint] gives closed-form mutual information $I(\lambda)$; `output/data/parameter_sweep.csv` then checks the same curve by an independent exact total-correlation recomputation before the value is used in [@sec:results_mi_sweep]. GNN and ontology rows share the same symbol surface ([@fig:gnn_ontology_concordance]), so the derivation, sweep, and model notation are one audited toy contract rather than parallel descriptions.
 
-The scope is intentionally small: finite variational quantities only, no sampling, and no empirical generalization. "Free energy" here means exactly computed variational functionals on this tiny discrete state-space, aligned with mathematical FEP reviews [buckley2017mathreview], not continuous-time or biological FEP dynamics [gershman2019fepbrain]. The generated sweep contains 21 grid points, and the merged invariant report records 12 / 12 passing checks.
+The scope is intentionally small: finite variational quantities only, no sampling, and no empirical generalization. "Free energy" here means exactly computed variational functionals on this tiny discrete state-space, aligned with mathematical FEP reviews [@buckley2017mathreview], not continuous-time or biological FEP dynamics [@gershman2019fepbrain]. The generated sweep contains 21 grid points, and the merged invariant report records 12 / 12 passing checks.
 
 <!-- sheaf-track:formalism -->
 
@@ -224,17 +237,21 @@ The index is deliberately narrow. It covers the Bernoulli-Ising toy equations, t
 
 <!-- sheaf-track:visualization -->
 
-![Closed-form $I(\lambda)$ and an independent exact recomputation via total correlation for the symmetric Bernoulli-Ising toy across 21 grid points up to $\lambda_{\max}$ = 4; grid maximum 0.6031 nats. Both estimators are deterministic (no sampling), so the right panel is a cross-implementation agreement check (max residual 0 nats), not a sampling residual.](../figures/ising_mi_curve.png){#fig:ising_mi_curve width=90% fig-alt="Two-panel plot of mutual information versus coupling strength lambda for the symmetric Bernoulli-Ising toy. Left panel shows the closed-form curve (solid dark line) and an independent exact recomputation via total correlation (dashed blue line) with lambda on the x-axis and mutual information in nats on the y-axis. Right panel shows the recompute-minus-closed-form residual versus lambda with a zero reference line; the two deterministic estimators agree to machine precision."}
+![Closed-form $I(\lambda)$ and an independent exact recomputation via total correlation for the symmetric Bernoulli-Ising toy across 21 grid points up to $\lambda_{\max}$ = 4; grid maximum 0.6031 nats. Both estimators are deterministic (no sampling), so the right panel is a cross-implementation agreement check (max residual 0 nats), not a sampling residual.](figures/ising_mi_curve.png){#fig:ising_mi_curve width=90% fig-alt="Two-panel plot of mutual information versus coupling strength lambda for the symmetric Bernoulli-Ising toy. Left panel shows the closed-form curve (solid dark line) and an independent exact recomputation via total correlation (dashed blue line) with lambda on the x-axis and mutual information in nats on the y-axis. Right panel shows the recompute-minus-closed-form residual versus lambda with a zero reference line; the two deterministic estimators agree to machine precision."}
 
-![GNN $\leftrightarrow$ ontology concordance for the Bernoulli–Ising toy (GNN v1.1).](../figures/gnn_ontology_concordance.png){#fig:gnn_ontology_concordance width=90% fig-alt="Layered concordance diagram linking analytical symbols, GNN variables from bernoulli_toy.gnn.md (GNN v1.1), and Active Inference Ontology terms."}
+![GNN $\leftrightarrow$ ontology concordance for the Bernoulli–Ising toy (GNN v1.1).](figures/gnn_ontology_concordance.png){#fig:gnn_ontology_concordance width=90% fig-alt="Layered concordance diagram linking analytical symbols, GNN variables from bernoulli_toy.gnn.md (GNN v1.1), and Active Inference Ontology terms."}
 
 <!-- sheaf-track:gnn -->
 
-The Bernoulli toy is declared in `gnn/bernoulli_toy.gnn.md` (GNN v1.1), following the GNN notation role described by Smekal and Friedman [gnn2023]. [@fig:gnn_ontology_concordance] links GNN variables to Active Inference Ontology terms bound in the analytical ontology fragment; round-trip parity is checked before render.
+The Bernoulli toy is declared in `gnn/bernoulli_toy.gnn.md` (GNN v1.1), following the GNN notation role described by Smekal and Friedman [@gnn2023]. [@fig:gnn_ontology_concordance] links GNN variables to Active Inference Ontology terms bound in the analytical ontology fragment; round-trip parity is checked before render.
 
 Measured MI and sweep artifacts in [@sec:results_mi_sweep] ground the same symbol map used in the concordance diagram.
 
 <!-- sheaf-track:ontology -->
+
+```{=latex}
+\begin{samepage}
+```
 
 ### Ontology bindings
 
@@ -247,6 +264,10 @@ Measured MI and sweep artifacts in [@sec:results_mi_sweep] ground the same symbo
 - `pi2` → **Stream2PolicyVector**
 - `q_joint` → **EntangledJointPosterior**
 
+```{=latex}
+\end{samepage}
+```
+
 
 
 ---
@@ -257,7 +278,7 @@ Measured MI and sweep artifacts in [@sec:results_mi_sweep] ground the same symbo
 
 <!-- sheaf-track:prose -->
 
-**Sophisticated inference (planning horizon).** The pymdp method is a deterministic state-inference harness on a minimal T-maze ([@fig:tmaze_schematic]) with planning horizon `policy_len = 2`. The discrete-state framing follows finite POMDP active-inference treatments and sophisticated-inference analyses [dacosta2020discrete; smith2022tutorial; friston2021sophisticated; dacosta2023reward], and the implementation anchor is the pymdp software paper [pymdp2024]. The default `state_inference` rollout writes the summary/trace artifacts used in [@sec:results_si_tmaze]; mean belief entropy is 0.3251.
+**Sophisticated inference (planning horizon).** The pymdp method is a deterministic state-inference harness on a minimal T-maze ([@fig:tmaze_schematic]) with planning horizon `policy_len = 2`. The discrete-state framing follows finite POMDP active-inference treatments and sophisticated-inference analyses [@dacosta2020discrete; @smith2022tutorial; @friston2021sophisticated; @dacosta2023reward], and the implementation anchor is the pymdp software paper [@pymdp2024]. The default `state_inference` rollout writes the summary/trace artifacts used in [@sec:results_si_tmaze]; mean belief entropy is 0.0000.
 
 The method keeps runtime, posterior, and extension evidence separate. `output/data/si_policy_comparison.json` compares `state_inference` and `policy_inference` over declared toy horizons and seeds without replacing the default rollout (4 rows; complete-grid flag 1). Agent construction and backend warnings live in `output/reports/pymdp_runtime_diagnostics.json` (4 constructions, 4 known third-party warnings, 0 unexpected warnings). Posterior rows live in `output/data/pymdp_policy_posterior_grid.json` and must remain normalized (`1`).
 
@@ -275,7 +296,7 @@ SI artifacts (summary, trace, optional JSONL log) record step count, actions,
 observations, and belief entropy for [@sec:results_si_tmaze]. Steps recorded:
 2. Branching-time and variational formulations of active
 inference planning are treated here as related planning context
-[champion2021branching; nuijten2026efeplanning]; the live evidence remains the
+[@champion2021branching; @nuijten2026efeplanning]; the live evidence remains the
 finite local artifacts `si_policy_grid.json`, `si_efe_terms.json`, and
 `model_checking_witnesses.json`, not a claim about scalable planning
 performance.
@@ -288,7 +309,7 @@ The stricter lint artifacts are adjacent evidence, not new model claims: `output
 
 <!-- sheaf-track:visualization -->
 
-![T-maze generative model schematic (2-step policy horizon, state_inference mode).](../figures/tmaze_schematic.png){#fig:tmaze_schematic width=85% fig-alt="Schematic of the minimal T-maze POMDP with start and goal states, discrete actions and observations, and planning horizon policy_len = 2."}
+![T-maze generative model schematic (2-step policy horizon, state_inference mode).](figures/tmaze_schematic.png){#fig:tmaze_schematic width=85% fig-alt="Schematic of the minimal T-maze POMDP with start and goal states, discrete actions and observations, and planning horizon policy_len = 2."}
 
 <!-- sheaf-track:gnn -->
 
@@ -296,12 +317,20 @@ See `gnn/si_tmaze.gnn.md` for a GNN view of the T-maze hidden state, observation
 
 <!-- sheaf-track:ontology -->
 
+```{=latex}
+\begin{samepage}
+```
+
 ### Ontology bindings
 
 - `belief_entropy` → **BeliefEntropy**
 - `loc` → **HiddenState**
 - `obs` → **ObservationLikelihood**
 - `pi` → **PolicyPosterior**
+
+```{=latex}
+\end{samepage}
+```
 
 
 
@@ -319,7 +348,7 @@ The theorem set links back to the finite analytical and pymdp toys. Horizon witn
 
 <!-- sheaf-track:visualization -->
 
-![Lean formalization boundary: module witnesses checked by lake build.](../figures/lean_boundary_status.png){#fig:lean_boundary_status width=90% fig-alt="Table figure listing Lean modules, declaration kinds, names, and proved versus sorry status under lean/TemplateActiveInference/."}
+![Lean formalization boundary: module witnesses checked by lake build.](figures/lean_boundary_status.png){#fig:lean_boundary_status width=90% fig-alt="Table figure listing Lean modules, declaration kinds, names, and proved versus sorry status under lean/TemplateActiveInference/."}
 
 <!-- sheaf-track:lean -->
 
@@ -360,15 +389,16 @@ constructive-token status `true`.
 
 Each manifest row in `manuscript/sheaf/manifest.yaml` binds fragment tracks from `manuscript/sheaf/tracks.yaml`. A track supplies a renderer, compose order, label, optional flag, general paper role, and paper-specific use statement; the composer then flattens the binding set into one Markdown section for PDF and web output.
 
-The operational claim is auditable binding. Analytical, simulation, pymdp, visualization, Lean, GNN, ontology, scholarship, and optional media fragments attach to IMRAD rows under [@eq:coverage_cell] (**P** present, **—** unbound, **M** missing). This is an applied local-to-global consistency contract in the spirit of cellular sheaf and sheaf-signal-processing work [curry2014sheaves; robinson2014topological], instantiated here as a finite artifact gate rather than a cohomology claim.
+The operational claim is auditable binding. Analytical, simulation, pymdp, visualization, Lean, GNN, ontology, scholarship, and optional media fragments attach to IMRAD rows under [@eq:coverage_cell] (**P** present, **—** unbound, **M** missing). This is an applied local-to-global consistency contract in the spirit of cellular sheaf and sheaf-signal-processing work [@curry2014sheaves; @robinson2014topological], instantiated here as a finite artifact gate rather than a cohomology claim.
 
 ## Coverage and figures
 
 [@fig:sheaf_layers_overview] summarizes 34 fragment types and their IMRAD bindings. Generated tables below list every track definition and section×track binding at compose time. The visualization track is gated by `output/reports/visualization_quality_audit.json`: 23 / 23 registered figures render, 23 are source-mapped, and 23 have sufficient alt/caption metadata; the all-quality flag is `true`.
 
-The visualization gate is deliberately row-level. It requires declared visual/evidence roles (`true`), artifact-backed paper claims (`true`), section bindings (`true`), RGB nonblank image renders, hashes, and source-map agreement. The statistical bridge then expands 7 statistically backed figures into 7 figure-source-scholarship rows with connected status `true`, manuscript-reference status `true`, and visualization-bound reference status `true`.
+The visualization gate is deliberately row-level. It requires declared visual/evidence roles (`true`), artifact-backed paper claims (`true`), section bindings (`true`), RGB nonblank image renders, hashes, and source-map agreement. A registered figure whose render, hash, or source map is absent or mismatched fails the row-level audit (negative control: deleting an output render flips `true` to false during recomposition). Rows missing a declared role still fail the all-quality flag — a known-wrong row is flagged by the audit rather than implicitly satisfied (negative control: `tests/test_figures.py::test_visualization_quality_audit_rejects_stale_section_and_source_rows`). The statistical bridge then expands 7 statistically backed figures into 7 figure-source-scholarship rows with connected status `true`, manuscript-reference status `true`, and visualization-bound reference status `true`.
+Rows lacking declared roles are rejected outright — an undeclared visualization cannot slip past the gate.
 
-The claim ledger is also checked at row level rather than as prose metadata. `claim_evidence_audit.json` resolves 97 claim rows to live artifacts (`true`) and replays their typed predicates (`true`), yielding the promoted completeness flag `true`.
+Negative controls for these gates live in `tests/gates/` (e.g. `test_validate_outputs_negative_missing_sheaf_matrix`, `test_figures_nonblank_negative_blank_png`) and `tests/test_track_consolidation_negative.py` asserts forged or missing rows fail closed. The claim ledger is also checked at row level rather than as prose metadata. `claim_evidence_audit.json` resolves 97 claim rows to live artifacts (`true`) and replays their typed predicates (`true`), yielding the promoted completeness flag `true`.
 
 ## Compose commands
 
@@ -429,23 +459,23 @@ Semantic gluing then checks agreement of the glued content: coverage counts, man
 
 <!-- sheaf-track:visualization -->
 
-![Sheaf layers overview: registry stack (compose order, renderer ids) and IMRAD binding heatmap for 34 fragment types across 17 manifest rows (95 present / 95 bound / 0 missing), generated from `output/data/sheaf_coverage_matrix.json`.](../figures/sheaf_layers_overview.png){#fig:sheaf_layers_overview width=98% fig-alt="Two-panel overview of sheaf fragment layers. Left panel shows 34 composable track types in registry compose order with labels and renderer ids. Right panel shows the IMRAD section binding heatmap with black present, white absent, and gray missing cells across 17 manifest rows and 34 tracks."}
+![Sheaf layers overview: registry stack (compose order, renderer ids) and IMRAD binding heatmap for 34 fragment types across 17 manifest rows (95 present / 95 bound / 0 missing), generated from `output/data/sheaf_coverage_matrix.json`.](figures/sheaf_layers_overview.png){#fig:sheaf_layers_overview width=98% fig-alt="Two-panel overview of sheaf fragment layers. Left panel shows 34 composable track types in registry compose order with labels and renderer ids. Right panel shows the IMRAD section binding heatmap with black present, white absent, and gray missing cells across 17 manifest rows and 34 tracks."}
 
-![Semantic gluing graph: configured producers, generated evidence artifacts, and validation consumers for the multi-track sheaf certificate.](../figures/semantic_gluing_graph.png){#fig:semantic_gluing_graph width=95% fig-alt="Dependency diagram linking configured analysis scripts to generated evidence artifacts, manuscript consumers, and validation gates for the semantic sheaf gluing certificate."}
+![Semantic gluing graph: configured producers, generated evidence artifacts, and validation consumers for the multi-track sheaf certificate.](figures/semantic_gluing_graph.png){#fig:semantic_gluing_graph width=95% fig-alt="Dependency diagram linking configured analysis scripts to generated evidence artifacts, manuscript consumers, and validation gates for the semantic sheaf gluing certificate."}
 
-![Track-lane promotion map: 32 pipeline-to-sheaf rows with complete promotion status true. Left: seven promotion-rule obligations; right: sheaf fragment bindings.](../figures/track_lane_promotion_map.png){#fig:track_lane_promotion_map width=98% fig-alt="Two-panel matrix generated from track_lane_matrix.json. The left panel lists pipeline tracks against producer, artifact, manuscript consumer, typed claim, semantic restriction, validation gate, and negative control obligations. The right panel shows the sheaf fragment lanes bound to each pipeline track."}
+![Track-lane promotion map: 32 pipeline-to-sheaf rows with complete promotion status true. Left: seven promotion-rule obligations; right: sheaf fragment bindings.](figures/track_lane_promotion_map.png){#fig:track_lane_promotion_map width=98% fig-alt="Two-panel matrix generated from track_lane_matrix.json. The left panel lists pipeline tracks against producer, artifact, manuscript consumer, typed claim, semantic restriction, validation gate, and negative control obligations. The right panel shows the sheaf fragment lanes bound to each pipeline track."}
 
-![Artifact contract map: 85 generated artifact rows with complete contract status true and copied-output parity complete true. Cycle rows are explicit in `output/data/artifact_contract_index.json`.](../figures/artifact_contract_map.png){#fig:artifact_contract_map width=98% fig-alt="Matrix generated from artifact_contract_index.json. Rows are generated artifacts; columns show producer configured, source present, claim bound or exempt, validation gate, negative control, freshness hash, copied-output parity, and complete contract status."}
+![Artifact contract map: 86 generated artifact rows with complete contract status true and copied-output parity complete true. Cycle rows are explicit in `output/data/artifact_contract_index.json`.](figures/artifact_contract_map.png){#fig:artifact_contract_map width=98% fig-alt="Matrix generated from artifact_contract_index.json. Rows are generated artifacts; columns show producer configured, source present, claim bound or exempt, validation gate, negative control, freshness hash, copied-output parity, and complete contract status."}
 
-![Scholarship source map: 21 source rows across 21 method roles and 10 source families. Connected status: true; row evidence rederived: true.](../figures/scholarship_source_map.png){#fig:scholarship_source_map width=95% fig-alt="Five-column source map generated from the scholarship source matrix. Each row links a bibliography key to a DOI or URL locator, manuscript citation status, guarded scope boundary, method role, and generated evidence artifact; green borders mark rows rederived from bibliography entries, manuscript citations, registered tracks, bound manuscript sections, and existing artifacts."}
+![Scholarship source map: 21 source rows across 21 method roles and 10 source families. Connected status: true; row evidence rederived: true.](figures/scholarship_source_map.png){#fig:scholarship_source_map width=95% fig-alt="Five-column source map generated from the scholarship source matrix. Each row links a bibliography key to a DOI or URL locator, manuscript citation status, guarded scope boundary, method role, and generated evidence artifact; green borders mark rows rederived from bibliography entries, manuscript citations, registered tracks, bound manuscript sections, and existing artifacts."}
 
-![Security posture map: 9 controls, 7 enforced and 2 scoped as deferred; secret findings: 0; high-risk gaps: 0.](../figures/security_posture_map.png){#fig:security_posture_map width=96% fig-alt="Matrix generated from security_posture_audit.json. Rows are defensive controls such as public data boundary, offline reproducibility, hash integrity, release parity, claim traceability, formal boundary, secret scan, signed attestation, and zero-trust runtime boundary; columns show evidence, validator, negative-control, scoping, and overall status."}
+![Security posture map: 9 controls, 7 enforced and 2 scoped as deferred; secret findings: 0; high-risk gaps: 0.](figures/security_posture_map.png){#fig:security_posture_map width=96% fig-alt="Matrix generated from security_posture_audit.json. Rows are defensive controls such as public data boundary, offline reproducibility, hash integrity, release parity, claim traceability, formal boundary, secret scan, signed attestation, and zero-trust runtime boundary; columns show evidence, validator, negative-control, scoping, and overall status."}
 
 <!-- sheaf-track:provenance -->
 
-The `provenance` fragment makes artifact lineage a live canonical sheaf track. The configured producer `generate_sheaf_tracks.py` writes `output/data/artifact_provenance.json`, which hashes 85 required toy artifacts and records producer scripts, source commit, deterministic seed fields, config digests, and 5 artifact bundles. Publication claims that depend on generated files must be traceable to this lineage table or to a narrower artifact-specific certificate.
+The `provenance` fragment makes artifact lineage a live canonical sheaf track. The configured producer `generate_sheaf_tracks.py` writes `output/data/artifact_provenance.json`, which hashes 86 required toy artifacts and records producer scripts, source commit, deterministic seed fields, config digests, and 5 artifact bundles. Publication claims that depend on generated files must be traceable to this lineage table or to a narrower artifact-specific certificate.
 
-The provenance claim is intentionally limited: every listed artifact exists, has a SHA-256 digest or an explicit cycle exclusion, is produced by a configured analysis script, and carries seed/config provenance (`85` seeded rows; all seeded flag `true`; bundle-complete flag `true`). A changed file, missing producer, or stale saved digest is a validation failure, not a prose warning.
+The provenance claim is intentionally limited: every listed artifact exists, has a SHA-256 digest or an explicit cycle exclusion, is produced by a configured analysis script, and carries seed/config provenance (`86` seeded rows; all seeded flag `true`; bundle-complete flag `true`). A changed file, missing producer, or stale saved digest is a validation failure, not a prose warning.
 
 <!-- sheaf-track:counterexample -->
 
@@ -465,9 +495,9 @@ The `evidence_fields` fragment indexes the exact artifact fields that support ty
 
 <!-- sheaf-track:release_bundle -->
 
-The `release_bundle` fragment records whether the canonical deliverables exist before copying and whether copied root outputs match or are explicitly deferred until the copy stage. `output/reports/release_bundle_manifest.json` tracks 38 required deliverables with source-present flag `true`.
+The `release_bundle` fragment records whether the canonical deliverables exist before copying and whether copied root outputs match or are explicitly deferred until the copy stage. `output/reports/release_bundle_manifest.json` tracks 36 required deliverables with source-present flag `true`.
 
-The bundle contract is now indexed artifact-by-artifact rather than inferred from isolated reports. `output/data/artifact_contract_index.json` contains 85 generated artifact rows; each row binds its producer, configured script, pipeline/sheaf lanes, manuscript consumers, claim predicates, validators, negative control, freshness status, and copied-output parity. The aggregate row-complete flag is `true`, and copied-root parity completeness is `true`.
+The bundle contract is now indexed artifact-by-artifact rather than inferred from isolated reports. `output/data/artifact_contract_index.json` contains 86 generated artifact rows; each row binds its producer, configured script, pipeline/sheaf lanes, manuscript consumers, claim predicates, validators, negative control, freshness status, and copied-output parity. The aggregate row-complete flag is `true`, and copied-root parity completeness is `true`.
 
 <!-- sheaf-track:gate_ergonomics -->
 
@@ -482,7 +512,7 @@ The `gate_ergonomics` fragment turns validation commands into evidence rows. `ou
 The `artifact_diffoscope` track compares saved provenance hashes against live
 artifact hashes at the artifact root JSONPath. Its proof artifact is
 `output/reports/artifact_diffoscope.json`: it currently records
-41 comparison rows, with equality status
+43 comparison rows, with equality status
 `true`.
 
 <!-- sheaf-track:artifact_license -->
@@ -492,7 +522,7 @@ artifact hashes at the artifact root JSONPath. Its proof artifact is
 The `artifact_license` track classifies generated and project-source artifacts
 under the public project license boundary. Its audit artifact is
 `output/reports/artifact_license_audit.json`: it currently records
-85 rows, with license-safe status
+86 rows, with license-safe status
 `true`.
 
 <!-- sheaf-track:scholarship -->
@@ -506,10 +536,11 @@ records 21 source rows across
 visualization-quality method roles; [@fig:scholarship_source_map] renders the
 resulting source-to-artifact map with 1
 locator kinds. The row set connects foundational
-free-energy and active-inference references [friston2010fep; buckley2017mathreview; dacosta2020discrete; parr2022active; smith2022tutorial], planning context
-[champion2021branching; nuijten2026efeplanning], implementation and notation
-anchors [pymdp2024; gnn2023], and applied sheaf/local-to-global sources
-[curry2014sheaves; robinson2014topological; bosca2026localglobal] to the
+free-energy and active-inference references [@friston2010fep; @buckley2017mathreview;
+@dacosta2020discrete; @parr2022active; @smith2022tutorial], planning context
+[@champion2021branching; @nuijten2026efeplanning], implementation and notation
+anchors [@pymdp2024; @gnn2023], and applied sheaf/local-to-global sources
+[@curry2014sheaves; @robinson2014topological; @bosca2026localglobal] to the
 exact artifact or method role they support.
 
 The validation claim is deliberately narrow: every row must have a bibliography
@@ -575,7 +606,7 @@ Compose order and renderer bindings from `manuscript/sheaf/tracks.yaml`.
 | 32 | `assumption_index` | Analytical assumption index | `markdown` | Assumption boundary ledger | Lists finite-model assumptions so analytical claims stay scoped. | No |
 | 35 | `layers` | Sheaf layers tables | `layers_report` | Registry and binding disclosure | Generates the track registry, binding matrix, and evidence crosswalk tables. | Yes |
 | 40 | `pymdp` | pymdp harness artifacts | `markdown` | Active-inference implementation evidence | Binds pymdp traces, runtime diagnostics, and policy comparisons to methods and results. | No |
-| 41 | `interop` | GNN/ontology/JSON interop checks | `markdown` | Cross-format compatibility evidence | Shows that GNN, ontology, and JSON artifacts preserve model meaning. | No |
+| 41 | `interop` | GNN / ontology / JSON interop checks | `markdown` | Cross-format compatibility evidence | Shows that GNN, ontology, and JSON artifacts preserve model meaning. | No |
 | 42 | `provenance` | Artifact provenance and bundle lineage spine | `markdown` | Artifact lineage evidence | Documents producers, hashes, seeds, and bundle lineage for generated claims. | No |
 | 45 | `replay_matrix` | Deterministic replay matrix | `markdown` | Reproducibility replay evidence | Shows configured producers replay and match their expected artifacts. | No |
 | 48 | `counterexample` | Expected-failure counterexamples | `markdown` | Falsifiability negative controls | Records known-bad fixtures that must fail validation gates. | No |
@@ -609,27 +640,29 @@ Compose order and renderer bindings from `manuscript/sheaf/tracks.yaml`.
 <!-- sheaf-layers:binding-matrix -->
 ## IMRAD binding matrix
 
-Section rows versus fragment track columns. **P** = present (bound and file exists); **—** = absent (not bound); **M** = missing (bound, file absent).
+Compact section summary: **P** = present (bound and file exists); **M** = missing (bound, file absent). Every track not listed for a row is absent (not bound).
 
-| Section | prose | formalism | simulation | assumption_index | layers | pymdp | interop | provenance | replay_matrix | counterexample | adversarial_audit | evidence_fields | release_bundle | gate_ergonomics | artifact_diffoscope | artifact_license | scholarship | security_posture | sensitivity | uncertainty | benchmark | manuscript_staleness | visualization | lean | model_checking | theorem_traceability | proof_extraction | state_space_catalog | causal_ablation | gnn | ontology | animation | animation_delta | release_notes |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Introduction (group) | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
-|   Motivation and scope | P | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
-|   Contributions | P | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | P | — | — | — | — | — | — | — | P | — | — | — |
-| Methods (group) | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
-|   Bernoulli–Ising analytical model | P | P | P | P | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | P | — | — | — | — | — | — | P | P | — | — | — |
-|   pymdp simulation harness | P | P | — | — | — | P | P | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | P | — | — | — | — | — | — | P | P | — | — | — |
-|   Lean formalization boundary | P | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | P | P | P | P | P | — | — | — | — | — | — | — |
-|   Sheaf composition | P | P | — | — | P | — | — | P | — | P | P | P | P | P | P | P | P | P | — | — | — | P | P | — | — | — | — | — | — | — | — | — | — | — |
-| Results (group) | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
-|   Mutual-information parameter sweep | P | P | P | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | P | — | — | — | — | — | — | — | — | — | — | — |
-|   Free-energy decomposition | P | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | P | — | — | — | — | — | — | — | — | — | — | — |
-|   T-maze active-inference rollout | P | — | — | — | — | P | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | P | — | — | — | — | — | — | — | — | — | — | — |
-|   Validation invariants | P | — | P | — | — | — | — | — | P | — | — | — | — | — | — | — | — | — | P | P | P | — | P | — | — | — | — | P | P | — | — | — | — | — |
-| Discussion (group) | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
-|   Limitations and outlook | P | — | P | — | — | — | — | — | — | — | — | — | — | — | — | — | P | — | — | — | — | — | — | — | — | — | — | — | — | — | P | — | — | P |
-| Appendix (group) | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
-|   Appendix: full track coverage | P | P | P | P | — | P | P | P | P | P | P | P | P | P | P | P | P | P | P | P | P | P | P | P | P | P | P | P | P | P | P | P | P | P |
+The complete cell-level matrix is stored in `output/data/sheaf_coverage_matrix.json` and visualized in [@fig:sheaf_coverage_heatmap].
+
+| Section | Present tracks (P) | Missing tracks (M) |
+| --- | --- | --- |
+| **Introduction (group)** | — | — |
+| ↳ Motivation and scope | `prose` | — |
+| ↳ Contributions | `prose`, `visualization`, `ontology` | — |
+| **Methods (group)** | — | — |
+| ↳ Bernoulli–Ising analytical model | `prose`, `formalism`, `simulation`, `assumption_index`, `visualization`, `gnn`, `ontology` | — |
+| ↳ pymdp simulation harness | `prose`, `formalism`, `pymdp`, `interop`, `visualization`, `gnn`, `ontology` | — |
+| ↳ Lean formalization boundary | `prose`, `visualization`, `lean`, `model_checking`, `theorem_traceability`, `proof_extraction` | — |
+| ↳ Sheaf composition | `prose`, `formalism`, `layers`, `provenance`, `counterexample`, `adversarial_audit`, `evidence_fields`, `release_bundle`, `gate_ergonomics`, `artifact_diffoscope`, `artifact_license`, `scholarship`, `security_posture`, `manuscript_staleness`, `visualization` | — |
+| **Results (group)** | — | — |
+| ↳ Mutual-information parameter sweep | `prose`, `formalism`, `simulation`, `visualization` | — |
+| ↳ Free-energy decomposition | `prose`, `visualization` | — |
+| ↳ T-maze active-inference rollout | `prose`, `pymdp`, `visualization` | — |
+| ↳ Validation invariants | `prose`, `simulation`, `replay_matrix`, `sensitivity`, `uncertainty`, `benchmark`, `visualization`, `state_space_catalog`, `causal_ablation` | — |
+| **Discussion (group)** | — | — |
+| ↳ Limitations and outlook | `prose`, `simulation`, `scholarship`, `ontology`, `release_notes` | — |
+| **Appendix (group)** | — | — |
+| ↳ Appendix: full track coverage | `prose`, `formalism`, `simulation`, `assumption_index`, `pymdp`, `interop`, `provenance`, `replay_matrix`, `counterexample`, `adversarial_audit`, `evidence_fields`, `release_bundle`, `gate_ergonomics`, `artifact_diffoscope`, `artifact_license`, `scholarship`, `security_posture`, `sensitivity`, `uncertainty`, `benchmark`, `manuscript_staleness`, `visualization`, `lean`, `model_checking`, `theorem_traceability`, `proof_extraction`, `state_space_catalog`, `causal_ablation`, `gnn`, `ontology`, `animation`, `animation_delta`, `release_notes` | — |
 
 **Totals:** 95 present / 95 bound / 0 missing.
 
@@ -666,7 +699,7 @@ Generated status for the current manuscript sheaf, summarized per composable sec
 ## Track status
 
 | Track | Renderer | Bound sections | Present | Missing | Claims | Status |
-| --- | --- | ---: | ---: | ---: | ---: | --- |
+| -------------------- | --------------- | -----: | -----: | -----: | -----: | -------- |
 | `prose` | `markdown` | 12 | 12 | 0 | 0 | `complete` |
 | `formalism` | `markdown` | 5 | 5 | 0 | 0 | `complete` |
 | `simulation` | `markdown` | 5 | 5 | 0 | 11 | `complete` |
@@ -714,7 +747,7 @@ Generated status for the current manuscript sheaf, summarized per composable sec
 | `coverage_matrix_built` | `sheaf.coverage` | `output/data/sheaf_coverage_matrix.json` | `ok` | 95 present cells |
 | `section_status_matrix_built` | `sheaf.status` | `output/data/sheaf_section_status_matrix.json` | `ok` | 578 section-track cells |
 | `layers_renderer_bound` | `sheaf.layers_report` | `manuscript/08_methods_sheaf.md` | `ok` | methods sheaf layer tables |
-| `semantic_artifacts_indexed` | `sheaf.semantic` | `output/data/validation_dependency_graph.json` | `ok` | 85 artifact producer rows |
+| `semantic_artifacts_indexed` | `sheaf.semantic` | `output/data/validation_dependency_graph.json` | `ok` | 86 artifact producer rows |
 | `validation_gates_indexed` | `gates` | `output/data/validation_gate_index.json` | `ok` | 3 gate groups |
 | `manuscript_sections_composed` | `sheaf.compose` | `manuscript/*.md` | `ok` | 16 composed markdown files |
 
@@ -732,7 +765,7 @@ Generated status for the current manuscript sheaf, summarized per composable sec
 | `sheaf_gluing_certificate` | `output/data/sheaf_gluing_certificate.json` | `generate_sheaf_tracks.py` | validate_manuscript, validate_outputs |
 | `sheaf_evidence_crosswalk` | `output/data/sheaf_evidence_crosswalk.json` | `generate_sheaf_tracks.py` | validate_manuscript, validate_outputs |
 | `validation_dependency_graph` | `output/data/validation_dependency_graph.json` | `generate_sheaf_tracks.py` | validate_manuscript, validate_outputs |
-| `semantic_gluing_graph_figure` | `../figures/semantic_gluing_graph.png` | `generate_figures.py` | validate_outputs, figure_registry |
+| `semantic_gluing_graph_figure` | `figures/semantic_gluing_graph.png` | `generate_figures.py` | validate_outputs, figure_registry |
 
 **Claim rows:** 97 typed evidence claims.
 
@@ -787,7 +820,7 @@ Generated status for the current manuscript sheaf, summarized per composable sec
 | `output/data/uncertainty_summary.json` | `generate_sheaf_tracks.py` | Yes | results_invariants, appendix_full_sheaf |
 | `output/data/validation_dependency_graph.json` | `generate_sheaf_tracks.py` | Yes | methods_sheaf |
 | `output/data/validation_gate_index.json` | `generate_integration_audit.py` | Yes | methods_sheaf, appendix_full_sheaf |
-| `../figures/si_belief_trajectory.gif` | `render_animation.py` | Yes | appendix_full_sheaf |
+| `figures/si_belief_trajectory.gif` | `render_animation.py` | Yes | appendix_full_sheaf |
 | `output/reports/ablation_sensitivity_report.json` | `generate_sheaf_tracks.py` | Yes | results_invariants, appendix_full_sheaf |
 | `output/reports/adversarial_audit.json` | `generate_sheaf_tracks.py` | Yes | methods_sheaf, appendix_full_sheaf |
 | `output/reports/artifact_diffoscope.json` | `generate_integration_audit.py` | Yes | methods_sheaf, appendix_full_sheaf |
@@ -854,62 +887,93 @@ Generated status for the current manuscript sheaf, summarized per composable sec
 <!-- sheaf-layers:track-lane-matrix -->
 ## Track-lane matrix
 
-| Pipeline track | Sheaf fragments | Producer | Primary artifact | Claims | Semantic | Gates | Negative |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `lean` | `lean` | `generate_formal_interop_tracks.py` | `output/reports/lean_theorem_inventory.json` | `lean_graph_world_policy_boundary`, `lean_graph_world_topologies_witnessed`, `lean_theorem_inventory_proved`, `model_checking_exhaustive`, `model_checking_witnesses_pass`, `proof_dependency_graph_resolved`, `proof_extraction_constructive`, `theorem_traceability_linked`, `track_lane_promotion_map_figure` | `track_lane_matrix_complete`, `track_lane_matrix_row_count` | `build_lean`, `validate_outputs` | `track_lane_matrix_row_only_forgery` |
-| `analytical` | `formalism`, `simulation`, `assumption_index` | `run_analytical_sweep.py` | `output/data/parameter_sweep.csv` | `analytical_assumption_index`, `composed_methods_analytical`, `composed_results_mi` | `track_lane_matrix_complete`, `track_lane_matrix_row_count` | `validate_outputs` | `track_lane_matrix_row_only_forgery` |
-| `pymdp` | `pymdp` | `simulate_si_tmaze.py` | `output/data/si_policy_comparison.json` | `graph_world_invariants_pass`, `graph_world_topology_traces_consistent`, `pymdp_policy_posterior_grid_normalized`, `pymdp_runtime_diagnostics_ok`, `sheaf_gluing_certificate`, `si_belief_entropy_figure`, `si_efe_rows_explained`, `si_graph_world_summary`, `si_graph_world_trace`, `si_graph_world_trace_consistency`, `si_policy_comparison`, `si_policy_comparison_modes`, `si_policy_grid_complete`, `si_tmaze_summary`, `si_tmaze_trace` | `track_lane_matrix_complete`, `track_lane_matrix_row_count` | `validate_outputs` | `track_lane_matrix_row_only_forgery` |
-| `gnn` | `gnn` | `generate_formal_interop_tracks.py` | `output/reports/gnn_lint_report.json` | `cross_track_symbols_consistent`, `interop_lossless`, `interop_roundtrip_lossless`, `sheaf_gluing_certificate` | `track_lane_matrix_complete`, `track_lane_matrix_row_count` | `validate_outputs` | `track_lane_matrix_row_only_forgery` |
-| `ontology` | `ontology` | `generate_formal_interop_tracks.py` | `output/data/ontology_profile_matrix.json` | `composed_discussion`, `cross_track_symbols_consistent`, `interop_lossless`, `interop_roundtrip_lossless`, `sheaf_gluing_certificate` | `track_lane_matrix_complete`, `track_lane_matrix_row_count` | `validate_manuscript`, `validate_outputs` | `track_lane_matrix_row_only_forgery` |
-| `visualizations` | `visualization` | `generate_integration_audit.py` | `output/reports/visualization_quality_audit.json` | `visualization_quality_audit_complete`, `visualization_statistics_bridge_complete` | `track_lane_matrix_complete`, `track_lane_matrix_row_count` | `validate_manuscript`, `validate_outputs` | `track_lane_matrix_row_only_forgery` |
-| `provenance` | `provenance` | `generate_sheaf_tracks.py` | `output/data/artifact_provenance.json` | `artifact_contract_index_complete`, `artifact_contract_map_figure`, `artifact_diffoscope_equal`, `artifact_license_safe`, `artifact_provenance_seed_config`, `artifact_provenance_spine`, `dependency_graph_edges`, `figure_hash_manifest_complete`, `figure_source_map_complete`, `producer_completeness`, `pymdp_runtime_diagnostics_ok`, `release_bundle_sources_present`, `stale_artifact_report_fresh`, `track_improvement_scope_complete`, `track_lane_matrix_complete` | `track_lane_matrix_complete`, `track_lane_matrix_row_count` | `validate_manuscript`, `validate_outputs` | `missing_sheaf_track_producer` |
-| `replay_matrix` | `replay_matrix` | `generate_sheaf_tracks.py` | `output/reports/replay_matrix.json` | `replay_matrix_all_replayed`, `replay_matrix_spine`, `stale_artifact_report_fresh` | `track_lane_matrix_complete`, `track_lane_matrix_row_count` | `validate_manuscript`, `validate_outputs` | `replay_mismatch` |
-| `counterexample` | `counterexample` | `generate_sheaf_tracks.py` | `output/reports/counterexample_matrix.json` | `counterexample_expected_failures`, `counterexample_matrix_spine` | `track_lane_matrix_complete`, `track_lane_matrix_row_count` | `validate_manuscript`, `validate_outputs` | `known_bad_counterexample_passed` |
-| `sensitivity` | `sensitivity` | `generate_sheaf_tracks.py` | `output/data/sensitivity_sweep.json` | `ablation_sensitivity_source_backed`, `causal_ablation_complete`, `graph_world_invariants_pass`, `graph_world_topology_traces_consistent`, `lean_graph_world_topologies_witnessed`, `sensitivity_complete_grid`, `si_efe_rows_explained`, `si_policy_grid_complete`, `state_transition_table_complete` | `track_lane_matrix_complete`, `track_lane_matrix_row_count` | `validate_outputs` | `missing_sensitivity_cell` |
-| `assumption_index` | `assumption_index` | `generate_toy_sweep_tracks.py` | `output/data/analytical_assumption_index.json` | `analytical_assumption_index` | `track_lane_matrix_complete`, `track_lane_matrix_row_count` | `validate_manuscript`, `validate_outputs` | `track_lane_matrix_row_only_forgery` |
-| `uncertainty` | `uncertainty` | `generate_sheaf_tracks.py` | `output/data/uncertainty_summary.json` | `ablation_sensitivity_source_backed`, `pymdp_policy_posterior_grid_normalized`, `uncertainty_normalized`, `uncertainty_rows_normalized` | `track_lane_matrix_complete`, `track_lane_matrix_row_count` | `validate_outputs` | `unnormalized_uncertainty_row` |
-| `benchmark` | `benchmark` | `generate_toy_sweep_tracks.py` | `output/data/toy_benchmark_matrix.json` | `benchmark_rows_complete`, `causal_ablation_complete`, `state_space_catalog_finite` | `track_lane_matrix_complete`, `track_lane_matrix_row_count` | `validate_outputs` | `track_lane_matrix_row_only_forgery` |
-| `model_checking` | `model_checking` | `generate_sheaf_tracks.py` | `output/reports/model_checking_witnesses.json` | `lean_graph_world_topologies_witnessed`, `lean_theorem_inventory_proved`, `model_checking_exhaustive`, `model_checking_witnesses_pass`, `state_space_catalog_finite`, `state_transition_table_complete`, `theorem_traceability_linked` | `track_lane_matrix_complete`, `track_lane_matrix_row_count` | `validate_outputs` | `missed_model_checking_counterexample` |
-| `interop` | `interop` | `generate_formal_interop_tracks.py` | `output/data/interop_roundtrip_report.json` | `interop_lossless`, `interop_roundtrip_lossless`, `pymdp_policy_posterior_grid_normalized` | `track_lane_matrix_complete`, `track_lane_matrix_row_count` | `validate_outputs` | `interop_shape_loss` |
-| `adversarial_audit` | `adversarial_audit` | `generate_sheaf_tracks.py` | `output/reports/adversarial_audit.json` | `adversarial_audit_expected_failures`, `adversarial_audit_known_bad_blocked`, `claim_evidence_audit_typed`, `counterexample_expected_failures`, `empirical_adapter_blocked`, `producer_completeness`, `pymdp_runtime_diagnostics_ok`, `scope_boundary_toy_only`, `semantic_gluing_ok` | `track_lane_matrix_complete`, `track_lane_matrix_row_count` | `validate_manuscript`, `validate_outputs` | `adversarial_known_bad_passes` |
-| `evidence_fields` | `evidence_fields` | `generate_sheaf_tracks.py` | `output/data/evidence_field_index.json` | `evidence_fields_mapped` | `track_lane_matrix_complete`, `track_lane_matrix_row_count` | `validate_manuscript`, `validate_outputs` | `missing_typed_claim` |
-| `release_bundle` | `release_bundle` | `generate_sheaf_tracks.py` | `output/reports/release_bundle_manifest.json` | `artifact_contract_copied_parity_complete`, `artifact_contract_index_complete`, `artifact_contract_map_figure`, `artifact_diffoscope_equal`, `artifact_license_safe`, `release_attestation_complete`, `release_bundle_sources_present`, `release_notes_source_backed`, `security_posture_controls_ok` | `track_lane_matrix_complete`, `track_lane_matrix_row_count` | `validate_manuscript`, `validate_outputs` | `release_bundle_parity_failure` |
-| `theorem_traceability` | `theorem_traceability` | `generate_sheaf_tracks.py` | `output/data/theorem_traceability_matrix.json` | `proof_dependency_graph_resolved`, `proof_extraction_constructive`, `theorem_traceability_linked` | `track_lane_matrix_complete`, `track_lane_matrix_row_count` | `validate_manuscript`, `validate_outputs` | `theorem_traceability_unlinked` |
-| `gate_ergonomics` | `gate_ergonomics` | `generate_integration_audit.py` | `output/data/validation_gate_index.json` | `artifact_contract_index_complete`, `gate_ergonomics_indexed`, `release_attestation_complete`, `release_notes_source_backed`, `security_posture_controls_ok`, `sheaf_render_log_events_ok`, `track_lane_matrix_complete`, `validation_gate_index_complete` | `track_lane_matrix_complete`, `track_lane_matrix_row_count` | `validate_manuscript`, `validate_outputs` | `gate_ergonomics_unindexed` |
-| `artifact_diffoscope` | `artifact_diffoscope` | `generate_integration_audit.py` | `output/reports/artifact_diffoscope.json` | `artifact_contract_copied_parity_complete`, `artifact_diffoscope_equal` | `track_lane_matrix_complete`, `track_lane_matrix_row_count` | `validate_manuscript`, `validate_outputs` | `artifact_diffoscope_missed_hash_drift` |
-| `proof_extraction` | `proof_extraction` | `generate_formal_interop_tracks.py` | `output/data/proof_extraction_index.json` | `proof_dependency_graph_resolved`, `proof_extraction_constructive` | `track_lane_matrix_complete`, `track_lane_matrix_row_count` | `validate_manuscript`, `validate_outputs` | `proof_extraction_missing_statement` |
-| `state_space_catalog` | `state_space_catalog` | `generate_toy_sweep_tracks.py` | `output/data/state_space_catalog.json` | `state_space_catalog_finite`, `state_transition_table_complete` | `track_lane_matrix_complete`, `track_lane_matrix_row_count` | `validate_manuscript`, `validate_outputs` | `state_space_catalog_missing_finite_space` |
-| `causal_ablation` | `causal_ablation` | `generate_toy_sweep_tracks.py` | `output/data/causal_ablation_matrix.json` | `ablation_sensitivity_source_backed`, `causal_ablation_complete` | `track_lane_matrix_complete`, `track_lane_matrix_row_count` | `validate_manuscript`, `validate_outputs` | `causal_ablation_missing_cell` |
-| `artifact_license` | `artifact_license` | `generate_integration_audit.py` | `output/reports/artifact_license_audit.json` | `artifact_license_safe` | `track_lane_matrix_complete`, `track_lane_matrix_row_count` | `validate_manuscript`, `validate_outputs` | `artifact_license_unsafe_artifact` |
-| `scholarship` | `scholarship` | `generate_sheaf_tracks.py` | `output/data/scholarship_source_matrix.json` | `scholarship_source_map_figure`, `scholarship_source_matrix_connected`, `statistical_visualization_crosswalk_complete`, `visualization_statistics_bridge_complete` | `track_lane_matrix_complete`, `track_lane_matrix_row_count` | `validate_manuscript`, `validate_outputs` | `missing_scholarship_source_binding` |
-| `security_posture` | `security_posture` | `generate_sheaf_tracks.py` | `output/reports/security_posture_audit.json` | `security_posture_controls_ok`, `security_posture_map_figure` | `track_lane_matrix_complete`, `track_lane_matrix_row_count` | `validate_manuscript`, `validate_outputs` | `security_posture_aggregate_forgery` |
-| `release_notes` | `release_notes` | `generate_integration_audit.py` | `output/reports/release_notes_evidence.json` | `release_attestation_complete`, `release_notes_source_backed` | `track_lane_matrix_complete`, `track_lane_matrix_row_count` | `validate_manuscript`, `validate_outputs` | `release_notes_claim_failed_gate_passed` |
-| `animation_delta` | `animation_delta` | `render_animation.py` | `output/data/animation_frame_deltas.json` | `animation_frame_deltas_nonzero` | `track_lane_matrix_complete`, `track_lane_matrix_row_count` | `validate_manuscript`, `validate_outputs` | `track_lane_matrix_row_only_forgery` |
-| `manuscript_staleness` | `manuscript_staleness` | `z_generate_manuscript_variables.py` | `output/reports/manuscript_staleness_report.json` | `manuscript_staleness_fresh` | `track_lane_matrix_complete`, `track_lane_matrix_row_count` | `validate_manuscript`, `validate_outputs` | `track_lane_matrix_row_only_forgery` |
-| `visualization` | `visualization` | `generate_integration_audit.py` | `output/reports/visualization_quality_audit.json` | `animation_frame_deltas_nonzero`, `artifact_contract_map_figure`, `figure_hash_manifest_complete`, `figure_source_map_complete`, `scholarship_source_map_figure`, `security_posture_map_figure`, `semantic_gluing_graph_figure`, `sheaf_coverage_config`, `sheaf_coverage_heatmap`, `sheaf_gluing_certificate`, `sheaf_layers_overview`, `si_belief_entropy_figure`, `si_belief_trajectory_gif`, `statistical_visualization_crosswalk_complete`, `track_lane_promotion_map_figure`, `visualization_quality_audit_complete`, `visualization_statistics_bridge_complete` | `track_lane_matrix_complete`, `track_lane_matrix_row_count` | `validate_manuscript`, `validate_outputs` | `track_lane_matrix_row_only_forgery` |
-| `manuscript` | `prose`, `formalism`, `layers` | `compose_manuscript.py` | `manuscript/sheaf/manifest.yaml` | `adversarial_audit_expected_failures`, `analytical_assumption_index`, `artifact_provenance_seed_config`, `artifact_provenance_spine`, `benchmark_rows_complete`, `claim_evidence_audit_typed`, `composed_appendix_full_sheaf`, `composed_discussion`, `composed_intro_motivation`, `composed_methods_analytical`, `composed_methods_sheaf`, `composed_results_mi`, `counterexample_matrix_spine`, `coverage_no_gray`, `dependency_graph_edges`, `empirical_adapter_blocked`, `gate_ergonomics_indexed`, `lean_graph_world_policy_boundary`, `manuscript_evidence_tables_source_backed`, `manuscript_staleness_fresh`, `manuscript_token_provenance_mapped`, `replay_matrix_spine`, `scholarship_source_matrix_connected`, `scope_boundary_toy_only`, `semantic_gluing_graph_figure`, `semantic_gluing_ok`, `sensitivity_complete_grid`, `sheaf_coverage_config`, `sheaf_coverage_heatmap`, `sheaf_coverage_matrix`, `sheaf_evidence_crosswalk`, `sheaf_gluing_certificate`, `sheaf_manifest`, `sheaf_registry`, `sheaf_render_log_events_ok`, `sheaf_section_status_matrix_complete`, `si_graph_world_trace_consistency`, `track_improvement_scope_complete`, `track_lane_matrix_complete`, `track_lane_promotion_map_figure`, `uncertainty_rows_normalized`, `validation_dependency_graph`, `validation_gate_index_complete`, `visualization_quality_audit_complete` | `track_lane_matrix_complete`, `track_lane_matrix_row_count` | `validate_manuscript` | `track_lane_matrix_row_only_forgery` |
+Every pipeline row is shown below in canonical order. The source-owned full matrix in output/data/track_lane_matrix.json remains the authority for exact source paths, claim IDs, semantic-restriction IDs, gate IDs, negative-control IDs, and promotion cells.
 
-**Pipeline rows:** 32.
+| Pipeline track | Source, producer, and primary artifact | Coverage, gates, and negative control |
+| --- | --- | --- |
+| **lean** | Sources (present): TemplateActiveInference. Producer (configured): generate formal interop tracks.py. Primary artifact (present): lean theorem inventory.json. | Role: Lean boundary fragment. Required; matrix complete. Fragments (registered): lean; 2 manuscript consumers; 9 claims; 2 semantic restrictions. Gates: build lean, validate outputs. Negative control: track lane matrix row only forgery. |
+| **analytical** | Sources (present): analytical. Producer (configured): run analytical sweep.py. Primary artifact (present): parameter sweep.csv. | Role: Python analytical companion. Required; matrix complete. Fragments (registered): formalism, simulation, assumption index; 7 manuscript consumers; 3 claims; 2 semantic restrictions. Gates: validate outputs. Negative control: track lane matrix row only forgery. |
+| **pymdp** | Sources (present): simulation. Producer (configured): simulate si tmaze.py. Primary artifact (present): si policy comparison.json. | Role: pymdp sophisticated-inference harness. Required; matrix complete. Fragments (registered): pymdp; 3 manuscript consumers; 15 claims; 2 semantic restrictions. Gates: validate outputs. Negative control: track lane matrix row only forgery. |
+| **gnn** | Sources (present): gnn, gnn. Producer (configured): generate formal interop tracks.py. Primary artifact (present): gnn lint report.json. | Role: Generalized Notation Notation. Required; matrix complete. Fragments (registered): gnn; 3 manuscript consumers; 4 claims; 2 semantic restrictions. Gates: validate outputs. Negative control: track lane matrix row only forgery. |
+| **ontology** | Sources (present): ontology. Producer (configured): generate formal interop tracks.py. Primary artifact (present): ontology profile matrix.json. | Role: Active Inference Ontology concordance. Required; matrix complete. Fragments (registered): ontology; 5 manuscript consumers; 5 claims; 2 semantic restrictions. Gates: validate manuscript, validate outputs. Negative control: track lane matrix row only forgery. |
+| **visualizations** | Sources (present): visualizations. Producer (configured): generate integration audit.py. Primary artifact (present): visualization quality audit.json. | Role: Figures and optional animation. Required; matrix complete. Fragments (registered): visualization; 10 manuscript consumers; 2 claims; 2 semantic restrictions. Gates: validate manuscript, validate outputs. Negative control: track lane matrix row only forgery. |
+| **provenance** | Sources (present): roadmap tracks, artifact provenance.json. Producer (configured): generate sheaf tracks.py. Primary artifact (present): artifact provenance.json. | Role: Artifact provenance and bundle-lineage spine. Required; matrix complete. Fragments (registered): provenance; 2 manuscript consumers; 15 claims; 2 semantic restrictions. Gates: validate manuscript, validate outputs. Negative control: missing sheaf track producer. |
+| **replay matrix** | Sources (present): roadmap tracks, replay matrix.json. Producer (configured): generate sheaf tracks.py. Primary artifact (present): replay matrix.json. | Role: Deterministic replay matrix. Required; matrix complete. Fragments (registered): replay matrix; 2 manuscript consumers; 3 claims; 2 semantic restrictions. Gates: validate manuscript, validate outputs. Negative control: replay mismatch. |
+| **counterexample** | Sources (present): roadmap tracks, counterexample matrix.json. Producer (configured): generate sheaf tracks.py. Primary artifact (present): counterexample matrix.json. | Role: Expected-failure counterexample matrix. Required; matrix complete. Fragments (registered): counterexample; 2 manuscript consumers; 2 claims; 2 semantic restrictions. Gates: validate manuscript, validate outputs. Negative control: known bad counterexample passed. |
+| **sensitivity** | Sources (present): roadmap tracks, sensitivity sweep.json. Producer (configured): generate sheaf tracks.py. Primary artifact (present): sensitivity sweep.json. | Role: Deterministic toy sensitivity sweep. Required; matrix complete. Fragments (registered): sensitivity; 2 manuscript consumers; 9 claims; 2 semantic restrictions. Gates: validate outputs. Negative control: missing sensitivity cell. |
+| **assumption index** | Sources (present): roadmap tracks, analytical assumption index.json. Producer (configured): generate toy sweep tracks.py. Primary artifact (present): analytical assumption index.json. | Role: Analytical equation assumption index. Required; matrix complete. Fragments (registered): assumption index; 2 manuscript consumers; 1 claims; 2 semantic restrictions. Gates: validate manuscript, validate outputs. Negative control: track lane matrix row only forgery. |
+| **uncertainty** | Sources (present): roadmap tracks, uncertainty summary.json. Producer (configured): generate sheaf tracks.py. Primary artifact (present): uncertainty summary.json. | Role: Posterior and policy uncertainty summaries. Required; matrix complete. Fragments (registered): uncertainty; 2 manuscript consumers; 4 claims; 2 semantic restrictions. Gates: validate outputs. Negative control: unnormalized uncertainty row. |
+| **benchmark** | Sources (present): roadmap tracks, toy benchmark matrix.json. Producer (configured): generate toy sweep tracks.py. Primary artifact (present): toy benchmark matrix.json. | Role: Compact deterministic toy benchmark matrix. Required; matrix complete. Fragments (registered): benchmark; 2 manuscript consumers; 3 claims; 2 semantic restrictions. Gates: validate outputs. Negative control: track lane matrix row only forgery. |
+| **model checking** | Sources (present): roadmap tracks, model checking witnesses.json. Producer (configured): generate sheaf tracks.py. Primary artifact (present): model checking witnesses.json. | Role: Finite-state model-checking witnesses. Required; matrix complete. Fragments (registered): model checking; 2 manuscript consumers; 7 claims; 2 semantic restrictions. Gates: validate outputs. Negative control: missed model checking counterexample. |
+| **interop** | Sources (present): roadmap tracks, interop roundtrip report.json. Producer (configured): generate formal interop tracks.py. Primary artifact (present): interop roundtrip report.json. | Role: GNN/ontology/JSON round-trip checks. Required; matrix complete. Fragments (registered): interop; 2 manuscript consumers; 3 claims; 2 semantic restrictions. Gates: validate outputs. Negative control: interop shape loss. |
+| **adversarial audit** | Sources (present): roadmap tracks, adversarial audit.json. Producer (configured): generate sheaf tracks.py. Primary artifact (present): adversarial audit.json. | Role: Expected-failure adversarial audit matrix. Required; matrix complete. Fragments (registered): adversarial audit; 2 manuscript consumers; 9 claims; 2 semantic restrictions. Gates: validate manuscript, validate outputs. Negative control: adversarial known bad passes. |
+| **evidence fields** | Sources (present): roadmap tracks, evidence field index.json. Producer (configured): generate sheaf tracks.py. Primary artifact (present): evidence field index.json. | Role: Artifact field to claim and token index. Required; matrix complete. Fragments (registered): evidence fields; 2 manuscript consumers; 1 claims; 2 semantic restrictions. Gates: validate manuscript, validate outputs. Negative control: missing typed claim. |
+| **release bundle** | Sources (present): roadmap tracks, release bundle manifest.json. Producer (configured): generate sheaf tracks.py. Primary artifact (present): release bundle manifest.json. | Role: Release bundle parity manifest. Required; matrix complete. Fragments (registered): release bundle; 2 manuscript consumers; 9 claims; 2 semantic restrictions. Gates: validate manuscript, validate outputs. Negative control: release bundle parity failure. |
+| **theorem traceability** | Sources (present): roadmap tracks, theorem traceability matrix.json. Producer (configured): generate sheaf tracks.py. Primary artifact (present): theorem traceability matrix.json. | Role: Lean theorem and model-checking traceability matrix. Required; matrix complete. Fragments (registered): theorem traceability; 2 manuscript consumers; 3 claims; 2 semantic restrictions. Gates: validate manuscript, validate outputs. Negative control: theorem traceability unlinked. |
+| **gate ergonomics** | Sources (present): roadmap tracks, validation gate index.json. Producer (configured): generate integration audit.py. Primary artifact (present): validation gate index.json. | Role: Validation gate command/input/negative-control index. Required; matrix complete. Fragments (registered): gate ergonomics; 2 manuscript consumers; 8 claims; 2 semantic restrictions. Gates: validate manuscript, validate outputs. Negative control: gate ergonomics unindexed. |
+| **artifact diffoscope** | Sources (present): roadmap tracks, artifact diffoscope.json. Producer (configured): generate integration audit.py. Primary artifact (present): artifact diffoscope.json. | Role: Artifact hash and JSONPath diffoscope. Required; matrix complete. Fragments (registered): artifact diffoscope; 2 manuscript consumers; 2 claims; 2 semantic restrictions. Gates: validate manuscript, validate outputs. Negative control: artifact diffoscope missed hash drift. |
+| **proof extraction** | Sources (present): roadmap tracks, proof extraction index.json. Producer (configured): generate formal interop tracks.py. Primary artifact (present): proof extraction index.json. | Role: Lean proof extraction evidence index. Required; matrix complete. Fragments (registered): proof extraction; 2 manuscript consumers; 2 claims; 2 semantic restrictions. Gates: validate manuscript, validate outputs. Negative control: proof extraction missing statement. |
+| **state space catalog** | Sources (present): roadmap tracks, state space catalog.json. Producer (configured): generate toy sweep tracks.py. Primary artifact (present): state space catalog.json. | Role: Finite toy state-space catalog. Required; matrix complete. Fragments (registered): state space catalog; 2 manuscript consumers; 2 claims; 2 semantic restrictions. Gates: validate manuscript, validate outputs. Negative control: state space catalog missing finite space. |
+| **causal ablation** | Sources (present): roadmap tracks, causal ablation matrix.json. Producer (configured): generate toy sweep tracks.py. Primary artifact (present): causal ablation matrix.json. | Role: Deterministic toy causal ablation matrix. Required; matrix complete. Fragments (registered): causal ablation; 2 manuscript consumers; 2 claims; 2 semantic restrictions. Gates: validate manuscript, validate outputs. Negative control: causal ablation missing cell. |
+| **artifact license** | Sources (present): roadmap tracks, artifact license audit.json. Producer (configured): generate integration audit.py. Primary artifact (present): artifact license audit.json. | Role: Generated artifact license audit. Required; matrix complete. Fragments (registered): artifact license; 2 manuscript consumers; 1 claims; 2 semantic restrictions. Gates: validate manuscript, validate outputs. Negative control: artifact license unsafe artifact. |
+| **scholarship** | Sources (present): roadmap tracks, scholarship source matrix.json. Producer (configured): generate sheaf tracks.py. Primary artifact (present): scholarship source matrix.json. | Role: Source-backed scholarship matrix. Required; matrix complete. Fragments (registered): scholarship; 3 manuscript consumers; 4 claims; 2 semantic restrictions. Gates: validate manuscript, validate outputs. Negative control: missing scholarship source binding. |
+| **security posture** | Sources (present): roadmap tracks, security posture audit.json. Producer (configured): generate sheaf tracks.py. Primary artifact (present): security posture audit.json. | Role: Local security posture and deferred production controls. Required; matrix complete. Fragments (registered): security posture; 2 manuscript consumers; 2 claims; 2 semantic restrictions. Gates: validate manuscript, validate outputs. Negative control: security posture aggregate forgery. |
+| **release notes** | Sources (present): roadmap tracks, release notes evidence.json. Producer (configured): generate integration audit.py. Primary artifact (present): release notes evidence.json. | Role: Source-backed release notes evidence. Required; matrix complete. Fragments (registered): release notes; 2 manuscript consumers; 2 claims; 2 semantic restrictions. Gates: validate manuscript, validate outputs. Negative control: release notes claim failed gate passed. |
+| **animation delta** | Sources (present): visualizations, animation frame deltas.json. Producer (configured): render animation.py. Primary artifact (present): animation frame deltas.json. | Role: Animation frame-delta manifest. Required; matrix complete. Fragments (registered): animation delta; 1 manuscript consumers; 1 claims; 2 semantic restrictions. Gates: validate manuscript, validate outputs. Negative control: track lane matrix row only forgery. |
+| **manuscript staleness** | Sources (present): roadmap tracks, manuscript staleness report.json. Producer (configured): z generate manuscript variables.py. Primary artifact (present): manuscript staleness report.json. | Role: Hydrated manuscript staleness audit. Required; matrix complete. Fragments (registered): manuscript staleness; 2 manuscript consumers; 1 claims; 2 semantic restrictions. Gates: validate manuscript, validate outputs. Negative control: track lane matrix row only forgery. |
+| **visualization** | Sources (present): visualizations. Producer (configured): generate integration audit.py. Primary artifact (present): visualization quality audit.json. | Role: Sheaf fragment alias for figures. Optional; matrix complete. Fragments (registered): visualization; 10 manuscript consumers; 17 claims; 2 semantic restrictions. Gates: validate manuscript, validate outputs. Negative control: track lane matrix row only forgery. |
+| **manuscript** | Sources (present): manuscript, sheaf, figures.yaml. Producer (configured): compose manuscript.py. Primary artifact (present): manifest.yaml. | Role: Sheaf composer and registry. Required; matrix complete. Fragments (registered): prose, formalism, layers; 12 manuscript consumers; 44 claims; 2 semantic restrictions. Gates: validate manuscript. Negative control: track lane matrix row only forgery. |
+
+**Pipeline rows:** 32 total; 31 required; every row shown.
 
 <!-- sheaf-layers:track-improvement-scope -->
 ## Track improvement scope
 
-| Track | Status | Current proof | Next artifact | Gate | Negative control |
-| --- | --- | --- | --- | --- | --- |
-| `adversarial_audit` | live | `output/reports/adversarial_audit.json` | `output/reports/adversarial_audit.json` | `validate_outputs, validate_manuscript` | adversarial_known_bad_passes |
-| `animation` | optional | `../figures/si_belief_trajectory.gif` | `../figures/si_belief_trajectory.gif` | `validate_outputs` | missing_fragment_coverage |
-| `animation_delta` | live | `output/data/animation_frame_deltas.json` | `output/data/animation_frame_deltas.json` | `validate_outputs, validate_manuscript` | missing_fragment_coverage |
-| `artifact_diffoscope` | live | `output/reports/artifact_diffoscope.json` | `output/reports/artifact_diffoscope.json` | `validate_outputs, validate_manuscript` | artifact_diffoscope_missed_hash_drift |
-| `artifact_license` | live | `output/reports/artifact_license_audit.json` | `output/reports/artifact_license_audit.json` | `validate_outputs, validate_manuscript` | artifact_license_unsafe_artifact |
-| `assumption_index` | live | `output/data/analytical_assumption_index.json` | `output/data/analytical_assumption_index.json` | `validate_outputs, validate_manuscript` | missing_fragment_coverage |
-| `benchmark` | live | `output/data/toy_benchmark_matrix.json` | `output/data/toy_benchmark_matrix.json` | `validate_outputs` | missing_fragment_coverage |
-| `causal_ablation` | live | `output/data/causal_ablation_matrix.json` | `output/data/causal_ablation_matrix.json` | `validate_outputs, validate_manuscript` | causal_ablation_missing_cell |
-| `counterexample` | live | `output/reports/counterexample_matrix.json` | `output/reports/counterexample_matrix.json` | `validate_outputs, validate_manuscript` | known_bad_counterexample_passed |
-| `evidence_fields` | live | `output/data/evidence_field_index.json` | `output/data/evidence_field_index.json` | `validate_outputs, validate_manuscript` | missing_typed_claim |
-| `formalism` | live | `manuscript/sheaf/manifest.yaml` | `manuscript/sheaf/manifest.yaml` | `validate_manuscript` | missing_fragment_coverage |
-| `gate_ergonomics` | live | `output/data/validation_gate_index.json` | `output/data/validation_gate_index.json` | `validate_outputs, validate_manuscript` | gate_ergonomics_unindexed |
+Every roadmap row is shown below in canonical order. The source-owned full matrix in output/data/track_improvement_scope.json remains the authority for exact priorities, scope text, gate or predicate IDs, negative-control IDs, and promotion fields.
 
-**Improvement rows:** 39.
+| Track | Evidence progression | Status, gate, and negative control |
+| --- | --- | --- |
+| **adversarial audit** | Producer: generate sheaf tracks.py. Current and next evidence: adversarial audit.json. | Status: live; priority: high. Gate or predicate: validate outputs, validate manuscript. Negative control: adversarial known bad passes. Scope: deterministic toy-only. |
+| **animation** | Producer: render animation.py. Current and next evidence: si belief trajectory.gif. | Status: optional; priority: medium. Gate or predicate: validate outputs. Negative control: missing fragment coverage. Scope: deterministic toy-only. |
+| **animation delta** | Producer: render animation.py. Current and next evidence: animation frame deltas.json. | Status: live; priority: medium. Gate or predicate: validate outputs, validate manuscript. Negative control: missing fragment coverage. Scope: deterministic toy-only. |
+| **artifact diffoscope** | Producer: generate integration audit.py. Current and next evidence: artifact diffoscope.json. | Status: live; priority: high. Gate or predicate: validate outputs, validate manuscript. Negative control: artifact diffoscope missed hash drift. Scope: deterministic toy-only. |
+| **artifact license** | Producer: generate integration audit.py. Current and next evidence: artifact license audit.json. | Status: live; priority: high. Gate or predicate: validate outputs, validate manuscript. Negative control: artifact license unsafe artifact. Scope: deterministic toy-only. |
+| **assumption index** | Producer: generate toy sweep tracks.py. Current and next evidence: analytical assumption index.json. | Status: live; priority: medium. Gate or predicate: validate outputs, validate manuscript. Negative control: missing fragment coverage. Scope: deterministic toy-only. |
+| **benchmark** | Producer: generate toy sweep tracks.py. Current and next evidence: toy benchmark matrix.json. | Status: live; priority: medium. Gate or predicate: validate outputs. Negative control: missing fragment coverage. Scope: deterministic toy-only. |
+| **causal ablation** | Producer: generate toy sweep tracks.py. Current and next evidence: causal ablation matrix.json. | Status: live; priority: high. Gate or predicate: validate outputs, validate manuscript. Negative control: causal ablation missing cell. Scope: deterministic toy-only. |
+| **counterexample** | Producer: generate sheaf tracks.py. Current and next evidence: counterexample matrix.json. | Status: live; priority: high. Gate or predicate: validate outputs, validate manuscript. Negative control: known bad counterexample passed. Scope: deterministic toy-only. |
+| **evidence fields** | Producer: generate sheaf tracks.py. Current and next evidence: evidence field index.json. | Status: live; priority: high. Gate or predicate: validate outputs, validate manuscript. Negative control: missing typed claim. Scope: deterministic toy-only. |
+| **formalism** | Producer: compose manuscript.py. Current and next evidence: manifest.yaml. | Status: live; priority: medium. Gate or predicate: validate manuscript. Negative control: missing fragment coverage. Scope: deterministic toy-only. |
+| **gate ergonomics** | Producer: generate integration audit.py. Current and next evidence: validation gate index.json. | Status: live; priority: high. Gate or predicate: validate outputs, validate manuscript. Negative control: gate ergonomics unindexed. Scope: deterministic toy-only. |
+| **gnn** | Producer: generate formal interop tracks.py. Current and next evidence: gnn lint report.json. | Status: live; priority: medium. Gate or predicate: validate outputs. Negative control: missing fragment coverage. Scope: deterministic toy-only. |
+| **interop** | Producer: generate formal interop tracks.py. Current and next evidence: interop roundtrip report.json. | Status: live; priority: high. Gate or predicate: validate outputs. Negative control: interop shape loss. Scope: deterministic toy-only. |
+| **layers** | Producer: generate figures.py. Current and next evidence: sheaf coverage matrix.json. | Status: optional; priority: medium. Gate or predicate: validate outputs, validate manuscript. Negative control: missing fragment coverage. Scope: deterministic toy-only. |
+| **lean** | Producer: generate formal interop tracks.py. Current and next evidence: lean theorem inventory.json. | Status: live; priority: medium. Gate or predicate: validate outputs. Negative control: missing fragment coverage. Scope: deterministic toy-only. |
+| **manuscript staleness** | Producer: z generate manuscript variables.py. Current and next evidence: manuscript staleness report.json. | Status: live; priority: medium. Gate or predicate: validate outputs, validate manuscript. Negative control: missing fragment coverage. Scope: deterministic toy-only. |
+| **model checking** | Producer: generate sheaf tracks.py. Current and next evidence: model checking witnesses.json. | Status: live; priority: high. Gate or predicate: validate outputs. Negative control: missed model checking counterexample. Scope: deterministic toy-only. |
+| **ontology** | Producer: generate formal interop tracks.py. Current and next evidence: ontology profile matrix.json. | Status: live; priority: medium. Gate or predicate: validate outputs. Negative control: missing fragment coverage. Scope: deterministic toy-only. |
+| **proof extraction** | Producer: generate formal interop tracks.py. Current and next evidence: proof extraction index.json. | Status: live; priority: high. Gate or predicate: validate outputs, validate manuscript. Negative control: proof extraction missing statement. Scope: deterministic toy-only. |
+| **prose** | Producer: compose manuscript.py. Current and next evidence: manifest.yaml. | Status: live; priority: medium. Gate or predicate: validate manuscript. Negative control: missing fragment coverage. Scope: deterministic toy-only. |
+| **provenance** | Producer: generate sheaf tracks.py. Current and next evidence: artifact provenance.json. | Status: live; priority: high. Gate or predicate: validate manuscript, validate outputs. Negative control: missing sheaf track producer. Scope: deterministic toy-only. |
+| **pymdp** | Producer: simulate si tmaze.py. Current and next evidence: si policy comparison.json. | Status: live; priority: medium. Gate or predicate: validate outputs. Negative control: missing fragment coverage. Scope: deterministic toy-only. |
+| **release bundle** | Producer: generate sheaf tracks.py. Current and next evidence: release bundle manifest.json. | Status: live; priority: high. Gate or predicate: validate outputs, validate manuscript. Negative control: release bundle parity failure. Scope: deterministic toy-only. |
+| **release notes** | Producer: generate integration audit.py. Current and next evidence: release notes evidence.json. | Status: live; priority: high. Gate or predicate: validate outputs, validate manuscript. Negative control: release notes claim failed gate passed. Scope: deterministic toy-only. |
+| **replay matrix** | Producer: generate sheaf tracks.py. Current and next evidence: replay matrix.json. | Status: live; priority: high. Gate or predicate: validate outputs, validate manuscript. Negative control: replay mismatch. Scope: deterministic toy-only. |
+| **scholarship** | Producer: generate sheaf tracks.py. Current and next evidence: scholarship source matrix.json. | Status: live; priority: high. Gate or predicate: validate outputs, validate manuscript. Negative control: missing scholarship source binding. Scope: deterministic toy-only. |
+| **security posture** | Producer: generate sheaf tracks.py. Current and next evidence: security posture audit.json. | Status: live; priority: high. Gate or predicate: validate outputs, validate manuscript. Negative control: security posture aggregate forgery. Scope: deterministic toy-only. |
+| **sensitivity** | Producer: generate sheaf tracks.py. Current and next evidence: sensitivity sweep.json. | Status: live; priority: high. Gate or predicate: validate outputs. Negative control: missing sensitivity cell. Scope: deterministic toy-only. |
+| **simulation** | Producer: generate toy sweep tracks.py. Current and next evidence: analytical observable sweep.json. | Status: live; priority: medium. Gate or predicate: validate outputs. Negative control: missing fragment coverage. Scope: deterministic toy-only. |
+| **state space catalog** | Producer: generate toy sweep tracks.py. Current and next evidence: state space catalog.json. | Status: live; priority: high. Gate or predicate: validate outputs, validate manuscript. Negative control: state space catalog missing finite space. Scope: deterministic toy-only. |
+| **theorem traceability** | Producer: generate sheaf tracks.py. Current and next evidence: theorem traceability matrix.json. | Status: live; priority: high. Gate or predicate: validate outputs, validate manuscript. Negative control: theorem traceability unlinked. Scope: deterministic toy-only. |
+| **uncertainty** | Producer: generate sheaf tracks.py. Current and next evidence: uncertainty summary.json. | Status: live; priority: high. Gate or predicate: validate outputs. Negative control: unnormalized uncertainty row. Scope: deterministic toy-only. |
+| **visualization** | Producer: generate integration audit.py. Current and next evidence: visualization quality audit.json. | Status: live; priority: medium. Gate or predicate: validate outputs, validate manuscript. Negative control: missing fragment coverage. Scope: deterministic toy-only. |
+| **empirical adapter** | Producer: none while blocked. Current proof: blocked scope manifest.json. Next proving artifact: empirical adapter manifest.json. | Status: blocked; priority: blocked. Gate or predicate: blocked scope manifest all blocked. Negative control: empirical claim appears without manifest. Scope: blocked until provenance, licensing/privacy, deterministic replay, and typed claim gates exist. |
+| **private or restricted data** | Producer: none while blocked. Current proof: blocked scope manifest.json. Next proving artifact: private data provenance manifest.json. | Status: blocked; priority: blocked. Gate or predicate: blocked scope manifest all blocked. Negative control: private data artifact appears without provenance manifest. Scope: blocked until provenance, licensing/privacy, deterministic replay, and typed claim gates exist. |
+| **network dependent research** | Producer: none while blocked. Current proof: blocked scope manifest.json. Next proving artifact: network replay manifest.json. | Status: blocked; priority: blocked. Gate or predicate: blocked scope manifest all blocked. Negative control: network derived claim appears without replay manifest. Scope: blocked until provenance, licensing/privacy, deterministic replay, and typed claim gates exist. |
+| **llm generated evidence** | Producer: none while blocked. Current proof: blocked scope manifest.json. Next proving artifact: llm evidence audit.json. | Status: blocked; priority: blocked. Gate or predicate: blocked scope manifest all blocked. Negative control: LLM generated evidence appears as a validation source. Scope: blocked until provenance, licensing/privacy, deterministic replay, and typed claim gates exist. |
+| **non toy model claims** | Producer: none while blocked. Current proof: blocked scope manifest.json. Next proving artifact: non toy model scope manifest.json. | Status: blocked; priority: blocked. Gate or predicate: blocked scope manifest all blocked. Negative control: non toy result claim appears outside future only scope. Scope: blocked until provenance, licensing/privacy, deterministic replay, and typed claim gates exist. |
+
+**Improvement rows:** 39 total; 32 live / 2 optional / 5 blocked; every row shown.
 
 
 
@@ -941,7 +1005,7 @@ Both estimators are deterministic (no sampling, no RNG) and are evaluated on the
 
 <!-- sheaf-track:visualization -->
 
-![](../figures/ising_mi_curve.png){width=90%}
+![](figures/ising_mi_curve.png){width=90%}
 
 *Reproduced from [@fig:ising_mi_curve]. Closed-form $I(\lambda)$ and an independent exact recomputation via total correlation for the symmetric Bernoulli-Ising toy across 21 grid points up to $\lambda_{\max}$ = 4; grid maximum 0.6031 nats. Both estimators are deterministic (no sampling), so the right panel is a cross-implementation agreement check (max residual 0 nats), not a sampling residual.*
 
@@ -961,7 +1025,7 @@ Saturation MI (grid maximum on the measured $\lambda$ sweep): 0.6031 nats.
 
 <!-- sheaf-track:visualization -->
 
-![Free energy of the entangled posterior relative to the mean-field prior across the hyperparameter sweep (grid points 21); relative to the entangled prior, the same posterior has identically zero free energy.](../figures/free_energy_curve.png){#fig:free_energy_curve width=90% fig-alt="Line plot of free energy in nats versus coupling strength lambda for the entangled posterior relative to a mean-field prior. The entangled-prior free energy is identically zero, so this plotted comparison isolates mean-field prior mismatch. A single dark curve traces free energy across the sweep; the minimum is marked with a teal scatter point and labeled with the argmin lambda value."}
+![Free energy of the entangled posterior relative to the mean-field prior across the hyperparameter sweep (grid points 21); relative to the entangled prior, the same posterior has identically zero free energy.](figures/free_energy_curve.png){#fig:free_energy_curve width=90% fig-alt="Line plot of free energy in nats versus coupling strength lambda for the entangled posterior relative to a mean-field prior. The entangled-prior free energy is identically zero, so this plotted comparison isolates mean-field prior mismatch. A single dark curve traces free energy across the sweep; the minimum is marked with a teal scatter point and labeled with the argmin lambda value."}
 
 
 
@@ -975,9 +1039,9 @@ Saturation MI (grid maximum on the measured $\lambda$ sweep): 0.6031 nats.
 
 The pymdp harness rolls out a T-maze active-inference agent in `state_inference` mode with planning horizon 2. The default `state_inference` mode is belief filtering with a goal-seeking action rule; sophisticated policy inference (an expected-free-energy policy posterior) is selectable via `mode: policy_inference` ([@sec:methods_pymdp]). Summary metrics land in `output/data/si_tmaze_summary.json`.
 
-Steps recorded: 2. Mean belief entropy: 0.3251. Belief entropy over the rollout is traced in [@fig:si_belief_entropy_curve]; the paired observation and action indices are in [@fig:si_obs_action_trace]. `output/data/analysis_statistics.json` now records the trace as a small statistical object rather than a caption-only trace: action switches 1 times (rate 1.000 over adjacent steps), observation diversity is 1, entropy drop is 0.0000 nats from first to terminal step, and the saved trace/summary step counts agree: `true` with finite entropy values `true`. The default `state_inference` mode runs pymdp `infer_states` and **reports** the resulting posterior (belief entropy and the state-1 marginal), but the action is chosen by an open-loop scripted rule on the observation index — not by the posterior — so the inferred belief here is observed, not acted on. Under the toy transition model, expected-free-energy policy inference reaches the goal in 1 of its rows versus 2 for the scripted state-inference rule: no behavioral advantage on this two-state, horizon-2 maze, which is the measured content of the deliberately-too-small claim.
+Steps recorded: 2. Mean belief entropy: 0. Belief entropy over the rollout is traced in [@fig:si_belief_entropy_curve]; the paired observation and action indices are in [@fig:si_obs_action_trace]. `output/data/analysis_statistics.json` now records the trace as a small statistical object rather than a caption-only trace: action switches 1 times (rate 1.000 over adjacent steps), observation diversity is 1, entropy drop is 0.0000 nats from first to terminal step, and the saved trace/summary step counts agree: `true` with finite entropy values `true`. The default `state_inference` mode runs pymdp `infer_states` and **reports** the resulting posterior (belief entropy and the state-1 marginal), but the action is chosen by an open-loop scripted rule on the observation index — not by the posterior — so the inferred belief here is observed, not acted on. Under the toy transition model, expected-free-energy policy inference reaches the goal in 1 of its rows versus 2 for the scripted state-inference rule: no behavioral advantage on this two-state, horizon-2 maze, which is the measured content of the deliberately-too-small claim.
 
-Policy-comparison rows: 4 across state-inference and policy-inference modes; goal-reaching rows: 3. These rows are internal toy consistency checks under finite-horizon discrete active-inference assumptions [friston2021sophisticated; dacosta2023reward], not comparisons against external behavioral datasets. Graph-world extension rows: 4 over 4 nodes, with goal-reached flag 1.
+Policy-comparison rows: 4 across state-inference and policy-inference modes; goal-reaching rows: 3. These rows are internal toy consistency checks under finite-horizon discrete active-inference assumptions [@friston2021sophisticated; @dacosta2023reward], not comparisons against external behavioral datasets. Graph-world extension rows: 4 over 4 nodes, with goal-reached flag 1.
 
 The expected free energy that scores those policies decomposes in closed form ([@fig:efe_decomposition]). Across the 4 length-2 policies on the T-maze generative model, the expected-free-energy-minimising policy is `00` with $G$ = 2.2539 nats, splitting into risk 1.6037 (the pragmatic deviation of predicted outcomes from preferences) and ambiguity 0.6502 (the expected likelihood entropy) nats. The same $G$ splits equivalently into pragmatic value -2.2539 (expected log-preference) and epistemic value 0.0000 (state-outcome mutual information) nats — the term that drives information-seeking. The two forms are exactly equal: risk + ambiguity + pragmatic + epistemic vanishes to within 0.0e+00 across every policy, the action-selection twin of the analytical free-energy decomposition identity ([@sec:results_free_energy]).
 
@@ -993,19 +1057,19 @@ Rollout trace: `output/data/si_tmaze_trace.json`. JSONL run log: `output/logs/py
 
 <!-- sheaf-track:visualization -->
 
-![Cue-then-reward T-maze where epistemic value is strictly necessary. Left: the cue carries 0.6931 nats of information and the cue-sampling agent reaches reward with a measured advantage of 4.0000 nats over a greedy agent. Right: flat Expected Free Energy scores the cue-first and greedy policies identically (identical), so the sophisticated observation- conditioned evaluator is what makes information-seeking required. Closed form (no sampling).](../figures/cue_tmaze_advantage.png){#fig:cue_tmaze_advantage width=95% fig-alt="Two-panel bar chart for the cue-then-reward T-maze. The left panel shows the cue information gain I(context; observation) in nats and the expected reward log-preference for an epistemic agent that samples the cue versus a greedy agent that commits to an arm, demonstrating a positive behavioural advantage for cue-sampling. The right panel shows the flat Expected Free Energy of the cue-first and greedy policies, which are identical, illustrating that flat EFE propagation cannot reward cue-sampling and the sophisticated observation- conditioned evaluator is required."}
+![Cue-then-reward T-maze where epistemic value is strictly necessary. Left: the cue carries 0.6931 nats of information and the cue-sampling agent reaches reward with a measured advantage of 4.0000 nats over a greedy agent. Right: flat Expected Free Energy scores the cue-first and greedy policies identically (identical), so the sophisticated observation- conditioned evaluator is what makes information-seeking required. Closed form (no sampling).](figures/cue_tmaze_advantage.png){#fig:cue_tmaze_advantage width=95% fig-alt="Two-panel bar chart for the cue-then-reward T-maze. The left panel shows the cue information gain I(context; observation) in nats and the expected reward log-preference for an epistemic agent that samples the cue versus a greedy agent that commits to an arm, demonstrating a positive behavioural advantage for cue-sampling. The right panel shows the flat Expected Free Energy of the cue-first and greedy policies, which are identical, illustrating that flat EFE propagation cannot reward cue-sampling and the sophisticated observation- conditioned evaluator is required."}
 
-![Closed-form Expected Free Energy decomposition over the finite T-maze policies. Left: $G(\pi)$ = risk + ambiguity (stacked), with the goal-seeking minimiser marked. Right: the pragmatic and epistemic values, which sum to $-G(\pi)$. Both forms are computed in closed form (no sampling) and satisfy risk + ambiguity + pragmatic + epistemic = 0 to machine precision.](../figures/efe_decomposition.png){#fig:efe_decomposition width=95% fig-alt="Two-panel bar chart of the Expected Free Energy term decomposition across the four length-two T-maze policies (action sequences 00, 01, 10, 11). The left panel stacks risk (pragmatic deviation, the KL of policy-predicted outcomes from preferences) below ambiguity (epistemic, the expected likelihood entropy) so each bar's height is the Expected Free Energy G(pi); the goal-seeking policy with minimum G is marked. The right panel shows the equal-and-opposite pragmatic value (expected log-preference) and epistemic value (state-outcome mutual information) per policy, with a zero reference line, illustrating the exact identity G(pi) = -(pragmatic + epistemic)."}
+![Closed-form Expected Free Energy decomposition over the finite T-maze policies. Left: $G(\pi)$ = risk + ambiguity (stacked), with the goal-seeking minimiser marked. Right: the pragmatic and epistemic values, which sum to $-G(\pi)$. Both forms are computed in closed form (no sampling) and satisfy risk + ambiguity + pragmatic + epistemic = 0 to machine precision.](figures/efe_decomposition.png){#fig:efe_decomposition width=95% fig-alt="Two-panel bar chart of the Expected Free Energy term decomposition across the four length-two T-maze policies (action sequences 00, 01, 10, 11). The left panel stacks risk (pragmatic deviation, the KL of policy-predicted outcomes from preferences) below ambiguity (epistemic, the expected likelihood entropy) so each bar's height is the Expected Free Energy G(pi); the goal-seeking policy with minimum G is marked. The right panel shows the equal-and-opposite pragmatic value (expected log-preference) and epistemic value (state-outcome mutual information) per policy, with a zero reference line, illustrating the exact identity G(pi) = -(pragmatic + epistemic)."}
 
-![Precision sweep over the closed-form T-maze policy posterior $q(\pi)\propto\exp(-\gamma G)$ across 33 grid points up to $\gamma$=16. Entropy falls from $\ln 4$ to the $\ln|\Pi^\star|$ floor (2 tied optima, second action irrelevant under the absorbing goal); the optimal-set mass crosses 0.99 at $\gamma$=3. Entropy at $\gamma$=1 is 1.1458 nats. Computed in closed form (no sampling).](../figures/precision_sweep.png){#fig:precision_sweep width=90% fig-alt="Dual-axis line plot of how the T-maze policy posterior q(pi) = softmax(-gamma G) sharpens as the precision gamma increases from 0 to 16. The left axis plots the Shannon entropy of the posterior in nats, decreasing from ln 4 at gamma=0 and saturating at the ln(|optimal set|) floor (a dashed reference line) because two policies tie at the expected-free-energy minimum. The right axis plots the probability mass placed on the expected-free-energy optimal policy set, rising from 0.5 toward 1 and crossing the selection threshold; the precision at which it crosses is marked."}
+![Precision sweep over the closed-form T-maze policy posterior $q(\pi)\propto\exp(-\gamma G)$ across 33 grid points up to $\gamma$=16. Entropy falls from $\ln 4$ to the $\ln|\Pi^\star|$ floor (2 tied optima, second action irrelevant under the absorbing goal); the optimal-set mass crosses 0.99 at $\gamma$=3. Entropy at $\gamma$=1 is 1.1458 nats. Computed in closed form (no sampling).](figures/precision_sweep.png){#fig:precision_sweep width=90% fig-alt="Dual-axis line plot of how the T-maze policy posterior q(pi) = softmax(-gamma G) sharpens as the precision gamma increases from 0 to 16. The left axis plots the Shannon entropy of the posterior in nats, decreasing from ln 4 at gamma=0 and saturating at the ln(|optimal set|) floor (a dashed reference line) because two policies tie at the expected-free-energy minimum. The right axis plots the probability mass placed on the expected-free-energy optimal policy set, rising from 0.5 toward 1 and crossing the selection threshold; the precision at which it crosses is marked."}
 
-![Dirichlet model learning: KL$(A_{\text{true}} \,\|\, A_{\text{learned}})$ versus concentration-update step. The expected likelihood $E[A] = pA / \sum_o pA$ converges monotonically to the true generative likelihood; the run reaches the convergence tolerance at step 3 with final KL 1.29e-03 nats. Deterministic (no sampling), so the curve is byte-reproducible.](../figures/dirichlet_convergence.png){#fig:dirichlet_convergence width=85% fig-alt="Single-panel semilog line chart of the Kullback-Leibler divergence from the true T-maze likelihood matrix A to the Dirichlet-learned expected likelihood, plotted against the update step. The divergence starts large at the uniform prior and falls monotonically toward zero as deterministic observation-state counts accumulate, crossing a dashed convergence-tolerance reference line; the first step below tolerance is marked. The curve is computed in closed form from a fixed expected-count stream (no sampling)."}
+![Dirichlet model learning: KL$(A_{\text{true}} \,\|\, A_{\text{learned}})$ versus concentration-update step. The expected likelihood $E[A] = pA / \sum_o pA$ converges monotonically to the true generative likelihood; the run reaches the convergence tolerance at step 3 with final KL 1.29e-03 nats. Deterministic (no sampling), so the curve is byte-reproducible.](figures/dirichlet_convergence.png){#fig:dirichlet_convergence width=85% fig-alt="Single-panel semilog line chart of the Kullback-Leibler divergence from the true T-maze likelihood matrix A to the Dirichlet-learned expected likelihood, plotted against the update step. The divergence starts large at the uniform prior and falls monotonically toward zero as deterministic observation-state counts accumulate, crossing a dashed convergence-tolerance reference line; the first step below tolerance is marked. The curve is computed in closed form from a fixed expected-count stream (no sampling)."}
 
-![Belief entropy over time for the T-maze rollout (mean 0.3251 nats).](../figures/si_belief_entropy_curve.png){#fig:si_belief_entropy_curve width=90% fig-alt="Line plot of belief entropy in nats versus timestep for the pymdp T-maze rollout. Entropy ranges from 0.3251 to 0.3251 nats across 2 steps in state_inference mode."}
+![Belief entropy over time for the T-maze rollout (mean 0.0000 nats).](figures/si_belief_entropy_curve.png){#fig:si_belief_entropy_curve width=90% fig-alt="Line plot of belief entropy in nats versus timestep for the pymdp T-maze rollout. Entropy ranges from 0 to 0 nats across 2 steps in state_inference mode."}
 
-![Observation and action traces for the T-maze rollout (action diversity 2).](../figures/si_obs_action_trace.png){#fig:si_obs_action_trace width=90% fig-alt="Dual-panel plot of observation index and action index versus timestep for the pymdp T-maze rollout. The upper panel shows discrete observations; the lower panel shows actions. Goal reached flag is 1."}
+![Observation and action traces for the T-maze rollout (action diversity 2).](figures/si_obs_action_trace.png){#fig:si_obs_action_trace width=90% fig-alt="Dual-panel plot of observation index and action index versus timestep for the pymdp T-maze rollout. The upper panel shows discrete observations; the lower panel shows actions. Goal reached flag is 1."}
 
-![Discrete action index over time for the pymdp T-maze rollout (policy length 2).](../figures/si_tmaze_actions.png){#fig:si_tmaze_actions width=90% fig-alt="Step plot of discrete action index versus timestep for the pymdp T-maze rollout in state_inference mode. Actions change at each timestep with light fill under the step trace; policy depth is 2 steps."}
+![Discrete action index over time for the pymdp T-maze rollout (policy length 2).](figures/si_tmaze_actions.png){#fig:si_tmaze_actions width=90% fig-alt="Step plot of discrete action index versus timestep for the pymdp T-maze rollout in state_inference mode. Actions change at each timestep with light fill under the step trace; policy depth is 2 steps."}
 
 
 
@@ -1049,7 +1113,7 @@ The matrix is scoped to deterministic exemplar models. It is useful as a cross-t
 
 <!-- sheaf-track:visualization -->
 
-![Invariant dashboard: 12 / 12 merged analytical and simulation checks from the validation registry.](../figures/invariant_dashboard.png){#fig:invariant_dashboard width=90% fig-alt="Horizontal bar checklist of analytical and simulation invariant names with pass or fail status. 12 of 12 checks pass on the merged report."}
+![Invariant dashboard: 12 / 12 merged analytical and simulation checks from the validation registry.](figures/invariant_dashboard.png){#fig:invariant_dashboard width=90% fig-alt="Horizontal bar checklist of analytical and simulation invariant names with pass or fail status. 12 of 12 checks pass on the merged report."}
 
 <!-- sheaf-track:state_space_catalog -->
 
@@ -1089,7 +1153,7 @@ records 36 cells, with complete-grid status
 
 ## What this demonstrates
 
-The result of this manuscript is a *discipline*, not a domain claim: across three toy models every reported number is hydrated from a generated artifact, 6 sheaf axioms are machine-checked before composition, and 25 negative controls keep each failure path live. That posture follows the caution that FEP and active-inference formalisms need explicit methodological scope before they become empirical brain claims [gershman2019fepbrain]. No statistic, figure, or cross-track claim here can drift from its artifact without failing a gate before the PDF is built.
+The result of this manuscript is a *discipline*, not a domain claim: across three toy models every reported number is hydrated from a generated artifact, 6 sheaf axioms are machine-checked before composition, and 25 negative controls keep each failure path live. That posture follows the caution that FEP and active-inference formalisms need explicit methodological scope before they become empirical brain claims [@gershman2019fepbrain]. No statistic, figure, or cross-track claim here can drift from its artifact without failing a gate before the PDF is built.
 
 ## Limitations
 
@@ -1105,7 +1169,7 @@ The discussion ontology binds `coverage_semantics` to the audit matrix in [@sec:
 
 <!-- sheaf-track:simulation -->
 
-Measured pymdp rollout (`state_inference`, config hash `81eb061f43b7bfd7`): mean belief entropy 0.3251 nats over 2 steps; goal reached flag 1; action diversity 2.
+Measured pymdp rollout (`state_inference`, config hash `133a13df72cfd8d8`): mean belief entropy 0.0000 nats over 2 steps; goal reached flag 1; action diversity 2.
 
 Analytical sweep residual RMSE 0 nats (max residual 0). Coverage audit: 95 present / 95 bound / 0 missing cells on the IMRAD matrix.
 
@@ -1118,17 +1182,25 @@ claim. That split keeps the paper from converting background authority into an
 unsupported empirical result.
 
 Sophisticated Learning is therefore cited as a future-only parameter-learning
-direction [hodson2023sophisticatedlearning]. It does not change the current
+direction [@hodson2023sophisticatedlearning]. It does not change the current
 T-maze state-inference default, does not promote an active-learning adapter, and
 does not alter the blocked major-scope ladder for empirical or non-toy claims.
 
 <!-- sheaf-track:ontology -->
+
+```{=latex}
+\begin{samepage}
+```
 
 ### Ontology bindings
 
 - `coverage_semantics` → **Coverage matrix semantics**
 - `pedagogical_scope` → **Pedagogical scope**
 - `state_inference_mode` → **State inference harness**
+
+```{=latex}
+\end{samepage}
+```
 
 
 <!-- sheaf-track:release_notes -->
@@ -1230,9 +1302,9 @@ incomplete in the track-improvement scope.
 
 <!-- sheaf-track:release_bundle -->
 
-`release_bundle_manifest.json` provides the appendix proof for required deliverables: 38 artifacts with source-present status `true`.
+`release_bundle_manifest.json` provides the appendix proof for required deliverables: 36 artifacts with source-present status `true`.
 
-`artifact_contract_index.json` is the appendix-level cross-artifact concordance proof. It rederives 85 rows from the live semantic producer map and release-bundle parity rows, with row-complete flag `true` and copied-parity flag `true`.
+`artifact_contract_index.json` is the appendix-level cross-artifact concordance proof. It rederives 86 rows from the live semantic producer map and release-bundle parity rows, with row-complete flag `true` and copied-parity flag `true`.
 
 <!-- sheaf-track:gate_ergonomics -->
 
@@ -1243,7 +1315,7 @@ incomplete in the track-improvement scope.
 ### Appendix track: artifact diffoscope
 
 `artifact_diffoscope` binds `output/reports/artifact_diffoscope.json` into the
-full sheaf appendix. Rows: 41. All equal:
+full sheaf appendix. Rows: 43. All equal:
 `true`.
 
 This diffoscope is deliberately narrow and reproducibility-facing. For each
@@ -1262,7 +1334,7 @@ provenance.
 ### Appendix track: artifact license
 
 `artifact_license` binds `output/reports/artifact_license_audit.json` into the
-full sheaf appendix. Rows: 85. All safe:
+full sheaf appendix. Rows: 86. All safe:
 `true`.
 
 The license audit classifies each generated or source-backed artifact under the
@@ -1354,35 +1426,35 @@ counts are caught after composition, not only during source-file linting.
 
 <!-- sheaf-track:visualization -->
 
-![](../figures/ising_mi_curve.png){width=90%}
+![](figures/ising_mi_curve.png){width=90%}
 
 *Reproduced from [@fig:ising_mi_curve]. Closed-form $I(\lambda)$ and an independent exact recomputation via total correlation for the symmetric Bernoulli-Ising toy across 21 grid points up to $\lambda_{\max}$ = 4; grid maximum 0.6031 nats. Both estimators are deterministic (no sampling), so the right panel is a cross-implementation agreement check (max residual 0 nats), not a sampling residual.*
 
-![](../figures/si_tmaze_actions.png){width=90%}
+![](figures/si_tmaze_actions.png){width=90%}
 
 *Reproduced from [@fig:si_tmaze_actions]. Discrete action index over time for the pymdp T-maze rollout (policy length 2).*
 
-![Theorem traceability graph generated from 17 linked theorem rows and 207 proof-dependency edges.](../figures/theorem_traceability_graph.png){#fig:theorem_traceability_graph width=95% fig-alt="Three-column graph generated from theorem traceability and proof dependency JSON. Each row links a Lean theorem to its proof-dependency edge count and finite model witness count; all theorem rows have resolved dependency edges: true."}
+![Theorem traceability graph generated from 17 linked theorem rows and 207 proof-dependency edges.](figures/theorem_traceability_graph.png){#fig:theorem_traceability_graph width=95% fig-alt="Three-column graph generated from theorem traceability and proof dependency JSON. Each row links a Lean theorem to its proof-dependency edge count and finite model witness count; all theorem rows have resolved dependency edges: true."}
 
-![Causal-ablation heatmap: 36 source-backed rows joined to sensitivity and uncertainty artifacts; all effects source-backed: true.](../figures/causal_ablation_heatmap.png){#fig:causal_ablation_heatmap width=92% fig-alt="Heatmap generated from the causal ablation and sensitivity reports. Rows are toy graph topologies, columns are perturbation types, and each cell shows the maximum absolute deterministic effect sourced from generated JSON rows."}
+![Causal-ablation heatmap: 36 source-backed rows joined to sensitivity and uncertainty artifacts; all effects source-backed: true.](figures/causal_ablation_heatmap.png){#fig:causal_ablation_heatmap width=92% fig-alt="Heatmap generated from the causal ablation and sensitivity reports. Rows are toy graph topologies, columns are perturbation types, and each cell shows the maximum absolute deterministic effect sourced from generated JSON rows."}
 
-![](../figures/scholarship_source_map.png){width=95%}
+![](figures/scholarship_source_map.png){width=95%}
 
 *Reproduced from [@fig:scholarship_source_map]. Scholarship source map: 21 source rows across 21 method roles and 10 source families. Connected status: true; row evidence rederived: true.*
 
-![](../figures/track_lane_promotion_map.png){width=98%}
+![](figures/track_lane_promotion_map.png){width=98%}
 
 *Reproduced from [@fig:track_lane_promotion_map]. Track-lane promotion map: 32 pipeline-to-sheaf rows with complete promotion status true. Left: seven promotion-rule obligations; right: sheaf fragment bindings.*
 
-![](../figures/artifact_contract_map.png){width=98%}
+![](figures/artifact_contract_map.png){width=98%}
 
-*Reproduced from [@fig:artifact_contract_map]. Artifact contract map: 85 generated artifact rows with complete contract status true and copied-output parity complete true. Cycle rows are explicit in `output/data/artifact_contract_index.json`.*
+*Reproduced from [@fig:artifact_contract_map]. Artifact contract map: 86 generated artifact rows with complete contract status true and copied-output parity complete true. Cycle rows are explicit in `output/data/artifact_contract_index.json`.*
 
-![](../figures/security_posture_map.png){width=96%}
+![](figures/security_posture_map.png){width=96%}
 
 *Reproduced from [@fig:security_posture_map]. Security posture map: 9 controls, 7 enforced and 2 scoped as deferred; secret findings: 0; high-risk gaps: 0.*
 
-![](../figures/sheaf_coverage_heatmap.png){width=95%}
+![](figures/sheaf_coverage_heatmap.png){width=95%}
 
 *Reproduced from [@fig:sheaf_coverage_heatmap]. Sheaf track coverage matrix: 17 IMRAD rows × 34 fragment columns. Black = present (P), white = absent (—), gray = missing (M). Counts: 95 present / 95 bound / 0 missing. Generated from `output/data/sheaf_coverage_matrix.json`.*
 
@@ -1462,9 +1534,13 @@ view of validated JSON rather than a decorative restatement.
 
 <!-- sheaf-track:gnn -->
 
-GNN declarations: `gnn/bernoulli_toy.gnn.md` and `gnn/si_tmaze.gnn.md` [gnn2023]. [@fig:gnn_ontology_concordance] and [@sec:methods_analytical] document ontology concordance for the Bernoulli toy; SI notation extends the same pattern under [@sec:methods_pymdp].
+GNN declarations: `gnn/bernoulli_toy.gnn.md` and `gnn/si_tmaze.gnn.md` [@gnn2023]. [@fig:gnn_ontology_concordance] and [@sec:methods_analytical] document ontology concordance for the Bernoulli toy; SI notation extends the same pattern under [@sec:methods_pymdp].
 
 <!-- sheaf-track:ontology -->
+
+```{=latex}
+\begin{samepage}
+```
 
 ### Ontology bindings
 
@@ -1474,6 +1550,10 @@ GNN declarations: `gnn/bernoulli_toy.gnn.md` and `gnn/si_tmaze.gnn.md` [gnn2023]
 - `observation` → **ObservationLikelihood**
 - `policy` → **PolicyPosterior**
 - `sheaf_track` → **SheafFragment**
+
+```{=latex}
+\end{samepage}
+```
 
 
 <!-- sheaf-track:animation -->
@@ -1499,7 +1579,7 @@ re-derives support from rows; flipping the summary bit without fixing a failed
 row still fails.
 
 `output/reports/release_attestation.json` is the compact final view over the
-same boundary. It records 7 attestation rows for
+same boundary. It records 8 attestation rows for
 validation, release bundle hash, license audit, semantic certificate, and
 blocked-scope status, with all-attested flag `true`.
 
@@ -1513,9 +1593,9 @@ blocked-scope status, with all-attested flag `true`.
 
 Analytical oracles ([@sec:methods_analytical]), pymdp rollouts ([@sec:results_si_tmaze]), and sheaf composition ([@sec:methods_sheaf]) share one auditable manuscript contract: measured artifacts hydrate 12 composed sections, [@sec:sheaf_coverage] reports binding state, and strict compose validation blocks gray matrix cells before PDF rendering.
 
-The T-maze harness runs in `state_inference` mode with config hash `81eb061f43b7bfd7`; sweep RMSE 0 nats summarizes analytical-empirical agreement on the toy coupling grid. [@sec:results_invariants] merges analytical and simulation gates; [@sec:discussion_outlook] states scope and extensions. Scientific claims remain confined to declared models, not empirical statements about biological agents [gershman2019fepbrain].
+The T-maze harness runs in `state_inference` mode with config hash `133a13df72cfd8d8`; sweep RMSE 0 nats summarizes analytical-empirical agreement on the toy coupling grid. [@sec:results_invariants] merges analytical and simulation gates; [@sec:discussion_outlook] states scope and extensions. Scientific claims remain confined to declared models, not empirical statements about biological agents [@gershman2019fepbrain].
 
-The exemplar therefore sits at a narrow intersection: finite discrete active inference on POMDP-like toy models [dacosta2020discrete; friston2021sophisticated; dacosta2023reward], sheaf-style local-to-global checks for publication artifacts [curry2014sheaves; robinson2014topological], and GNN notation as an interop layer [gnn2023].
+The exemplar therefore sits at a narrow intersection: finite discrete active inference on POMDP-like toy models [@dacosta2020discrete; @friston2021sophisticated; @dacosta2023reward], sheaf-style local-to-global checks for publication artifacts [@curry2014sheaves; @robinson2014topological], and GNN notation as an interop layer [@gnn2023].
 
 
 
@@ -1547,11 +1627,11 @@ See `manuscript/references.bib` for bibliography entries cited in the composed s
 \section*{END OF TRANSMISSION}\label{end-of-transmission}
 ```
 
-**Release:** v0.3.2 · DOI `10.5281/zenodo.20417021` · SHA-256 `f191b48f9439…` · pairing complete
+**Release:** v0.4.0 · DOI `10.5281/zenodo.20417021` · SHA-256 `pending…` · pairing pending
 
-![Integrity QR strip](../figures/transmission_integrity_strip.png){width=88%}
+![Integrity QR strip](figures/transmission_integrity_strip.png){width=88%}
 
-**Prior:** _No prior releases._
+**Prior:** `v0.3.2` · `10.5281/zenodo.20931870` · `f191b48f…`
 
 ```{=latex}
 \end{samepage}
