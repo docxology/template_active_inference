@@ -121,3 +121,7 @@ No active rows are currently scoped at this size.
 
 Rows remain active until the acceptance command and negative control pass in the same source revision.
 A blocked row is a deliberate boundary, not a skipped success.
+
+## Workflowz review — 2026-11-10
+
+Coverage note: this read-only pass inspected the project guidance, visible README publication/rendering guidance, existing backlog, `pyproject.toml`, and the 16 source excerpts supplied in the evidence packet. The packet covered 4 project files and excerpts from 16 source files out of 481 total files and 239 source candidates; it was not a full-tree review and no commands were executed. The visible fallbacks, generated documentation entries, direct-only development runner, and compatibility handling did not establish a concrete defect with an evidence-backed behavioral acceptance probe, so no actionable row is added. Re-review on a concrete failing command or artifact, or on a source change affecting one of the cited areas.
