@@ -108,6 +108,7 @@ def test_figure_registry_json_matches_yaml(project_root: Path) -> None:
     for figure_id, spec in registry.items():
         record = payload[f"fig:{figure_id}"]
         assert record["filename"] == spec.filename
+        assert record["alt_text"] == record["alt"] == spec.alt
         assert record["generated_by"] == f"visualizations.figures::{figure_id}"
         assert record["visual_role"] == spec.visual_role
         assert record["evidence_role"] == spec.evidence_role

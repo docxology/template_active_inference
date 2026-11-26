@@ -99,9 +99,13 @@ def test_simulate_cli_help(project_root) -> None:
 
 
 @pytest.mark.requires_pymdp
-@pytest.mark.requires_pymdp
-def test_run_and_persist(project_root) -> None:
+def test_run_and_persist_replays_default_trajectory(project_root, tmp_path) -> None:
     if not pymdp_available():
         pytest.skip("pymdp not installed")
-    payload = run_and_persist(project_root)
-    assert payload["paths"]["summary"].exists()
+    payload = run_and_persist(tmp_path, config=load_pymdp_config(project_root))
+    summary = json.loads(payload["paths"]["summary"].read_text(encoding="utf-8"))
+    baseline_path = project_root / "output" / "data" / "si_tmaze_summary.json"
+    baseline = json.loads(baseline_path.read_text(encoding="utf-8"))
+    for field in ("config_hash", "mode", "policy_len", "num_policies", "actions", "observations"):
+        assert summary[field] == baseline[field]
+    assert summary["mean_belief_entropy"] == pytest.approx(baseline["mean_belief_entropy"], abs=1e-14)

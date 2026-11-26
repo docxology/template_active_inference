@@ -15,10 +15,12 @@ dependencies = [
     "pillow>=12.3.0",
     "pyyaml>=6.0.3",
     "scipy>=1.15.3",
-    # WHY: pymdp 1.0.4 changes the A-matrix convention and breaks the SI runner
-    # (agent init IndexError on stacked A). Re-run scripts/simulate_si_tmaze.py
-    # and tests/test_si_runner.py before moving this pin.
-    "inferactively-pymdp==1.0.1",
+    # WHY: this release produced the tracked T-maze evidence and accepts the
+    # NumPy model factors used by the runner. PyMDP 1.x takes JAX factor lists.
+    "inferactively-pymdp==0.0.7.1",
+    # The NumPy-era PyMDP release no longer brings JAX in transitively.
+    # Keep the locked backend used by the tracked runtime diagnostics.
+    "jax==0.9.2",
 ]
 
 [project.optional-dependencies]

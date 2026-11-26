@@ -15,6 +15,7 @@ from manuscript.hydrate import write_resolved_manuscript
 from manuscript.sheaf import compose_all_sections
 from manuscript.variables import generate_variables
 from roadmap_tracks import run_semantic_fixed_point, write_manuscript_staleness_report
+from visualizations.figure_registry import write_figure_registry_json
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -48,6 +49,8 @@ def main(argv: list[str] | None = None) -> int:
         print(staleness_path)
         return 0
 
+    # The renderer reads accessibility metadata from the exported registry.
+    write_figure_registry_json(PROJECT_ROOT)
     semantic_paths = run_semantic_fixed_point(
         PROJECT_ROOT,
         require_analysis_outputs=not args.allow_draft,

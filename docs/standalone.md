@@ -10,7 +10,7 @@
 - Stable concept DOI: [10.5281/zenodo.20417021](https://doi.org/10.5281/zenodo.20417021)
 - Latest deposited version DOI: [10.5281/zenodo.20931870](https://zenodo.org/records/20931870)
 - Additional declared locations: [github_pages](https://docxology.github.io/template_active_inference/), [huggingface_hub](https://huggingface.co/datasets/ActiveInference/template_active_inference), [ipfs_pinata](https://gateway.pinata.cloud/ipfs/QmRRKmm7XCHTE78fs21dYwM7tKwv8HK2g4bynhtds75Rb9), [netlify](https://6a4433498786d3e4e58ea021--tranquil-kleicha-0c9203.netlify.app), [osf](https://osf.io/hdxr2/), [pypi](https://test.pypi.org/project/template-active-inference/0.3.2/), [software_heritage](https://archive.softwareheritage.org/browse/origin/?origin_url=https://github.com/docxology/template_active_inference)
-- Metadata source: [`docs/manuscript/config.yaml`](docs/manuscript/config.yaml); citation sidecars live at the project root.
+- Metadata source: [`docs/manuscript/config.yaml`](manuscript/config.yaml); citation sidecars live at the project root.
 
 Additional locations are config-declared publication evidence; the central index records whether external GitHub and Zenodo checks were refreshed.
 
@@ -28,7 +28,14 @@ Use it when a fork needs several independent research tracks to compose into one
 evidence-backed manuscript, or when you want a portable sheaf-style manuscript
 registry with local validation.
 
-## Clean Copy Command
+## Run this standalone checkout
+
+Follow the [quick start](quickstart.md) to install the locked environment, run
+project validation, or render the manuscript. The checkout carries a tracked
+publication snapshot for inspection and gate tests. Treat fresh renders as
+local review artifacts.
+
+## Copy the exemplar from upstream
 
 From the template repository root:
 

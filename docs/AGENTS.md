@@ -32,6 +32,6 @@ generated artifacts under `../output/` as the source of truth:
   `generate_sheaf_tracks.py`. Use [`../scripts/README.md`](../scripts/README.md)
   and `validate_outputs.py` for the current artifact inventory. Future tracks
   should improve canonical IDs and satisfy the producer/artifact/claim/gate/
-  negative-control promotion rule recorded in `../TODO.md`.
+  negative-control promotion rule recorded in `TODO.md`.
 
 Do not add network calls or LLM calls to the default exemplar path.

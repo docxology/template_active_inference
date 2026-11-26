@@ -177,6 +177,7 @@ def build_figure_registry_payload(project_root: Path) -> dict[str, dict[str, obj
             "figure_id": figure_id,
             "filename": spec.filename,
             "alt": spec.alt,
+            "alt_text": spec.alt,
             "caption": spec.caption,
             "width": spec.width,
             "visual_role": spec.visual_role,

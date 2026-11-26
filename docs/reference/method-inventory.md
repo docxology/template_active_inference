@@ -1231,7 +1231,7 @@ Total documented definitions: 820
 | 108 | `function` | `render_figure_markdown` | docstring | Render figure markdown. |
 | 145 | `function` | `render_section_figures` | docstring | Render section figures. |
 | 169 | `function` | `build_figure_registry_payload` | docstring | Build validator-facing registry JSON keyed by ``fig:{id}`` labels. |
-| 190 | `function` | `write_figure_registry_json` | docstring | Write ``output/figures/figure_registry.json`` from ``figures.yaml``. |
+| 191 | `function` | `write_figure_registry_json` | docstring | Write ``output/figures/figure_registry.json`` from ``figures.yaml``. |
 
 ## `src/visualizations/figure_style.py`
 
@@ -1462,4 +1462,4 @@ Total documented definitions: 820
 
 | line | kind | name | documentation source | summary |
 | ---: | --- | --- | --- | --- |
-| 20 | `function` | `main` | docstring | CLI entry point. |
+| 21 | `function` | `main` | docstring | CLI entry point. |
