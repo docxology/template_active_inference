@@ -59,7 +59,7 @@ parity with placeholder-safe values whenever a top-level section is added.
 Every new capability needs a reader-facing signpost in the nearest README or
 AGENTS file that states whether it is generic sheaf infrastructure or a
 bespoke Active Inference lane. Publication, fork, and standalone guidance must
-continue to point at generated records or `STANDALONE.md` instead of copying
+continue to point at generated records or [the standalone guide](standalone.md) instead of copying
 release facts into prose.
 
 ## Test and validator gaps

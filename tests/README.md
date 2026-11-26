@@ -72,7 +72,7 @@ other state-free modules above.
 
 ## Slow full-suite gates
 
-The canonical full-suite evidence line lives in `TODO.md`, so no suite counts
+The canonical full-suite evidence line lives in `docs/TODO.md`, so no suite counts
 or timings are pinned in this file. The slowest tests are
 expected to be the end-to-end generated-artifact gates: manuscript mutation
 negatives in `tests/gates/test_manuscript_gates.py`, claim-ledger negatives in

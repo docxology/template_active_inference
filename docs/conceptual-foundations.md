@@ -145,7 +145,7 @@ be subordinated to gated artifacts** — sheaf laws for document shape, a
 semantic certificate for cross-track agreement, formal proofs for boundary
 axioms, and notation contracts for interoperability — so the manuscript
 behaves like a self-verifying computational laboratory. The promotion rule in
-[`TODO.md`](../TODO.md) (producer + artifact + manuscript consumer + claim
+[`TODO.md`](TODO.md) (producer + artifact + manuscript consumer + claim
 evidence + semantic restriction + validation gate + negative control) is the
 operational recipe for growing such a system one validated track at a time.
 

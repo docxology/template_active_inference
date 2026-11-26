@@ -68,4 +68,4 @@ infrastructure is held type-strict.
 - `pytest tests/gates/test_manuscript_gates.py -k methods_sheaf_layers_negative`
   — 5 passed via the shared fixture.
 - Full-suite coverage evidence and reproduction commands remain in
-  [`../TODO.md`](../TODO.md) and [`../tests/README.md`](../tests/README.md).
+  [Project backlog](TODO.md) and [`../tests/README.md`](../tests/README.md).

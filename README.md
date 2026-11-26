@@ -70,23 +70,12 @@ arxiv.org and the resulting `arxiv` URL would then be added to
 `CLOUDFLARE_ACCOUNT_ID` the configured API token cannot auto-discover;
 **IPFS (Web3.Storage)** has no `WEB3_STORAGE_TOKEN` configured.
 
-- Canonical renderer: [docxology/template](https://github.com/docxology/template) with `--project templates/template_active_inference`
+- Canonical renderer: [docxology/template](https://github.com/docxology/template) with `--project working/template_active_inference` for a standalone checkout
 - Tracked outputs: [`output/`](output/) in this project and `output/templates/template_active_inference/` in the monorepo; public output files above 50 MB stay out of git.
 
-To regenerate this exemplar from the public monorepo:
-
-```bash
-git clone https://github.com/docxology/template
-cd template
-uv sync
-./run.sh --project templates/template_active_inference --pipeline --core-only
-uv run python scripts/pipeline/stage_04_validate.py --project templates/template_active_inference
-uv run python scripts/pipeline/stage_05_copy.py --project templates/template_active_inference
-```
-
-Standalone repositories are publication mirrors for source, DOI metadata, and
-tracked rendered artifacts. Use the monorepo above when you need the full shared
-infrastructure, pipeline stages, or cross-template validation.
+Use the [quick start](docs/quickstart.md) to render the current checkout
+locally or validate its PDF and HTML with the pinned template. The
+[publication snapshot](output/) records an earlier build.
 
 ## Why sheaf composition?
 
@@ -124,7 +113,7 @@ engine's module map.
 4. Validate the laws and coverage:
    `uv run python scripts/compose_manuscript.py --validate-only --strict`.
 5. For a *validated* track (producer + artifact + gate + negative control),
-   follow the seven-step promotion checklist in [`TODO.md`](TODO.md).
+   follow the seven-step promotion checklist in [`TODO.md`](docs/TODO.md).
 
 ## Configuration
 
@@ -143,12 +132,12 @@ Track and figure registries remain in `tracks.yaml`,
   full intellectual grounding: Active Inference and EFE, cellular sheaves
   over the IMRAD poset, semantic gluing, the Lean 4 boundary, GNN/AIO
   notation contracts, and further reading.
-- [`ISA.md`](ISA.md) — the project's Ideal State Artifact (design record and
+- [`ISA.md`](docs/ISA.md) — the project's Ideal State Artifact (design record and
   criteria history).
-- [`TODO.md`](TODO.md) — backlog and the track promotion rule (a capability is
+- [`TODO.md`](docs/TODO.md) — backlog and the track promotion rule (a capability is
   live only when producer, artifact, manuscript consumer, claim evidence,
   semantic restriction, validation gate, and negative control all exist).
-- [`STANDALONE.md`](STANDALONE.md) — how to copy this project out of the
+- [`STANDALONE.md`](docs/standalone.md) — how to copy this project out of the
   monorepo and run it independently (the sheaf engine under
   `src/manuscript/sheaf/` is deliberately generic; the registries are the
   bespoke part).
@@ -156,49 +145,15 @@ Track and figure registries remain in `tracks.yaml`,
 
 ## Quick start
 
-From the template repository root:
-
-```bash
-uv sync --directory projects/templates/template_active_inference --extra dev
-cd projects/templates/template_active_inference
-```
-
-From this project root:
-
-```bash
-uv run python scripts/compose_manuscript.py
-uv run python scripts/run_analytical_sweep.py
-uv run python scripts/simulate_si_tmaze.py
-uv run python scripts/simulate_si_graph_world.py
-uv run python scripts/compute_statistics.py
-uv run python scripts/generate_figures.py
-uv run python scripts/render_animation.py
-uv run python scripts/generate_validation_spine.py
-uv run python scripts/generate_toy_sweep_tracks.py
-uv run python scripts/generate_formal_interop_tracks.py
-uv run python scripts/generate_integration_audit.py
-uv run python scripts/generate_sheaf_tracks.py
-uv run python scripts/z_generate_manuscript_variables.py
-uv run python scripts/generate_method_inventory.py
-uv run python scripts/run_full_verification.py
-```
-
-> Runtime: the gate-heavy suite is slow because real pandoc/xelatex rendering
-> and artifact-generation tests dominate. Prefer `scripts/run_full_verification.py`;
-> it now runs coverage in separate pytest chunks so source mutations and generated
-> manuscript refreshes do not share one long session. For a fast inner loop, scope
-> with `-k` (e.g. `uv run pytest tests/ -k "not gate and not figure" --no-cov`).
-
-From repo root:
-
-```bash
-uv run python scripts/pipeline/stage_01_test.py --project templates/template_active_inference
-./run.sh --project templates/template_active_inference --pipeline --core-only
-```
+Start at the [documentation index](docs/README.md) for setup, configurations,
+and verification. The [quick start](docs/quickstart.md) includes the standalone
+PDF command, the pinned template PDF and HTML workflow, and output locations.
+See the [manuscript index](docs/manuscript/README.md) for the authored fragments
+and their composed sections.
 
 ## Sheaf composition
 
-Tracks are declared in [`docs/manuscript/sheaf/tracks.yaml`](docs/manuscript/sheaf/tracks.yaml) (order, renderer, optional). Sections bind fragments in [`docs/manuscript/sheaf/manifest.yaml`](docs/manuscript/sheaf/manifest.yaml). The composer merges them into flat `docs/manuscript/0*.md` files for the PDF pipeline.
+Tracks are declared in [`docs/manuscript/sheaf/tracks.yaml`](docs/manuscript/sheaf/tracks.yaml) (order, renderer, optional). Sections bind fragments in [`docs/manuscript/sheaf/manifest.yaml`](docs/manuscript/sheaf/manifest.yaml). The composer writes numbered Markdown sections to `docs/manuscript/`. Hydration resolves their tokens into `output/manuscript/` for rendering.
 
 The first manuscript page ([`docs/manuscript/00_00_sheaf_coverage.md`](docs/manuscript/00_00_sheaf_coverage.md)) shows a **B/W/G heatmap** of section × track coverage (black = present, white = absent, gray = missing binding). Compose writes `output/data/sheaf_coverage_matrix.json` only; `generate_figures.py` renders the heatmap PNG and regenerates the coverage page via `ensure_coverage_artifacts`.
 
@@ -259,7 +214,7 @@ Per-section overrides: `track_order`, `include_tracks`, `exclude_tracks`. See [`
 
 ## pymdp anchor
 
-T-maze sophisticated inference uses planning horizon `policy_len` from measured `si_tmaze_summary.json` (see manuscript variables). `simulate_si_tmaze.py` also writes `si_policy_comparison.json`, `pymdp_policy_posterior_grid.json`, and `pymdp_runtime_diagnostics.json`; the last file captures the known third-party JAX static-array warning and fails validation on unexpected construction warnings. Reference: [pymdp sophisticated_inference examples](https://github.com/infer-actively/pymdp/tree/main/examples/experimental/sophisticated_inference). Logs: `output/logs/pymdp_runs.jsonl`.
+T-maze sophisticated inference uses planning horizon `policy_len` from measured `si_tmaze_summary.json` (see manuscript variables). `simulate_si_tmaze.py` also writes `si_policy_comparison.json`, `pymdp_policy_posterior_grid.json`, and `pymdp_runtime_diagnostics.json`; the last file captures the known third-party JAX static-array warning. The output validator rejects unexpected construction warnings. Reference: [pymdp sophisticated_inference examples](https://github.com/infer-actively/pymdp/tree/main/examples/experimental/sophisticated_inference). Logs: `output/logs/pymdp_runs.jsonl`.
 
 ## Pipeline tracks
 
@@ -272,7 +227,7 @@ binds the full proof row except `layers`, which is methods-only. Thin scripts in
 under `output/`; `scripts/README.md` names the current producers and
 `scripts/validate_outputs.py` checks their generated contracts.
 
-Non-blocking future work is tracked in [`TODO.md`](TODO.md); current publication claims remain confined to deterministic toy Active Inference artifacts.
+Non-blocking future work is tracked in [`TODO.md`](docs/TODO.md); current publication claims remain confined to deterministic toy Active Inference artifacts.
 
 Refresh orchestration uses the shared bounded subprocess policy (process-group
 cleanup, timeout, and redacted environment) and writes an optional cache

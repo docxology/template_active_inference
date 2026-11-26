@@ -21,15 +21,17 @@ from sheaf fragments, generated variables, and source registries.
   never freeze fresh counts in prose.
 - Compose emits `{{token}}` placeholders; hydration is the single substitution
   boundary and should fail closed on unknown or malformed tokens.
-- Figure captions, alt text, and section bindings come from `../figures.yaml`.
+- Figure captions, alt text, and section bindings come from `../../figures.yaml`.
 - Keep publication claims scoped to deterministic toy artifacts unless new
   measured outputs are generated, copied, and validated.
 
 ## Commands
 
+From the project root:
+
 ```bash
-uv run python ../scripts/compose_manuscript.py
-uv run python ../scripts/compose_manuscript.py --validate-only --strict
-uv run python ../scripts/z_generate_manuscript_variables.py
-uv run pytest ../tests/test_manuscript_hydrate.py ../tests/test_typography_contract.py ../tests/test_sheaf_compose.py
+uv run python scripts/compose_manuscript.py
+uv run python scripts/compose_manuscript.py --validate-only --strict
+uv run python scripts/z_generate_manuscript_variables.py
+uv run pytest tests/test_manuscript_hydrate.py tests/test_typography_contract.py tests/test_sheaf_compose.py
 ```

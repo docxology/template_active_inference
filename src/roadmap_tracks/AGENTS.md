@@ -11,7 +11,7 @@ private data, or nondeterministic research behavior.
 - Keep business logic in importable functions; project scripts should only
   orchestrate reads, writes, and CLI reporting.
 - Treat every new artifact as future-only until the promotion rule in
-  [`../../TODO.md`](../../TODO.md) is satisfied; after promotion, keep the
+  [the project backlog](../../docs/TODO.md) is satisfied; after promotion, keep the
   producer, manuscript binding, typed claim, semantic restriction, gate, and
   negative-control rows in sync.
 - Pair every promoted artifact with a validation function and a negative-control

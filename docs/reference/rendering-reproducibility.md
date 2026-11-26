@@ -1,8 +1,8 @@
 # Rendering and Reproducibility Contract
 
-This exemplar has one rendering paradigm: authored fragments and configuration
-produce deterministic data, figures, composed Markdown, hydrated Markdown, PDF,
-web, and copied root outputs. Do not hand-edit generated artifacts to make a
+Authored fragments and configuration produce deterministic data, figures,
+composed Markdown, and hydrated Markdown. Both the standalone PDF renderer
+and the pinned template pipeline consume that source and evidence. Do not hand-edit generated artifacts to make a
 claim pass; regenerate the producer that owns the artifact.
 
 ## Authored surfaces
@@ -27,8 +27,9 @@ claim pass; regenerate the producer that owns the artifact.
   contract index. It binds generated artifacts to producers, configured scripts,
   pipeline/sheaf lanes, manuscript consumers, claim predicates, validators,
   negative controls, freshness fields, and copied-root parity.
-- `docs/manuscript/0*.md`, except hand-authored front/back matter, are composed from
-  sheaf fragments by `scripts/compose_manuscript.py`.
+- The numbered IMRAD files under `docs/manuscript/` are composed from sheaf
+  fragments by `scripts/compose_manuscript.py`. The abstract, conclusion, and
+  references section are authored directly.
 - `output/manuscript/*.md` is hydrated from composed manuscript sections plus
   `output/data/manuscript_variables.json`.
 - `output/figures/*` comes from `scripts/generate_figures.py` and
@@ -78,7 +79,9 @@ and visualization quality artifacts.
 
 Every figure id must exist in `figures.yaml`, have a generator in
 `src/visualizations/figures.py`, write through `figure_io.save_figure_png`, and
-appear in `output/figures/figure_registry.json`. Figure captions and alt text may
+appear in `output/figures/figure_registry.json`. Strict hydration refreshes
+that registry from `figures.yaml` so the template HTML renderer receives the
+current accessibility descriptions as `alt_text`. Figure captions and alt text may
 use hydration tokens, but figure numbering belongs to pandoc-crossref. Reused
 figures must use unlabeled references rather than duplicate labels.
 The appendix theorem-traceability graph, causal-ablation heatmap, and
@@ -149,10 +152,20 @@ The sheaf claim is finite and falsifiable:
 - the artifact-contract index must rederive row completeness and copied-output
   parity from rows, not aggregate booleans alone.
 
+## Publication rendering
+
+The [quick start](../quickstart.md#render-and-validate-with-the-pinned-template)
+shows how to register a committed standalone revision as a working project
+in the pinned template checkout. Stage 03 builds PDF and HTML from the
+hydrated sections. Stage 04 writes the validation report and provenance
+receipt inside that working project's `output/reports/`.
+
 ## Root output parity
 
-Project-local outputs are authoritative during generation. After a root pipeline
-run, verify copied root output parity as well:
+Project-local outputs are authoritative during generation. When running the
+exemplar in the upstream monorepo, verify copied output parity after the root
+pipeline. Run the first command from the upstream root and the second from the
+project root.
 
 ```bash
 ./run.sh --project templates/template_active_inference --pipeline --core-only

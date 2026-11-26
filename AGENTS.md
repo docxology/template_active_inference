@@ -15,7 +15,7 @@ routing layer; put directory-specific contracts in the nearest child
 | Coverage styling/report inputs | [`docs/manuscript/sheaf/coverage.yaml`](docs/manuscript/sheaf/coverage.yaml) |
 | Figure registry, captions, alt text | [`figures.yaml`](figures.yaml) |
 | pymdp/SI run config | [`pymdp.yaml`](pymdp.yaml) |
-| Open follow-up scope | [`TODO.md`](TODO.md) |
+| Open follow-up scope | [`docs/TODO.md`](docs/TODO.md) |
 
 Generated counts and claim numbers belong in
 `output/data/manuscript_variables.json` and hydrated manuscript output, not in
@@ -97,5 +97,5 @@ quick reference commands, and pitfalls.
 
 ## Parent Docs
 
-- Template root: [`../../../AGENTS.md`](../../../AGENTS.md)
+- Template root: [Template guidance](https://github.com/docxology/template/blob/87704feae0a4490ef7dad9c931d268e8c30273c2/AGENTS.md)
 - Zenodo DOI strategy: recorded in [`docs/manuscript/config.yaml`](docs/manuscript/config.yaml) publishing metadata.

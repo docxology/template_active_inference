@@ -1,42 +1,31 @@
-# template_active_inference docs
+# Active Inference exemplar documentation
 
-Documentation for the public Active Inference multi-track exemplar (analytical,
-pymdp, sheaf manuscript, Lean/GNN/ontology, provenance, replay matrix,
-counterexamples, toy sweeps, uncertainty, benchmark, model-checking, interop,
-semantic gluing, dependency graph, evidence fields, release bundle, theorem
-traceability, gate ergonomics, generated track-improvement scope, blocked-scope,
-and adversarial audit) composed into a sheaf manuscript.
+This project studies deterministic toy Active Inference models. It combines a
+closed-form Bernoulli–Ising analysis with pymdp simulations, a Lean proof
+boundary, and shared GNN and ontology notation. The sheaf composer merges
+track contributions into a manuscript and checks their shared evidence.
 
-- `conceptual-foundations.md` — the intellectual grounding: Active Inference
-  and EFE, cellular sheaves over the IMRAD poset, semantic gluing, the Lean 4
-  boundary, GNN/AIO notation contracts, and further reading.
-- `reference/method-inventory.md` — generated coverage for every Python `def`
-  and `class` under `src/` and `scripts/`; refresh with
-  `uv run python scripts/generate_method_inventory.py --check`.
-- `reference/rendering-reproducibility.md` — authored contract for sheaf
-  composition, hydration, figure rendering, artifact regeneration order, and
-  root output parity.
-- Visualization quality is validated through render metrics, source maps,
-  hashes, section bindings, and per-figure claim lanes in
-  `output/data/figure_source_map.json` and
-  `output/reports/visualization_quality_audit.json`.
-- `thermo-nuclear-code-quality-review.md` — completed maintainability backlog
-  (shared JSON I/O helpers, test-speed ergonomics, mypy override correction).
-- See the project root `README.md` for the overview and `AGENTS.md` for agent
-  guidance; per-directory `README.md`/`AGENTS.md` pairs document each component.
+| Task | Guide |
+| --- | --- |
+| Install, run, render, or verify | [Quick start](quickstart.md) |
+| Understand the model and interpretation limits | [Conceptual foundations](conceptual-foundations.md) |
+| Understand module and track boundaries | [Architecture](architecture.md) and [pipeline track declarations](../tracks.yaml) |
+| Edit the manuscript | [Manuscript index](manuscript/README.md) |
+| Inspect data, figures, and publication products | [Rendering and reproducibility](reference/rendering-reproducibility.md) |
+| Use the exemplar in another project | [Standalone and fork guide](standalone.md) |
+| Investigate installation or test failures | [Troubleshooting](troubleshooting.md) and [testing philosophy](testing_philosophy.md) |
+| Look up callable definitions | [Generated method inventory](reference/method-inventory.md) |
+| Follow the design and maintenance record | [Ideal State Artifact](ISA.md), [backlog](TODO.md), and [code quality review](thermo-nuclear-code-quality-review.md) |
 
-Verify the documentation and output contracts from the project root:
+Use the [script directory reference](../scripts/README.md) to find artifact
+producers and the [agent guide](agent_instructions.md) for contribution rules.
+
+From the project root, check documentation, generated references, composition,
+and artifact gates with the following commands.
 
 ```bash
 uv run python scripts/check_documentation_contract.py --check
 uv run python scripts/generate_method_inventory.py --check
 uv run python scripts/compose_manuscript.py --validate-only --strict
 uv run python scripts/validate_outputs.py
-uv run pytest tests/ --cov=src --cov-fail-under=90
-```
-
-From the template repository root:
-
-```bash
-./run.sh --pipeline --project templates/template_active_inference --core-only --skip-infra
 ```
