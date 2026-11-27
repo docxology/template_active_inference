@@ -24,7 +24,7 @@ covered by `tests/test_sheaf_laws.py` negative controls.
 Use `TODO.md` for future-only scope and run live commands for current evidence.
 Do not reuse the historical suite-count baseline below. The current explicit
 full-suite evidence lives in `TODO.md`; the authoritative status is always the
-fresh `uv run pytest tests/ --cov=src --cov-fail-under=90` output plus the live
+fresh `uv run --extra dev pytest tests/ --cov=src --cov-fail-under=90` output plus the live
 coverage floor in `pyproject.toml`.
 
 ## Problem
@@ -161,7 +161,7 @@ claim fully earned.
 | ISC-16..21 | test | pytest law tests + neg controls | all pass | `uv run pytest tests/test_sheaf_laws.py` |
 | ISC-22 | grep | no mock imports | 0 matches | `grep -rn mock tests/test_sheaf_laws.py` |
 | ISC-24..30 | read | prose contains required statements | present | `Read`/`grep` composed output |
-| ISC-36 | suite | full baseline | live collected-test count passes | `uv run pytest tests/ --cov=src --cov-fail-under=90` |
+| ISC-36 | suite | full baseline | live collected-test count passes | `uv run --extra dev pytest tests/ --cov=src --cov-fail-under=90` |
 | ISC-41 | lint | ruff+mypy clean | 0 errors | `uv run ruff check`, `uv run mypy` |
 | ISC-38..40 | audit | advisor + Forge + Cato | no unaddressed critical | Inference.ts / Agent |
 
