@@ -28,7 +28,9 @@ Alt strings in `figures.yaml` are full accessibility descriptions. Captions and 
 
 **Caption rule:** pandoc-crossref owns all figure numbering. `render_figure_markdown` emits one `{#fig:id}` label per labeled figure with the caption in the image alt slot (verbose description rides `fig-alt`) and **never** a hand-written `Figure N` / `*Figure ...*` line; reused figures use empty alt + a `Reproduced from [@fig:id]` cite (unnumbered). `caption_prefix`/`number` in `figures.yaml` are deprecated and ignored.
 
-**Heatmap:** `figures_sheaf_draw.draw_coverage_heatmap` draws IMRAD block labels on the left margin when `heatmap.group_separator` is enabled in `manuscript/sheaf/coverage.yaml`.
+**Heatmap:** `figures_sheaf_draw.draw_coverage_heatmap` draws IMRAD block labels
+on the left margin when `heatmap.group_separator` is enabled in the
+[coverage configuration](../../docs/manuscript/sheaf/coverage.yaml).
 
 **Quality audit:** `roadmap_tracks.visualization_audit` re-checks live PNG mode,
 nonblank pixels, dimensions, aspect ratio, source-map rows, figure hashes,
