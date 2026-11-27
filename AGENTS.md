@@ -61,7 +61,7 @@ uv run python scripts/compose_manuscript.py
 uv run python scripts/compose_manuscript.py --validate-only --strict
 uv run python scripts/check_documentation_contract.py --check
 uv run python scripts/generate_method_inventory.py --check
-uv run pytest tests/ --cov=src --cov-fail-under=90
+uv run --extra dev pytest tests/ --cov=src --cov-fail-under=90
 uv run python scripts/validate_outputs.py
 ```
 

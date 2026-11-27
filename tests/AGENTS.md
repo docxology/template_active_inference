@@ -61,7 +61,7 @@ status table leak into later checks. Never `git commit -a` a degraded status
 table after a run.
 
 Run full verification from this project root:
-`uv run python scripts/run_full_verification.py`. It runs gate-heavy coverage in
+`uv run --extra dev python scripts/run_full_verification.py`. It runs gate-heavy coverage in
 separate pytest processes and appends coverage into one final 90% gate. Use
 focused `-q` commands only for package-local development loops. The legacy
 single-process coverage run is available as `--monolithic-coverage` for

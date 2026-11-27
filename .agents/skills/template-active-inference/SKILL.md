@@ -24,7 +24,7 @@ Project-scoped skill for the in-repo exemplar at
 
 ```bash
 # From this project root
-uv run pytest tests --cov=src --cov-fail-under=90
+uv run --extra dev pytest tests --cov=src --cov-fail-under=90
 
 # From the repository root
 uv run python scripts/pipeline/stage_02_analysis.py --project templates/template_active_inference

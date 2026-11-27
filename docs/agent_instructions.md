@@ -36,11 +36,11 @@
    ```
 4. Run the full test suite with the coverage gate:
    ```bash
-   uv run pytest tests/ --cov=src --cov-fail-under=90
+   uv run --extra dev pytest tests/ --cov=src --cov-fail-under=90
    ```
-   (For a fast inner loop instead: `uv run pytest tests/ -k "not gate and not
+   (For a fast inner loop instead: `uv run --extra dev pytest tests/ -k "not gate and not
    figure" --no-cov`, or the combined verification wrapper
-   `uv run python scripts/run_full_verification.py`.)
+   `uv run --extra dev python scripts/run_full_verification.py`.)
 
 For the full pipeline (analytical/pymdp/figures/animation/method-inventory
 scripts in addition to the five roadmap-track generators above), see the

@@ -249,16 +249,15 @@ uv run python scripts/generate_method_inventory.py --check
 ## Documentation verification
 
 Current release evidence is recertified with
-`uv run pytest tests/ --cov=src --cov-fail-under=90`; live test counts,
-coverage, and timings are read from that run, while the parent template
-checkout keeps the generated `docs/_generated/COUNTS.md`; counts are not
-pinned here.
+`uv run --extra dev pytest tests/ --cov=src --cov-fail-under=90`.
+Read live test counts, coverage, and timings from that run. The parent
+Template checkout keeps the generated `docs/_generated/COUNTS.md`.
 
 Run the documentation and artifact contract checks from this project root:
 
 ```bash
 uv run python scripts/check_documentation_contract.py --check
-uv run python scripts/run_full_verification.py
+uv run --extra dev python scripts/run_full_verification.py
 ```
 
 `run_full_verification.py` runs:
